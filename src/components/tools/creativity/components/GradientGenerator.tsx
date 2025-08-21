@@ -271,7 +271,7 @@ export const GradientGenerator = () => {
               />
               
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <Label className="text-xs text-gray-500 uppercase tracking-wide mb-2 block">CSS</Label>
+                <Label className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 block">CSS</Label>
                 <code className="text-sm font-mono break-all">{generateCSS(currentGradient)}</code>
               </div>
 
@@ -343,10 +343,10 @@ export const GradientGenerator = () => {
                         type="color"
                         value={stop.color}
                         onChange={(e) => updateColorStop(index, { color: e.target.value })}
-                        className="w-12 h-8 rounded border-2 border-gray-200 cursor-pointer"
+                        className="w-12 h-8 rounded border-2 border-gray-200 dark:border-gray-600 cursor-pointer"
                       />
                       <div className="flex-1">
-                        <Label className="text-xs text-gray-500 mb-1 block">Position: {stop.position}%</Label>
+                        <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Position: {stop.position}%</Label>
                         <Slider
                           value={[stop.position]}
                           onValueChange={([value]) => updateColorStop(index, { position: value })}

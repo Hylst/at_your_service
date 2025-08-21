@@ -12,8 +12,13 @@ interface ColorHarmony {
   description: string;
 }
 
-export const ColorHarmonyGenerator = () => {
-  const [baseColor, setBaseColor] = useState("#3B82F6");
+interface ColorHarmonyGeneratorProps {
+  baseColor?: string;
+  onColorChange?: (color: string) => void;
+}
+
+export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChange }: ColorHarmonyGeneratorProps = {}) => {
+  const [baseColor, setBaseColor] = useState(initialBaseColor || "#3B82F6");
   const [harmonies, setHarmonies] = useState<ColorHarmony[]>([]);
 
   const generateHarmonies = () => {
@@ -169,13 +174,19 @@ export const ColorHarmonyGenerator = () => {
             <input
               type="color"
               value={baseColor}
-              onChange={(e) => setBaseColor(e.target.value)}
+              onChange={(e) => {
+                setBaseColor(e.target.value);
+                onColorChange?.(e.target.value);
+              }}
               className="w-16 h-10 rounded border cursor-pointer"
             />
             <input
               type="text"
               value={baseColor}
-              onChange={(e) => setBaseColor(e.target.value)}
+              onChange={(e) => {
+                setBaseColor(e.target.value);
+                onColorChange?.(e.target.value);
+              }}
               className="flex-1 p-2 border rounded-md font-mono text-sm"
               placeholder="#3B82F6"
             />
@@ -191,7 +202,7 @@ export const ColorHarmonyGenerator = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-medium">{harmony.name}</h4>
-                    <p className="text-xs text-gray-500">{harmony.description}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{harmony.description}</p>
                   </div>
                   <Button
                     variant="outline"
@@ -228,7 +239,7 @@ export const ColorHarmonyGenerator = () => {
         )}
 
         {harmonies.length === 0 && (
-          <div className="text-center py-8 text-gray-500">
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
             <p>Cliquez sur "Générer" pour créer des harmonies de couleurs</p>
           </div>
         )}

@@ -366,7 +366,7 @@ export const ImageFilters = () => {
               <div className="space-y-6">
                 {/* Luminosité */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Luminosité: {filters.brightness}%
                   </Label>
                   <Slider
@@ -381,7 +381,7 @@ export const ImageFilters = () => {
 
                 {/* Contraste */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Contraste: {filters.contrast}%
                   </Label>
                   <Slider
@@ -396,7 +396,7 @@ export const ImageFilters = () => {
 
                 {/* Saturation */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Saturation: {filters.saturation}%
                   </Label>
                   <Slider
@@ -411,7 +411,7 @@ export const ImageFilters = () => {
 
                 {/* Teinte */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Teinte: {filters.hue}°
                   </Label>
                   <Slider
@@ -426,7 +426,7 @@ export const ImageFilters = () => {
 
                 {/* Flou */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Flou: {filters.blur}px
                   </Label>
                   <Slider
@@ -441,7 +441,7 @@ export const ImageFilters = () => {
 
                 {/* Sépia */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Sépia: {filters.sepia}%
                   </Label>
                   <Slider
@@ -456,7 +456,7 @@ export const ImageFilters = () => {
 
                 {/* Niveaux de gris */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Niveaux de gris: {filters.grayscale}%
                   </Label>
                   <Slider
@@ -471,7 +471,7 @@ export const ImageFilters = () => {
 
                 {/* Inversion */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Inversion: {filters.invert}%
                   </Label>
                   <Slider
@@ -486,7 +486,7 @@ export const ImageFilters = () => {
 
                 {/* Opacité */}
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">
+                  <Label className="text-sm font-medium mb-3 block text-gray-900 dark:text-gray-100">
                     Opacité: {filters.opacity}%
                   </Label>
                   <Slider

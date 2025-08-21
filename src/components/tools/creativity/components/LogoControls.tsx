@@ -62,7 +62,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
           </div>
           <div className="flex gap-2">
             <div className="flex-1">
-              <Label className="text-xs text-gray-500 mb-1 block">Taille: {logo.iconSize}px</Label>
+              <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Taille: {logo.iconSize}px</Label>
               <input
                 type="range"
                 min="16"
@@ -73,7 +73,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
               />
             </div>
             <div>
-              <Label className="text-xs text-gray-500 mb-1 block">Couleur</Label>
+              <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Couleur</Label>
               <input
                 type="color"
                 value={logo.iconColor}
@@ -105,7 +105,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <Label className="text-xs text-gray-500 mb-1 block">Taille: {logo.fontSize}px</Label>
+              <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Taille: {logo.fontSize}px</Label>
               <input
                 type="range"
                 min="12"
@@ -116,7 +116,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
               />
             </div>
             <div>
-              <Label className="text-xs text-gray-500 mb-1 block">Couleur</Label>
+              <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Couleur</Label>
               <input
                 type="color"
                 value={logo.textColor}
@@ -167,7 +167,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <Label className="text-xs text-gray-500 mb-1 block">Couleur de fond</Label>
+            <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Couleur de fond</Label>
             <input
               type="color"
               value={logo.backgroundColor}
@@ -176,7 +176,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
             />
           </div>
           <div>
-            <Label className="text-xs text-gray-500 mb-1 block">Couleur forme</Label>
+            <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Couleur forme</Label>
             <input
               type="color"
               value={logo.shapeColor}
@@ -187,7 +187,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
         </div>
 
         <div>
-          <Label className="text-xs text-gray-500 mb-1 block">Espacement: {logo.padding}px</Label>
+          <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Espacement: {logo.padding}px</Label>
           <input
             type="range"
             min="8"
@@ -200,7 +200,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <Label className="text-xs text-gray-500 mb-1 block">Bordure: {logo.borderWidth}px</Label>
+            <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Bordure: {logo.borderWidth}px</Label>
             <input
               type="range"
               min="0"
@@ -211,7 +211,7 @@ export const LogoControls = ({ logo, onUpdate }: LogoControlsProps) => {
             />
           </div>
           <div>
-            <Label className="text-xs text-gray-500 mb-1 block">Couleur bordure</Label>
+            <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Couleur bordure</Label>
             <input
               type="color"
               value={logo.borderColor}

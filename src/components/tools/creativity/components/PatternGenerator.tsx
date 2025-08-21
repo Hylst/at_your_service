@@ -283,7 +283,7 @@ export const PatternGenerator = () => {
               
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <Label className="text-xs text-gray-500 uppercase tracking-wide">CSS Background</Label>
+                  <Label className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">CSS Background</Label>
                   <div className="flex gap-2">
                     <Button onClick={() => copyToClipboard('css')} size="sm" variant="outline">
                       <Copy className="w-4 h-4 mr-1" />
@@ -361,13 +361,13 @@ export const PatternGenerator = () => {
                       type="color"
                       value={pattern.color1}
                       onChange={(e) => updatePattern({ color1: e.target.value })}
-                      className="w-12 h-10 rounded border-2 border-gray-200 cursor-pointer"
+                      className="w-12 h-10 rounded border-2 border-gray-200 dark:border-gray-600 cursor-pointer"
                     />
                     <input
                       type="text"
                       value={pattern.color1}
                       onChange={(e) => updatePattern({ color1: e.target.value })}
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm"
+                      className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm"
                     />
                   </div>
                 </div>
@@ -379,13 +379,13 @@ export const PatternGenerator = () => {
                       type="color"
                       value={pattern.color2}
                       onChange={(e) => updatePattern({ color2: e.target.value })}
-                      className="w-12 h-10 rounded border-2 border-gray-200 cursor-pointer"
+                      className="w-12 h-10 rounded border-2 border-gray-200 dark:border-gray-600 cursor-pointer"
                     />
                     <input
                       type="text"
                       value={pattern.color2}
                       onChange={(e) => updatePattern({ color2: e.target.value })}
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm"
+                      className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm"
                     />
                   </div>
                 </div>

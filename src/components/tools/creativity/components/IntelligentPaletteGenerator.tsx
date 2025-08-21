@@ -137,7 +137,7 @@ export const IntelligentPaletteGenerator = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
             Cliquez sur un type de palette ou "Aléatoire" pour commencer
           </p>
           
@@ -223,7 +223,7 @@ export const IntelligentPaletteGenerator = () => {
                 <CardTitle className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Badge variant="secondary">{currentPalette.name}</Badge>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-sm text-gray-600 dark:text-gray-300">
                       {currentPalette.colors.length} couleurs
                     </span>
                   </div>
@@ -291,7 +291,7 @@ export const IntelligentPaletteGenerator = () => {
 
         <TabsContent value="history" className="space-y-4">
           {paletteHistory.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground">
+            <div className="text-center py-12 text-gray-600 dark:text-gray-300">
               <History className="w-12 h-12 mx-auto mb-4 opacity-50" />
               <p>Aucune palette dans l'historique</p>
               <p className="text-sm">Générez votre première palette pour la voir ici</p>
@@ -319,7 +319,7 @@ export const IntelligentPaletteGenerator = () => {
                         <p className="font-medium text-sm truncate">{palette.name}</p>
                         <Badge variant="outline" className="text-xs">{palette.type}</Badge>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-gray-600 dark:text-gray-300">
                         {palette.createdAt.toLocaleDateString()}
                       </p>
                     </div>
@@ -332,7 +332,7 @@ export const IntelligentPaletteGenerator = () => {
 
         <TabsContent value="favorites" className="space-y-4">
           {favorites.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground">
+            <div className="text-center py-12 text-gray-600 dark:text-gray-300">
               <Star className="w-12 h-12 mx-auto mb-4 opacity-50" />
               <p>Aucune palette favorite</p>
               <p className="text-sm">Cliquez sur ❤️ pour ajouter des palettes à vos favoris</p>
@@ -361,7 +361,7 @@ export const IntelligentPaletteGenerator = () => {
                         <p className="font-medium text-sm truncate">{palette.name}</p>
                         <Badge variant="outline" className="text-xs">{palette.type}</Badge>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-gray-600 dark:text-gray-300">
                         {palette.createdAt.toLocaleDateString()}
                       </p>
                     </div>

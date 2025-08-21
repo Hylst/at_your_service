@@ -331,7 +331,7 @@ export const IconGenerator = () => {
               <div className="space-y-4">
                 {/* Taille */}
                 <div>
-                  <Label className="text-sm font-medium mb-2 block">
+                  <Label className="text-sm font-medium mb-2 block text-gray-700 dark:text-gray-300">
                     Taille: {iconSettings.size}px
                   </Label>
                   <input
@@ -347,14 +347,14 @@ export const IconGenerator = () => {
                 {/* Couleurs */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm font-medium mb-2 block">Couleur icône</Label>
+                    <Label className="text-sm font-medium mb-2 block text-gray-700 dark:text-gray-300">Couleur icône</Label>
                     <div className="flex gap-2">
-                      <input
-                        type="color"
-                        value={iconSettings.color}
-                        onChange={(e) => updateSettings({ color: e.target.value })}
-                        className="w-12 h-10 rounded border cursor-pointer"
-                      />
+                  <input
+                    type="color"
+                    value={iconSettings.color}
+                    onChange={(e) => updateSettings({ color: e.target.value })}
+                    className="w-12 h-10 rounded border border-gray-200 dark:border-gray-600 cursor-pointer"
+                  />
                       <Input
                         value={iconSettings.color}
                         onChange={(e) => updateSettings({ color: e.target.value })}
@@ -364,13 +364,13 @@ export const IconGenerator = () => {
                   </div>
                   
                   <div>
-                    <Label className="text-sm font-medium mb-2 block">Couleur fond</Label>
+                    <Label className="text-sm font-medium mb-2 block text-gray-700 dark:text-gray-300">Couleur fond</Label>
                     <div className="flex gap-2">
                       <input
                         type="color"
                         value={iconSettings.backgroundColor}
                         onChange={(e) => updateSettings({ backgroundColor: e.target.value })}
-                        className="w-12 h-10 rounded border cursor-pointer"
+                        className="w-12 h-10 rounded border border-gray-200 dark:border-gray-600 cursor-pointer"
                       />
                       <Input
                         value={iconSettings.backgroundColor}
@@ -384,7 +384,7 @@ export const IconGenerator = () => {
                 {/* Espacement et arrondi */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm font-medium mb-2 block">
+                    <Label className="text-sm font-medium mb-2 block text-gray-700 dark:text-gray-300">
                       Espacement: {iconSettings.padding}px
                     </Label>
                     <input
@@ -398,7 +398,7 @@ export const IconGenerator = () => {
                   </div>
                   
                   <div>
-                    <Label className="text-sm font-medium mb-2 block">
+                    <Label className="text-sm font-medium mb-2 block text-gray-700 dark:text-gray-300">
                       Arrondi: {iconSettings.borderRadius}px
                     </Label>
                     <input
@@ -421,7 +421,7 @@ export const IconGenerator = () => {
                     onChange={(e) => updateSettings({ shadow: e.target.checked })}
                     className="rounded"
                   />
-                  <Label htmlFor="shadow" className="text-sm font-medium">
+                  <Label htmlFor="shadow" className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     Ajouter une ombre
                   </Label>
                 </div>

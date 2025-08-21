@@ -125,11 +125,11 @@ export const LogoMaker = () => {
               {/* Informations du logo */}
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <span className="text-gray-500 block">Dimensions</span>
+                  <span className="text-gray-500 dark:text-gray-400 block">Dimensions</span>
                   <span className="font-mono">Auto × Auto</span>
                 </div>
                 <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <span className="text-gray-500 block">Format</span>
+                  <span className="text-gray-500 dark:text-gray-400 block">Format</span>
                   <span className="font-mono">SVG vectoriel</span>
                 </div>
               </div>
