@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Copy, RotateCcw, Code, Hash } from "lucide-react";
+import { Copy, RotateCcw, Code, Hash, RotateCw, Plus, Minus, X, Divide } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface ProgrammerCalculatorProps {
@@ -15,6 +15,7 @@ interface ProgrammerCalculatorProps {
 }
 
 type NumberBase = 'dec' | 'hex' | 'oct' | 'bin';
+type WordSize = 4 | 8 | 16 | 32 | 64 | 128 | 256;
 
 export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
   history,
@@ -24,7 +25,76 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
   const [value, setValue] = useState<string>("0");
   const [inputBase, setInputBase] = useState<NumberBase>('dec');
   const [expression, setExpression] = useState<string>("");
+  const [wordSize, setWordSize] = useState<WordSize>(32);
+  const [pendingOperation, setPendingOperation] = useState<string>("");
+  const [operand, setOperand] = useState<number | null>(null);
   const { toast } = useToast();
+
+  /**
+   * Apply word size mask to limit number to specified bit width
+   * @param num - The number to mask
+   * @param size - Word size in bits
+   * @returns Masked number within word size limits
+   */
+  const applyWordSizeMask = (num: number, size: WordSize = wordSize): number => {
+    // Use Math.pow for sizes > 31 to avoid JavaScript bitwise operator limitations
+    const mask = size >= 32 ? Math.pow(2, size) - 1 : (1 << size) - 1;
+    return num & mask;
+  };
+
+  /**
+   * Get maximum value for current word size
+   * @param size - Word size in bits
+   * @returns Maximum value
+   */
+  const getMaxValue = (size: WordSize = wordSize): number => {
+    // Use Math.pow for sizes > 31 to avoid JavaScript bitwise operator limitations
+    return size >= 32 ? Math.pow(2, size) - 1 : (1 << size) - 1;
+  };
+
+  /**
+   * Rotate bits left (ROL)
+   * @param num - Number to rotate
+   * @param positions - Number of positions to rotate
+   * @param size - Word size in bits
+   * @returns Rotated number
+   */
+  const rotateLeft = (num: number, positions: number, size: WordSize = wordSize): number => {
+    const mask = getMaxValue(size);
+    const maskedNum = num & mask;
+    const normalizedPos = positions % size;
+    
+    // For large word sizes, use different approach to avoid bitwise operator limitations
+    if (size > 31) {
+      const leftPart = (maskedNum * Math.pow(2, normalizedPos)) % Math.pow(2, size);
+      const rightPart = Math.floor(maskedNum / Math.pow(2, size - normalizedPos));
+      return (leftPart + rightPart) & mask;
+    } else {
+      return ((maskedNum << normalizedPos) | (maskedNum >>> (size - normalizedPos))) & mask;
+    }
+  };
+
+  /**
+   * Rotate bits right (ROR)
+   * @param num - Number to rotate
+   * @param positions - Number of positions to rotate
+   * @param size - Word size in bits
+   * @returns Rotated number
+   */
+  const rotateRight = (num: number, positions: number, size: WordSize = wordSize): number => {
+    const mask = getMaxValue(size);
+    const maskedNum = num & mask;
+    const normalizedPos = positions % size;
+    
+    // For large word sizes, use different approach to avoid bitwise operator limitations
+    if (size > 31) {
+      const rightPart = Math.floor(maskedNum / Math.pow(2, normalizedPos));
+      const leftPart = (maskedNum % Math.pow(2, normalizedPos)) * Math.pow(2, size - normalizedPos);
+      return (rightPart + leftPart) & mask;
+    } else {
+      return ((maskedNum >>> normalizedPos) | (maskedNum << (size - normalizedPos))) & mask;
+    }
+  };
 
   const addToHistory = (calculation: string) => {
     setHistory([calculation, ...history.slice(0, 19)]);
@@ -52,55 +122,121 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
   };
 
   const getCurrentNumber = (): number => {
-    return parseFromBase(value, inputBase) || 0;
+    const num = parseFromBase(value, inputBase) || 0;
+    return applyWordSizeMask(num);
   };
 
   const setCurrentNumber = (num: number) => {
-    setValue(convertToBase(num, inputBase));
+    const maskedNum = applyWordSizeMask(num);
+    setValue(convertToBase(maskedNum, inputBase));
   };
 
-  // Bitwise operations
+  /**
+   * Perform bitwise and rotation operations
+   * @param op - Operation type (NOT, LSH, RSH, ROL, ROR)
+   */
   const performBitwiseOperation = (op: string) => {
     const currentNum = getCurrentNumber();
+    let result = 0;
+    let expr = "";
     
     switch (op) {
       case 'NOT':
-        const result = ~currentNum;
-        const expr = `NOT ${value}(${inputBase})`;
-        addToHistory(`${expr} = ${convertToBase(result, inputBase)}`);
-        setCurrentNumber(result);
+        result = applyWordSizeMask(~currentNum);
+        expr = `NOT ${value}(${inputBase})`;
         break;
       case 'LSH':
-        const lshResult = currentNum << 1;
-        const lshExpr = `${value}(${inputBase}) << 1`;
-        addToHistory(`${lshExpr} = ${convertToBase(lshResult, inputBase)}`);
-        setCurrentNumber(lshResult);
+        result = applyWordSizeMask(currentNum << 1);
+        expr = `${value}(${inputBase}) << 1`;
         break;
       case 'RSH':
-        const rshResult = currentNum >> 1;
-        const rshExpr = `${value}(${inputBase}) >> 1`;
-        addToHistory(`${rshExpr} = ${convertToBase(rshResult, inputBase)}`);
-        setCurrentNumber(rshResult);
+        result = currentNum >>> 1; // Logical right shift
+        expr = `${value}(${inputBase}) >> 1`;
         break;
+      case 'ROL':
+        result = rotateLeft(currentNum, 1);
+        expr = `ROL ${value}(${inputBase}) [${wordSize}-bit]`;
+        break;
+      case 'ROR':
+        result = rotateRight(currentNum, 1);
+        expr = `ROR ${value}(${inputBase}) [${wordSize}-bit]`;
+        break;
+      default:
+        return;
+    }
+    
+    addToHistory(`${expr} = ${convertToBase(result, inputBase)}`);
+    setCurrentNumber(result);
+  };
+
+  /**
+   * Perform arithmetic operations (ADD, SUB, MUL, DIV)
+   * @param op - Operation type
+   */
+  const performArithmeticOperation = (op: string) => {
+    const currentNum = getCurrentNumber();
+    
+    if (pendingOperation && operand !== null) {
+      // Execute pending operation
+      let result = 0;
+      const maskedOperand = applyWordSizeMask(operand);
+      
+      switch (pendingOperation) {
+        case 'ADD': result = applyWordSizeMask(maskedOperand + currentNum); break;
+        case 'SUB': result = applyWordSizeMask(maskedOperand - currentNum); break;
+        case 'MUL': result = applyWordSizeMask(maskedOperand * currentNum); break;
+        case 'DIV': 
+          if (currentNum === 0) {
+            toast({ title: "Erreur", description: "Division par zéro impossible", variant: "destructive" });
+            return;
+          }
+          result = applyWordSizeMask(Math.floor(maskedOperand / currentNum));
+          break;
+        default: return;
+      }
+      
+      const expr = `${convertToBase(maskedOperand, inputBase)} ${pendingOperation} ${value}(${inputBase}) [${wordSize}-bit]`;
+      addToHistory(`${expr} = ${convertToBase(result, inputBase)}`);
+      setCurrentNumber(result);
+    }
+    
+    // Set up next operation
+    setOperand(currentNum);
+    setPendingOperation(op);
+    setValue("0");
+  };
+
+  /**
+   * Execute pending arithmetic operation
+   */
+  const executeOperation = () => {
+    if (pendingOperation && operand !== null) {
+      performArithmeticOperation(""); // This will execute the pending operation
+      setPendingOperation("");
+      setOperand(null);
     }
   };
 
+  /**
+   * Perform logical binary operations (AND, OR, XOR, NAND, NOR)
+   * @param op - Operation type
+   */
   const performBinaryOperation = (op: string) => {
     if (expression) {
-      const prevNum = parseFromBase(expression.split(' ')[0], inputBase);
+      const prevNum = applyWordSizeMask(parseFromBase(expression.split(' ')[0], inputBase));
       const currentNum = getCurrentNumber();
       let result = 0;
       
       switch (op) {
-        case 'AND': result = prevNum & currentNum; break;
-        case 'OR': result = prevNum | currentNum; break;
-        case 'XOR': result = prevNum ^ currentNum; break;
-        case 'NAND': result = ~(prevNum & currentNum); break;
-        case 'NOR': result = ~(prevNum | currentNum); break;
+        case 'AND': result = applyWordSizeMask(prevNum & currentNum); break;
+        case 'OR': result = applyWordSizeMask(prevNum | currentNum); break;
+        case 'XOR': result = applyWordSizeMask(prevNum ^ currentNum); break;
+        case 'NAND': result = applyWordSizeMask(~(prevNum & currentNum)); break;
+        case 'NOR': result = applyWordSizeMask(~(prevNum | currentNum)); break;
         default: return;
       }
       
-      const expr = `${expression} ${op} ${value}(${inputBase})`;
+      const expr = `${expression} ${op} ${value}(${inputBase}) [${wordSize}-bit]`;
       addToHistory(`${expr} = ${convertToBase(result, inputBase)}`);
       setCurrentNumber(result);
       setExpression("");
@@ -109,6 +245,10 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
     }
   };
 
+  /**
+   * Handle number input with base validation and word size limits
+   * @param digit - The digit to input
+   */
   const handleNumberInput = (digit: string) => {
     const validDigits = {
       'bin': '01',
@@ -118,13 +258,76 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
     };
 
     if (validDigits[inputBase].includes(digit)) {
-      setValue(prev => prev === "0" ? digit : prev + digit);
+      const newValue = value === "0" ? digit : value + digit;
+      const newNum = parseFromBase(newValue, inputBase);
+      
+      // Check if the new number exceeds word size limits
+      const maxValue = getMaxValue(wordSize);
+      if (newNum <= maxValue) {
+        setValue(newValue);
+      } else {
+        toast({
+          title: "Limite atteinte",
+          description: `Valeur maximale pour ${wordSize} bits: ${convertToBase(maxValue, inputBase)}`,
+          variant: "destructive"
+        });
+      }
     }
   };
 
+  /**
+   * Handle keyboard input for calculator
+   * @param event - Keyboard event
+   */
+  const handleKeyPress = (event: KeyboardEvent) => {
+    const key = event.key.toUpperCase();
+    
+    // Number inputs
+    if ('0123456789'.includes(key)) {
+      handleNumberInput(key);
+    }
+    // Hex digits A-F
+    else if (inputBase === 'hex' && 'ABCDEF'.includes(key)) {
+      handleNumberInput(key);
+    }
+    // Operations
+    else if (key === '+') {
+      performArithmeticOperation('ADD');
+    }
+    else if (key === '-') {
+      performArithmeticOperation('SUB');
+    }
+    else if (key === '*') {
+      performArithmeticOperation('MUL');
+    }
+    else if (key === '/') {
+      performArithmeticOperation('DIV');
+    }
+    else if (key === 'ENTER' || key === '=') {
+      executeOperation();
+    }
+    else if (key === 'ESCAPE' || key === 'C') {
+      clearLocal();
+    }
+    else if (key === 'BACKSPACE') {
+      setValue(prev => prev.length > 1 ? prev.slice(0, -1) : "0");
+    }
+  };
+
+  // Add keyboard event listener
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [inputBase, wordSize, pendingOperation, operand, value]);
+
+  /**
+   * Clear all local state
+   */
   const clearLocal = () => {
     setValue("0");
     setExpression("");
+    setPendingOperation("");
+    setOperand(null);
   };
 
   const copyToClipboard = (text: string) => {
@@ -172,7 +375,7 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
             </div>
           </div>
 
-          {/* Base selector */}
+          {/* Base and Word Size selectors */}
           <div className="flex gap-2">
             <Select value={inputBase} onValueChange={(value: NumberBase) => setInputBase(value)}>
               <SelectTrigger className="w-32">
@@ -183,6 +386,20 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
                 <SelectItem value="hex">HEX (16)</SelectItem>
                 <SelectItem value="oct">OCT (8)</SelectItem>
                 <SelectItem value="bin">BIN (2)</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={wordSize.toString()} onValueChange={(value: string) => setWordSize(parseInt(value) as WordSize)}>
+              <SelectTrigger className="w-24">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="4">4-bit</SelectItem>
+                <SelectItem value="8">8-bit</SelectItem>
+                <SelectItem value="16">16-bit</SelectItem>
+                <SelectItem value="32">32-bit</SelectItem>
+                <SelectItem value="64">64-bit</SelectItem>
+                <SelectItem value="128">128-bit</SelectItem>
+                <SelectItem value="256">256-bit</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="outline" size="sm" onClick={clearLocal}>
@@ -203,6 +420,58 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
               className="text-right text-xl font-mono bg-gray-50 dark:bg-gray-900"
               placeholder="0"
             />
+          </div>
+
+          {/* Opérations arithmétiques */}
+          <div className="grid grid-cols-4 gap-2">
+            <Button
+              variant="default"
+              onClick={() => performArithmeticOperation('ADD')}
+              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+            >
+              <Plus className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="default"
+              onClick={() => performArithmeticOperation('SUB')}
+              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+            >
+              <Minus className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="default"
+              onClick={() => performArithmeticOperation('MUL')}
+              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+            >
+              <X className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="default"
+              onClick={() => performArithmeticOperation('DIV')}
+              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+            >
+              <Divide className="w-4 h-4" />
+            </Button>
+          </div>
+
+          {/* Opérations de rotation */}
+          <div className="grid grid-cols-2 gap-2">
+            <Button
+              variant="default"
+              onClick={() => performBitwiseOperation('ROL')}
+              className="h-12 text-sm bg-cyan-600 hover:bg-cyan-700"
+            >
+              <RotateCcw className="w-4 h-4 mr-1" />
+              ROL
+            </Button>
+            <Button
+              variant="default"
+              onClick={() => performBitwiseOperation('ROR')}
+              className="h-12 text-sm bg-cyan-600 hover:bg-cyan-700"
+            >
+              <RotateCw className="w-4 h-4 mr-1" />
+              ROR
+            </Button>
           </div>
 
           {/* Opérations logiques principales */}
@@ -326,19 +595,26 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
               </Button>
             ))}
             <Button
-              variant="outline"
-              onClick={() => copyToClipboard(value)}
-              className="h-12"
+              variant="default"
+              onClick={executeOperation}
+              className="h-12 bg-yellow-600 hover:bg-yellow-700"
             >
-              <Copy className="w-4 h-4" />
+              =
             </Button>
 
             <Button
               variant="outline"
               onClick={() => handleNumberInput('0')}
-              className="col-span-4 h-12 text-lg"
+              className="col-span-3 h-12 text-lg"
             >
               0
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => copyToClipboard(value)}
+              className="h-12"
+            >
+              <Copy className="w-4 h-4" />
             </Button>
           </div>
         </CardContent>
@@ -414,11 +690,11 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
 
           {/* Bit representation avec groupement par 8 bits */}
           <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-            <h4 className="font-medium mb-3 text-gray-700 dark:text-gray-300">Représentation 32-bit (par octets):</h4>
+            <h4 className="font-medium mb-3 text-gray-700 dark:text-gray-300">Représentation {wordSize}-bit (par octets):</h4>
             <div className="font-mono text-xs break-all bg-white dark:bg-gray-800 p-3 rounded border space-y-1">
-              {convertToBase(currentNumber, 'bin').padStart(32, '0').match(/.{1,8}/g)?.map((byte, index) => (
+              {convertToBase(currentNumber, 'bin').padStart(wordSize, '0').match(/.{1,8}/g)?.map((byte, index) => (
                 <div key={index} className="flex justify-between">
-                  <span className="text-gray-500">Byte {3-index}:</span>
+                  <span className="text-gray-500">Byte {Math.floor(wordSize/8)-1-index}:</span>
                   <span>{byte}</span>
                 </div>
               ))}

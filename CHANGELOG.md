@@ -1,4 +1,123 @@
 
+# Changelog - Handy Hub Toolkit
+
+## [Version 1.2.0] - 2024-12-XX
+
+### ✨ New Features - Graphing Calculator
+
+#### Enhanced Input System:
+- **Virtual Keyboard**: Added numeric keypad (0-9, decimal point, clear) for easy number input
+- **Physical Keyboard Support**: Full keyboard detection for numbers, operators, and navigation keys
+- **Smart Cursor Management**: Insertion at current cursor position with visual feedback
+- **Backspace Support**: Character deletion at cursor position for precise editing
+
+#### Expression Management:
+- **Expression History**: Complete history with quick reload functionality for previous calculations
+- **Favorites System**: Add/remove expressions to/from favorites with persistent local storage
+- **Visual Indicators**: Star icons for favorite expressions with interactive feedback
+- **Quick Access**: Dedicated buttons for history and favorites management
+
+#### Mathematical Enhancements:
+- **Extended Constants Library**: π, e, φ (golden ratio), γ (Euler-Mascheroni), and mathematical approximations
+- **Easy Insertion**: One-click insertion of mathematical constants into expressions
+- **Improved Function Library**: Better organization of mathematical functions and constants
+
+#### User Experience Improvements:
+- **Delete Button**: Quick character removal with visual feedback
+- **Toast Notifications**: User-friendly messages for favorites management actions
+- **Enhanced Navigation**: Improved keyboard navigation and focus management
+- **Responsive Design**: Optimized layout for different screen sizes
+
+#### Technical Improvements:
+- **Cursor Position Tracking**: Advanced cursor management system for precise text editing
+- **LocalStorage Integration**: Persistent favorites storage across browser sessions
+- **Enhanced Event Handling**: Robust keyboard event processing with proper focus detection
+- **State Management**: Improved component state handling for better user interactions
+
+---
+
+## [Version 1.1.1] - 2024-12-19
+
+### 🐛 Bug Fixes - Programmer Calculator
+
+#### Fixed Boundary Detection Issues:
+- **JavaScript Bitwise Operator Limitations**: Fixed incorrect boundary detection for word sizes ≥ 32 bits
+- **Maximum Value Calculation**: Replaced `(1 << wordSize) - 1` with `Math.pow(2, wordSize) - 1` for accurate limits
+- **Toast Notification Error**: Fixed "valeur maximale pour 32 bits : 0" error message
+- **Bit Rotation Operations**: Updated ROL/ROR functions to handle large word sizes correctly
+- **Input Validation**: Now properly validates input limits for all word sizes (4, 8, 16, 32, 64, 128, 256 bits)
+
+#### Technical Improvements:
+- **New Function**: Added `getMaxValue()` function for consistent maximum value calculation
+- **Enhanced Bit Operations**: Improved `rotateLeft()` and `rotateRight()` for word sizes > 31 bits
+- **Mask Calculation**: Updated `applyWordSizeMask()` to handle large word sizes properly
+
+---
+
+## [Version 1.1.0] - 2024-12-19
+
+### ✅ Done - Programmer Calculator Enhancements
+
+#### New Features Added:
+- **Bit Rotation Operations (ROL/ROR)**: Added left and right bit rotation operations with visual icons
+- **Arithmetic Operations**: Added ADD, SUB, MUL, DIV operations with proper overflow handling
+- **Word Size Selection**: Added configurable word sizes (4, 8, 16, 32, 64, 128, 256 bits) for:
+  - Bit rotation operations
+  - Arithmetic overflow handling
+  - Input validation limits
+- **Enhanced Keyboard Support**: 
+  - Full keyboard input support for all operations
+  - Restricted input validation based on number base (binary: 0-1, hex: 0-9,A-F)
+  - Keyboard shortcuts: +, -, *, /, Enter/=, Escape/C, Backspace
+- **Improved UI Layout**:
+  - Added word size selector next to base selector
+  - Reorganized operation buttons with color coding
+  - Added execute button (=) for pending operations
+  - Enhanced bit representation display based on selected word size
+
+#### Technical Improvements:
+- **State Management**: Added new state variables for pending operations and operands
+- **Input Validation**: Enhanced number input with word size limit checking
+- **Error Handling**: Added toast notifications for limit exceeded and division by zero
+- **Code Organization**: Added comprehensive function-level comments and modular structure
+
+#### Functions Added:
+- `applyWordSizeMask()`: Applies bit masking based on selected word size
+- `rotateLeft()` / `rotateRight()`: Implements bit rotation operations
+- `performArithmeticOperation()`: Handles ADD, SUB, MUL, DIV with overflow management
+- `executeOperation()`: Executes pending arithmetic operations
+- `handleKeyPress()`: Comprehensive keyboard event handling
+- Enhanced `handleNumberInput()`: Input validation with word size limits
+
+### 🔄 To Do - Future Enhancements
+
+#### Planned Features:
+- [ ] Memory functions (M+, M-, MR, MC) for programmer calculator
+- [ ] History panel integration with expression evaluation
+- [ ] Export/Import calculator settings and history
+- [ ] Advanced bit manipulation operations (bit set/clear/toggle)
+- [ ] Floating point representation modes
+- [ ] Custom word size input option
+- [ ] Undo/Redo functionality for operations
+- [ ] Keyboard shortcuts help panel
+
+#### Code Quality Improvements:
+- [ ] Unit tests for all calculator operations
+- [ ] Performance optimization for large bit operations
+- [ ] Accessibility improvements (ARIA labels, keyboard navigation)
+- [ ] Mobile responsiveness enhancements
+- [ ] Dark/Light theme consistency checks
+
+---
+
+### Notes:
+- All arithmetic operations now respect the selected word size for overflow handling
+- Bit rotation operations work correctly with all supported word sizes
+- Input validation prevents entering values that exceed the current word size limit
+- Keyboard input is fully functional and respects base-specific character restrictions
+
+---
+
 # Changelog - Boîte à Outils Pratiques
 
 ## 🚨 ANALYSE APPROFONDIE & PLAN D'INTERVENTION (Janvier 2025)
