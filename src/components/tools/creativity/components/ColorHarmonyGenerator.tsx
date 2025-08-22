@@ -202,7 +202,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-medium">{harmony.name}</h4>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{harmony.description}</p>
+                    <p className="text-xs text-muted-foreground">{harmony.description}</p>
                   </div>
                   <Button
                     variant="outline"
@@ -239,7 +239,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
         )}
 
         {harmonies.length === 0 && (
-          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+          <div className="text-center py-8 text-muted-foreground">
             <p>Cliquez sur "Générer" pour créer des harmonies de couleurs</p>
           </div>
         )}

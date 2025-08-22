@@ -9,7 +9,7 @@ import { GradientGenerator } from "./components/GradientGenerator";
 import { TypographyGenerator } from "./components/TypographyGenerator";
 import { ImageFilters } from "./components/ImageFilters";
 import { PatternGenerator } from "./components/PatternGenerator";
-import { LogoMaker } from "./components/LogoMaker";
+import { LogoMakerAdvanced } from "./components/LogoMakerAdvanced";
 import { IconGenerator } from "./components/IconGenerator";
 
 export const CreativitySuiteAdvanced = () => {
@@ -27,7 +27,7 @@ export const CreativitySuiteAdvanced = () => {
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Suite Créativité Complète
             </h1>
-            <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300 mt-2">
+            <p className="text-sm lg:text-base text-muted-foreground mt-2">
               Tous vos outils de création et design en un seul endroit
             </p>
           </div>
@@ -133,7 +133,7 @@ export const CreativitySuiteAdvanced = () => {
         </TabsContent>
 
         <TabsContent value="logos">
-          <LogoMaker />
+          <LogoMakerAdvanced />
         </TabsContent>
 
         <TabsContent value="icons">

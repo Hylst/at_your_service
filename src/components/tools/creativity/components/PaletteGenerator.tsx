@@ -251,9 +251,9 @@ export const PaletteGenerator: React.FC = () => {
                         </div>
                       ) : (
                         <div className="flex flex-col items-center justify-center h-64 text-center">
-                          <Palette className="w-12 h-12 text-gray-500 dark:text-gray-400 mb-4" />
-                <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300 mb-2">Aucune palette générée</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Choisissez un type de palette et cliquez sur "Générer" pour commencer</p>
+                          <Palette className="w-12 h-12 text-muted-foreground mb-4" />
+                <h3 className="text-lg font-medium text-muted-foreground mb-2">Aucune palette générée</h3>
+                <p className="text-sm text-muted-foreground mb-4">Choisissez un type de palette et cliquez sur "Générer" pour commencer</p>
                           <Button onClick={handleGeneratePalette} disabled={isGenerating}>
                             <Zap className="w-4 h-4 mr-2" />
                             Générer ma première palette
@@ -311,7 +311,7 @@ export const PaletteGenerator: React.FC = () => {
 
                   <div className="space-y-4">
                     {currentPalette && (
-                      <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="p-4 bg-card rounded-lg border border-border">
                         <h4 className="font-medium mb-2">Analyse de la palette</h4>
                         <div className="grid gap-4">
                           {currentPalette.colors.slice(0, 3).map((color, index) => (
@@ -320,7 +320,7 @@ export const PaletteGenerator: React.FC = () => {
                               color={color}
                               showDetails={false}
                               compact={true}
-                              className="bg-white dark:bg-gray-700 rounded-lg p-3"
+                              className="bg-card rounded-lg p-3 border border-border"
                             />
                           ))}
                         </div>
@@ -330,15 +330,15 @@ export const PaletteGenerator: React.FC = () => {
 
                   {/* Statistics */}
                   {paletteStats && (
-                    <div className="p-4 bg-blue-50 rounded-lg">
+                    <div className="p-4 bg-muted rounded-lg border border-border">
                       <h4 className="font-medium mb-2">Statistiques</h4>
                       <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <span className="text-gray-600 dark:text-gray-300">Total généré:</span>
+                            <span className="text-muted-foreground">Total généré:</span>
                             <div className="font-medium">{paletteStats.totalPalettes}</div>
                           </div>
                           <div>
-                            <span className="text-gray-600 dark:text-gray-300">Favoris:</span>
+                            <span className="text-muted-foreground">Favoris:</span>
                             <div className="font-medium">{paletteStats.favoritesCount}</div>
                           </div>
                         </div>
@@ -592,7 +592,7 @@ export const PaletteGenerator: React.FC = () => {
 
                   <div className="space-y-4">
                     {currentPalette && (
-                      <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="p-4 bg-card rounded-lg border border-border">
                         <h4 className="font-medium mb-2">Analyse de la palette</h4>
                         <div className="grid gap-4">
                           {currentPalette.colors.slice(0, 3).map((color, index) => (
@@ -601,7 +601,7 @@ export const PaletteGenerator: React.FC = () => {
                               color={color}
                               showDetails={false}
                               compact={true}
-                              className="bg-white dark:bg-gray-700 rounded-lg p-3"
+                              className="bg-card rounded-lg p-3 border border-border"
                             />
                           ))}
                         </div>

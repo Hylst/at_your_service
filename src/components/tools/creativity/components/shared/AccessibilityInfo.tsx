@@ -111,7 +111,7 @@ export const AccessibilityInfo: React.FC<AccessibilityInfoProps> = ({
   if (compact) {
     return (
       <div className={`flex items-center gap-2 ${className}`}>
-        <Eye className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+        <Eye className="w-4 h-4 text-muted-foreground" />
         {getAccessibilityBadge(accessibilityData.bestAccessibility)}
         <span className="text-sm font-mono">
           {accessibilityData.bestContrast.toFixed(1)}:1
@@ -131,11 +131,11 @@ export const AccessibilityInfo: React.FC<AccessibilityInfoProps> = ({
       <CardContent className="space-y-4">
         {/* Contrast ratios */}
         <div className="space-y-3">
-          <h4 className="font-medium text-sm text-gray-700 dark:text-gray-200">Ratios de Contraste</h4>
+          <h4 className="font-medium text-sm text-foreground">Ratios de Contraste</h4>
           
           <div className="space-y-2">
-            <div className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <span className="text-sm text-gray-900 dark:text-gray-100">Sur fond blanc:</span>
+            <div className="flex items-center justify-between p-2 bg-muted rounded border border-border">
+              <span className="text-sm text-foreground">Sur fond blanc:</span>
               {getContrastDisplay(accessibilityData.whiteContrast, accessibilityData.whiteAccessibility)}
             </div>
             
@@ -159,22 +159,22 @@ export const AccessibilityInfo: React.FC<AccessibilityInfoProps> = ({
         {/* Color properties */}
         {showDetails && (
           <div className="space-y-3">
-            <h4 className="font-medium text-sm text-gray-700 dark:text-gray-200">Propriétés de la Couleur</h4>
+            <h4 className="font-medium text-sm text-foreground">Propriétés de la Couleur</h4>
             
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                <div className="text-xs text-gray-600 dark:text-gray-200 uppercase tracking-wide">Luminance</div>
-                <div className="font-mono text-sm text-gray-900 dark:text-gray-100">
+              <div className="p-2 bg-muted rounded border border-border">
+                <div className="text-xs text-muted-foreground uppercase tracking-wide">Luminance</div>
+                <div className="font-mono text-sm text-foreground">
                   {(accessibilityData.luminance * 100).toFixed(1)}%
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-300">
+                <div className="text-xs text-muted-foreground">
                   {accessibilityData.isLight ? 'Claire' : 'Sombre'}
                 </div>
               </div>
               
-              <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                <div className="text-xs text-gray-600 dark:text-gray-200 uppercase tracking-wide">Température</div>
-                <div className="text-sm capitalize text-gray-900 dark:text-gray-100">
+              <div className="p-2 bg-muted rounded border border-border">
+                <div className="text-xs text-muted-foreground uppercase tracking-wide">Température</div>
+                <div className="text-sm capitalize text-foreground">
                   {accessibilityData.temperature === 'warm' ? 'Chaude' : 
                    accessibilityData.temperature === 'cool' ? 'Froide' : 'Neutre'}
                 </div>
@@ -184,14 +184,14 @@ export const AccessibilityInfo: React.FC<AccessibilityInfoProps> = ({
         )}
 
         {/* Best text color recommendation */}
-        <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <div className="p-3 bg-accent/20 rounded-lg border border-accent/50">
           <div className="flex items-center gap-2 mb-2">
-            <Info className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-800 dark:text-blue-200">
+            <Info className="w-4 h-4 text-accent-foreground" />
+            <span className="text-sm font-medium text-accent-foreground">
               Recommandation
             </span>
           </div>
-          <div className="text-sm text-blue-700 dark:text-blue-300">
+          <div className="text-sm text-foreground">
             Utiliser du texte{' '}
             <span 
               className="px-2 py-1 rounded font-mono"
@@ -207,7 +207,7 @@ export const AccessibilityInfo: React.FC<AccessibilityInfoProps> = ({
         </div>
 
         {/* Accessibility guidelines info */}
-        <div className="text-xs text-gray-500 dark:text-gray-300 space-y-1">
+        <div className="text-xs text-muted-foreground space-y-1">
           <div>• AA: Contraste minimum 4.5:1 (texte normal)</div>
           <div>• AA Large: Contraste minimum 3:1 (texte large)</div>
           <div>• AAA: Contraste minimum 7:1 (texte normal)</div>

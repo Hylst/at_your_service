@@ -270,8 +270,8 @@ export const GradientGenerator = () => {
                 style={{ background: generateCSS(currentGradient) }}
               />
               
-              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <Label className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 block">CSS</Label>
+              <div className="p-4 bg-muted rounded-lg">
+                <Label className="text-xs text-muted-foreground uppercase tracking-wide mb-2 block">CSS</Label>
                 <code className="text-sm font-mono break-all">{generateCSS(currentGradient)}</code>
               </div>
 
@@ -338,15 +338,15 @@ export const GradientGenerator = () => {
                 
                 <div className="space-y-3">
                   {currentGradient.stops.map((stop, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <div key={index} className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <input
                         type="color"
                         value={stop.color}
                         onChange={(e) => updateColorStop(index, { color: e.target.value })}
-                        className="w-12 h-8 rounded border-2 border-gray-200 dark:border-gray-600 cursor-pointer"
+                        className="w-12 h-8 rounded border-2 border-border cursor-pointer"
                       />
                       <div className="flex-1">
-                        <Label className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">Position: {stop.position}%</Label>
+                        <Label className="text-xs text-muted-foreground mb-1 block">Position: {stop.position}%</Label>
                         <Slider
                           value={[stop.position]}
                           onValueChange={([value]) => updateColorStop(index, { position: value })}

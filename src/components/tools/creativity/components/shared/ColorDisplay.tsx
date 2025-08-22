@@ -79,7 +79,7 @@ export const ColorItem: React.FC<ColorItemProps> = ({
       <div
         className={`
           ${getSizeClasses()}
-          rounded-lg border-2 border-white dark:border-gray-600 shadow-md hover:shadow-lg 
+          rounded-lg border-2 border-border shadow-md hover:shadow-lg 
           transition-all duration-200 cursor-pointer hover:scale-105
           ${onClick ? 'cursor-pointer' : ''}
         `}
@@ -89,11 +89,11 @@ export const ColorItem: React.FC<ColorItemProps> = ({
       >
         {/* Actions overlay */}
         {showActions && (
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center gap-1">
+          <div className="absolute inset-0 bg-background/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center gap-1">
             <Button
               size="sm"
               variant="ghost"
-              className="h-6 w-6 p-0 text-white hover:bg-white/20"
+              className="h-6 w-6 p-0 text-foreground hover:bg-accent/20"
               onClick={handleCopy}
               title="Copier"
             >
@@ -103,8 +103,8 @@ export const ColorItem: React.FC<ColorItemProps> = ({
               <Button
                 size="sm"
                 variant="ghost"
-                className={`h-6 w-6 p-0 hover:bg-white/20 ${
-                  isFavorite ? 'text-red-400' : 'text-white'
+                className={`h-6 w-6 p-0 hover:bg-accent/20 ${
+                  isFavorite ? 'text-destructive' : 'text-foreground'
                 }`}
                 onClick={handleToggleFavorite}
                 title={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
@@ -117,15 +117,15 @@ export const ColorItem: React.FC<ColorItemProps> = ({
 
         {/* Favorite indicator */}
         {isFavorite && !showActions && (
-          <Heart className="absolute top-1 right-1 w-3 h-3 text-red-500 fill-current" />
+          <Heart className="absolute top-1 right-1 w-3 h-3 text-destructive fill-current" />
         )}
       </div>
 
       {/* Color name/value */}
       {showName && (
         <div className="mt-1 text-center">
-          <div className="text-xs font-mono text-gray-600 dark:text-gray-300">{color}</div>
-        {name && <div className="text-xs text-gray-500 dark:text-gray-400">{name}</div>}
+          <div className="text-xs font-mono text-muted-foreground">{color}</div>
+        {name && <div className="text-xs text-muted-foreground">{name}</div>}
         </div>
       )}
     </div>
@@ -182,7 +182,7 @@ export const ColorGrid: React.FC<ColorGridProps> = ({
 
   if (colors.length === 0) {
     return (
-      <div className="text-center py-8 text-gray-600 dark:text-gray-300">
+      <div className="text-center py-8 text-muted-foreground">
         {emptyMessage}
       </div>
     );
@@ -257,7 +257,7 @@ export const ColorPalette: React.FC<ColorPaletteProps> = ({
               </Badge>
             )}
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="text-sm text-muted-foreground">
             {colors.length} couleur{colors.length > 1 ? 's' : ''}
           </div>
         </div>

@@ -247,7 +247,7 @@ export const IconGenerator = () => {
           {/* Recherche */}
           <div className="mb-6">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Rechercher une icône..."
                 value={searchTerm}
@@ -304,7 +304,7 @@ export const IconGenerator = () => {
             {/* Aperçu et contrôles */}
             <div className="space-y-6">
               {/* Aperçu */}
-              <div className="flex items-center justify-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <div className="flex items-center justify-center p-8 bg-muted rounded-lg">
                 <div 
                   dangerouslySetInnerHTML={{ __html: generateSVG() }}
                   className="max-w-full max-h-full"
@@ -353,7 +353,7 @@ export const IconGenerator = () => {
                     type="color"
                     value={iconSettings.color}
                     onChange={(e) => updateSettings({ color: e.target.value })}
-                    className="w-12 h-10 rounded border border-gray-200 dark:border-gray-600 cursor-pointer"
+                    className="w-12 h-10 rounded border border-border cursor-pointer"
                   />
                       <Input
                         value={iconSettings.color}
@@ -370,7 +370,7 @@ export const IconGenerator = () => {
                         type="color"
                         value={iconSettings.backgroundColor}
                         onChange={(e) => updateSettings({ backgroundColor: e.target.value })}
-                        className="w-12 h-10 rounded border border-gray-200 dark:border-gray-600 cursor-pointer"
+                        className="w-12 h-10 rounded border border-border cursor-pointer"
                       />
                       <Input
                         value={iconSettings.backgroundColor}

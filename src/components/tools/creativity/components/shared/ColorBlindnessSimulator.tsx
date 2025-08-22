@@ -156,7 +156,7 @@ export const ColorBlindnessSimulator: React.FC<ColorBlindnessSimulatorProps> = (
           return (
             <div key={type.name} className="text-center">
               <div
-                className="w-full h-12 rounded-lg border-2 border-gray-200 dark:border-gray-600 mb-1"
+                className="w-full h-12 rounded-lg border-2 border-border mb-1"
                 style={{ backgroundColor: simulatedColor }}
                 title={`${type.name}: ${type.description}`}
               />

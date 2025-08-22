@@ -55,8 +55,8 @@ export const ColorInput: React.FC<ColorInputProps> = ({
       <div className="flex gap-2">
         {showColorPreview && (
           <div 
-            className={`w-10 h-10 rounded border-2 ${isValid ? 'border-gray-300 dark:border-gray-600' : 'border-red-300 dark:border-red-500'} shadow-sm`}
-            style={{ backgroundColor: isValid ? value : '#f3f4f6' }}
+            className={`w-10 h-10 rounded border-2 ${isValid ? 'border-border' : 'border-destructive'} shadow-sm`}
+            style={{ backgroundColor: isValid ? value : 'hsl(var(--muted))' }}
           />
         )}
         <div className="flex-1">
@@ -66,10 +66,10 @@ export const ColorInput: React.FC<ColorInputProps> = ({
             value={value}
             onChange={(e) => handleChange(e.target.value)}
             placeholder={placeholder}
-            className={error || !isValid ? 'border-red-300' : ''}
+            className={error || !isValid ? 'border-destructive' : ''}
           />
           {(error || (!isValid && value)) && (
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-destructive mt-1">
               {error || 'Format de couleur invalide (ex: #FF0000)'}
             </p>
           )}
@@ -166,7 +166,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
               <div>
                 <div>{option.label}</div>
                 {option.description && (
-                  <div className="text-xs text-gray-500 dark:text-gray-400">{option.description}</div>
+                  <div className="text-xs text-muted-foreground">{option.description}</div>
                 )}
               </div>
             </SelectItem>
@@ -324,7 +324,7 @@ export const FormSection: React.FC<FormSectionProps> = ({
           <div>
             <h3 className="font-medium text-lg">{title}</h3>
             {description && (
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{description}</p>
+              <p className="text-sm text-muted-foreground mt-1">{description}</p>
             )}
           </div>
           {collapsible && (

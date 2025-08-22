@@ -239,7 +239,7 @@ export const ColorHarmonyAnalyzer: React.FC<ColorHarmonyAnalyzerProps> = ({
           <Palette className="w-5 h-5" />
           Harmonies Chromatiques
         </CardTitle>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-muted-foreground">
           Schémas de couleurs basés sur la théorie des couleurs
         </p>
       </CardHeader>
@@ -251,7 +251,7 @@ export const ColorHarmonyAnalyzer: React.FC<ColorHarmonyAnalyzerProps> = ({
                 <span className="text-lg">{scheme.icon}</span>
                 <div>
                   <h4 className="font-medium">{scheme.name}</h4>
-                  <p className="text-xs text-gray-600 dark:text-gray-300">{scheme.description}</p>
+                  <p className="text-xs text-muted-foreground">{scheme.description}</p>
                 </div>
               </div>
               <div className="flex gap-1">
@@ -282,13 +282,13 @@ export const ColorHarmonyAnalyzer: React.FC<ColorHarmonyAnalyzerProps> = ({
               {scheme.colors.map((color, colorIndex) => (
                 <div key={colorIndex} className="flex flex-col items-center gap-1">
                   <div
-                    className="w-12 h-12 rounded-lg border-2 border-gray-200 cursor-pointer hover:scale-105 transition-transform shadow-sm"
+                    className="w-12 h-12 rounded-lg border-2 border-border cursor-pointer hover:scale-105 transition-transform shadow-sm"
                     style={{ backgroundColor: color }}
                     onClick={() => onColorSelect?.(color)}
                     title={`Cliquer pour sélectionner ${color}`}
                   />
                   <div className="flex flex-col items-center">
-                    <span className="text-xs font-mono text-gray-600 dark:text-gray-300">
+                    <span className="text-xs font-mono text-muted-foreground">
                       {color.toUpperCase()}
                     </span>
                     {showCopyButtons && (

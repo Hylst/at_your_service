@@ -6,26 +6,9 @@ import { useAnimation, useDesignSystem } from '@/components/ui/design-system/hoo
 import { animationPresets } from '@/components/ui/design-system/animations';
 import { Copy, RefreshCw, Download, Type, Palette } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-
-interface TypographyStyle {
-  fontFamily: string;
-  fontSize: number;
-  fontWeight: string;
-  lineHeight: number;
-  letterSpacing: number;
-  wordSpacing: number;
-  color: string;
-  textAlign: 'left' | 'center' | 'right' | 'justify';
-  textTransform: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
-  textDecoration: 'none' | 'underline' | 'line-through' | 'overline';
-  textShadow: string;
-  fontStyle: 'normal' | 'italic' | 'oblique';
-  textStroke: string;
-  backgroundClip: boolean;
-  gradient: string;
-  opacity: number;
-  writingMode: 'horizontal-tb' | 'vertical-rl' | 'vertical-lr';
-}
+import { TypographyTabs } from './TypographyTabs';
+import { TypographyExportButton } from './TypographyExportButton';
+import { TypographyStyle, fontFamilies, fontWeights, textShadowPresets, gradientPresets, defaultTypographyStyle } from '../types/typographyTypes';
 
 /**
  * Advanced Typography Generator Component
@@ -37,55 +20,18 @@ export const TypographyGenerator: React.FC = () => {
   const { animate } = useAnimation({ duration: 200, easing: 'ease-out' });
   
   // Component state
-  const [sampleText, setSampleText] = useState("Votre texte ici pour prévisualiser le style");
-  const [currentStyle, setCurrentStyle] = useState<TypographyStyle>({
-    fontFamily: "Inter, sans-serif",
-    fontSize: 24,
-    fontWeight: "400",
-    lineHeight: 1.5,
-    letterSpacing: 0,
-    wordSpacing: 0,
-    color: "#000000",
-    textAlign: 'left',
-    textTransform: 'none',
-    textDecoration: 'none',
-    textShadow: 'none',
-    fontStyle: 'normal',
-    textStroke: 'none',
-    backgroundClip: false,
-    gradient: 'linear-gradient(45deg, #667eea 0%, #764ba2 100%)',
-    opacity: 1,
-    writingMode: 'horizontal-tb'
-  });
+  const [sampleText, setSampleText] = useState("Your sample text here to preview the typography style");
+  const [currentStyle, setCurrentStyle] = useState<TypographyStyle>(defaultTypographyStyle);
+  const [hierarchyLevels, setHierarchyLevels] = useState<Array<{
+    level: string;
+    fontSize: string;
+    lineHeight: string;
+    fontWeight: string;
+    letterSpacing: string;
+    marginBottom: string;
+  }>>([]);
 
-  // Font configuration arrays
-  const fontFamilies = [
-    { label: "Inter", value: "Inter, sans-serif" },
-    { label: "Roboto", value: "Roboto, sans-serif" },
-    { label: "Open Sans", value: "'Open Sans', sans-serif" },
-    { label: "Lato", value: "Lato, sans-serif" },
-    { label: "Montserrat", value: "Montserrat, sans-serif" },
-    { label: "Poppins", value: "Poppins, sans-serif" },
-    { label: "Source Sans Pro", value: "'Source Sans Pro', sans-serif" },
-    { label: "Nunito", value: "Nunito, sans-serif" },
-    { label: "Playfair Display", value: "'Playfair Display', serif" },
-    { label: "Merriweather", value: "Merriweather, serif" },
-    { label: "Georgia", value: "Georgia, serif" },
-    { label: "Times New Roman", value: "'Times New Roman', serif" },
-    { label: "Fira Code", value: "'Fira Code', monospace" },
-    { label: "Source Code Pro", value: "'Source Code Pro', monospace" }
-  ];
-
-  const fontWeights = [
-    { label: "Thin", value: "100" },
-    { label: "Light", value: "300" },
-    { label: "Regular", value: "400" },
-    { label: "Medium", value: "500" },
-    { label: "Semi Bold", value: "600" },
-    { label: "Bold", value: "700" },
-    { label: "Extra Bold", value: "800" },
-    { label: "Black", value: "900" }
-  ];
+  // Font configuration arrays are now imported from types
 
   const typographyPresets = [
     {
@@ -255,28 +201,13 @@ export const TypographyGenerator: React.FC = () => {
   };
 
   /**
-   * Apply a typography preset
+   * Apply a preset style to the current typography
    */
-  const applyPreset = (preset: any) => {
-    setCurrentStyle({
-      ...currentStyle,
-      fontFamily: preset.style.fontFamily || currentStyle.fontFamily,
-      fontSize: preset.style.fontSize || currentStyle.fontSize,
-      fontWeight: preset.style.fontWeight || currentStyle.fontWeight,
-      lineHeight: preset.style.lineHeight || currentStyle.lineHeight,
-      letterSpacing: preset.style.letterSpacing || currentStyle.letterSpacing,
-      wordSpacing: preset.style.wordSpacing || currentStyle.wordSpacing,
-      color: preset.style.color || currentStyle.color,
-      textAlign: preset.style.textAlign || currentStyle.textAlign,
-      textTransform: preset.style.textTransform || currentStyle.textTransform,
-      textDecoration: preset.style.textDecoration || currentStyle.textDecoration,
-      textShadow: preset.style.textShadow || currentStyle.textShadow,
-      fontStyle: preset.style.fontStyle || currentStyle.fontStyle,
-      textStroke: preset.style.textStroke || currentStyle.textStroke,
-      backgroundClip: preset.style.backgroundClip !== undefined ? preset.style.backgroundClip : currentStyle.backgroundClip,
-      gradient: preset.style.gradient || currentStyle.gradient,
-      opacity: preset.style.opacity !== undefined ? preset.style.opacity : currentStyle.opacity,
-      writingMode: preset.style.writingMode || currentStyle.writingMode
+  const applyPreset = (presetStyle: TypographyStyle) => {
+    setCurrentStyle(presetStyle);
+    toast({
+      title: "Preset Applied",
+      description: "Typography style has been updated with the selected preset."
     });
   };
 
@@ -358,477 +289,397 @@ color: ${currentStyle.color};`;
     });
   };
 
+  // Create control sections for the tabbed interface
+  const basicControls = (
+    <div className="space-y-4">
+      <SelectDropdown
+        label="Font Family"
+        value={currentStyle.fontFamily}
+        onChange={(value) => updateStyle({ fontFamily: value })}
+        options={fontFamilies}
+      />
+
+      <RangeSlider
+        label="Font Size"
+        value={currentStyle.fontSize}
+        onChange={(value) => updateStyle({ fontSize: value })}
+        min={8}
+        max={72}
+        step={1}
+        unit="px"
+      />
+
+      <SelectDropdown
+        label="Font Weight"
+        value={currentStyle.fontWeight}
+        onChange={(value) => updateStyle({ fontWeight: value })}
+        options={fontWeights}
+      />
+
+      <RangeSlider
+        label="Line Height"
+        value={currentStyle.lineHeight}
+        onChange={(value) => updateStyle({ lineHeight: value })}
+        min={0.8}
+        max={3}
+        step={0.1}
+      />
+
+      <div>
+        <label className="text-sm font-medium mb-2 block">Text Color</label>
+        <div className="flex items-center gap-3">
+          <input
+            type="color"
+            value={currentStyle.color}
+            onChange={(e) => updateStyle({ color: e.target.value })}
+            className="w-12 h-10 rounded border border-border cursor-pointer"
+          />
+          <Input
+            value={currentStyle.color}
+            onChange={(e) => updateStyle({ color: e.target.value })}
+            placeholder="#000000"
+            className="flex-1"
+          />
+        </div>
+      </div>
+    </div>
+  );
+
+  const advancedControls = (
+    <div className="space-y-4">
+      <RangeSlider
+        label="Letter Spacing"
+        value={currentStyle.letterSpacing}
+        onChange={(value) => updateStyle({ letterSpacing: value })}
+        min={-5}
+        max={10}
+        step={0.1}
+        unit="px"
+      />
+
+      <RangeSlider
+        label="Word Spacing"
+        value={currentStyle.wordSpacing}
+        onChange={(value) => updateStyle({ wordSpacing: value })}
+        min={-10}
+        max={20}
+        step={1}
+        unit="px"
+      />
+
+      {/* Text Alignment */}
+      <div>
+        <span className="text-sm font-medium mb-3 block">Text Alignment</span>
+        <div className="grid grid-cols-4 gap-2">
+          {(['left', 'center', 'right', 'justify'] as const).map((align) => (
+            <Button
+              key={align}
+              onClick={() => updateStyle({ textAlign: align })}
+              variant={currentStyle.textAlign === align ? "default" : "outline"}
+              size="sm"
+              className="capitalize"
+            >
+              {align}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Text Transform */}
+      <div>
+        <span className="text-sm font-medium mb-3 block">Text Transform</span>
+        <div className="grid grid-cols-2 gap-2">
+          {(['none', 'uppercase', 'lowercase', 'capitalize'] as const).map((transform) => (
+            <Button
+              key={transform}
+              onClick={() => updateStyle({ textTransform: transform })}
+              variant={currentStyle.textTransform === transform ? "default" : "outline"}
+              size="sm"
+              className="capitalize"
+            >
+              {transform === 'none' ? 'Normal' : transform}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Font Style */}
+      <div>
+        <span className="text-sm font-medium mb-3 block">Font Style</span>
+        <div className="grid grid-cols-3 gap-2">
+          {(['normal', 'italic', 'oblique'] as const).map((style) => (
+            <Button
+              key={style}
+              onClick={() => updateStyle({ fontStyle: style })}
+              variant={currentStyle.fontStyle === style ? "default" : "outline"}
+              size="sm"
+              className="capitalize"
+            >
+              {style}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* Text Decoration */}
+      <div>
+        <span className="text-sm font-medium mb-3 block">Text Decoration</span>
+        <div className="grid grid-cols-2 gap-2">
+          {(['none', 'underline', 'line-through', 'overline'] as const).map((decoration) => (
+            <Button
+              key={decoration}
+              onClick={() => updateStyle({ textDecoration: decoration })}
+              variant={currentStyle.textDecoration === decoration ? "default" : "outline"}
+              size="sm"
+              className="capitalize text-xs"
+            >
+              {decoration === 'none' ? 'None' : decoration.replace('-', ' ')}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      <RangeSlider
+        label="Opacity"
+        value={currentStyle.opacity}
+        onChange={(value) => updateStyle({ opacity: value })}
+        min={0.1}
+        max={1}
+        step={0.1}
+      />
+    </div>
+  );
+
+  const effectsControls = (
+    <div className="space-y-4">
+      {/* Gradient Toggle */}
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium">Gradient Text</span>
+        <Button
+          onClick={() => updateStyle({ backgroundClip: !currentStyle.backgroundClip })}
+          variant={currentStyle.backgroundClip ? "default" : "outline"}
+          size="sm"
+        >
+          {currentStyle.backgroundClip ? 'On' : 'Off'}
+        </Button>
+      </div>
+
+      {/* Gradient Selection */}
+      {currentStyle.backgroundClip && (
+        <div>
+          <span className="text-sm font-medium mb-3 block">Gradient</span>
+          <div className="grid grid-cols-2 gap-2">
+            {gradientPresets.map((gradient, index) => (
+              <button
+                key={index}
+                onClick={() => updateStyle({ gradient })}
+                className={`h-8 rounded border-2 transition-all ${
+                  currentStyle.gradient === gradient
+                    ? 'border-primary scale-105'
+                    : 'border-border hover:border-primary/50'
+                }`}
+                style={{ background: gradient }}
+                title={`Gradient ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Text Shadow */}
+      <div>
+        <span className="text-sm font-medium mb-3 block">Text Shadow</span>
+        <div className="space-y-2">
+          <div className="grid grid-cols-2 gap-2">
+            {textShadowPresets.map((shadow) => (
+              <Button
+                key={shadow.name}
+                onClick={() => updateStyle({ textShadow: shadow.value })}
+                variant={currentStyle.textShadow === shadow.value ? "default" : "outline"}
+                size="sm"
+                className="text-xs"
+              >
+                {shadow.name}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Text Stroke */}
+      <div>
+        <span className="text-sm font-medium mb-3 block">Text Stroke</span>
+        <div className="space-y-2">
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { name: 'None', value: 'none' },
+              { name: 'Thin', value: '1px #000000' },
+              { name: 'Medium', value: '2px #000000' },
+              { name: 'Thick', value: '3px #000000' }
+            ].map((stroke) => (
+              <Button
+                key={stroke.name}
+                onClick={() => updateStyle({ textStroke: stroke.value })}
+                variant={currentStyle.textStroke === stroke.value ? "default" : "outline"}
+                size="sm"
+                className="text-xs"
+              >
+                {stroke.name}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const previewSection = (
+    <div className="space-y-4">
+      {/* Sample Text Input */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="text-sm font-medium">Sample Text</label>
+          <div className="flex gap-2">
+            <Button
+              onClick={generateRandomStyle}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <RefreshCw className="w-4 h-4" />
+              Random
+            </Button>
+            <Button
+              onClick={copyCSS}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <Copy className="w-4 h-4" />
+              Copy CSS
+            </Button>
+            <UnifiedExportButton
+              onExport={exportStyle}
+              filename="typography-style"
+              data={currentStyle}
+              size="sm"
+            />
+          </div>
+        </div>
+        <Textarea
+          value={sampleText}
+          onChange={(e) => setSampleText(e.target.value)}
+          placeholder="Enter your sample text here..."
+          className="min-h-[80px] resize-none"
+        />
+      </div>
+
+      {/* Live Preview */}
+      <div className="border border-border rounded-lg p-6 bg-card min-h-[200px] flex items-center justify-center">
+        <div
+          className="text-center max-w-full break-words"
+          style={{
+            fontFamily: currentStyle.fontFamily,
+            fontSize: `${currentStyle.fontSize}px`,
+            fontWeight: currentStyle.fontWeight,
+            fontStyle: currentStyle.fontStyle,
+            lineHeight: currentStyle.lineHeight,
+            letterSpacing: `${currentStyle.letterSpacing}px`,
+            wordSpacing: `${currentStyle.wordSpacing}px`,
+            textAlign: currentStyle.textAlign,
+            textTransform: currentStyle.textTransform,
+            textDecoration: currentStyle.textDecoration,
+            textShadow: currentStyle.textShadow !== 'none' ? currentStyle.textShadow : undefined,
+            opacity: currentStyle.opacity,
+            writingMode: currentStyle.writingMode,
+            WebkitTextStroke: currentStyle.textStroke !== 'none' ? currentStyle.textStroke : undefined,
+            ...(currentStyle.backgroundClip && currentStyle.gradient ? {
+              background: currentStyle.gradient,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            } : {
+              color: currentStyle.color
+            })
+          }}
+        >
+          {sampleText}
+        </div>
+      </div>
+
+      {/* CSS Output */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <h4 className="text-sm font-medium">Generated CSS</h4>
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={copyCSS}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <Copy className="w-4 h-4" />
+              Copy
+            </Button>
+            <TypographyExportButton
+              style={currentStyle}
+              hierarchyLevels={hierarchyLevels}
+            />
+          </div>
+        </div>
+        <div className="bg-muted/50 rounded-lg p-4 font-mono text-sm overflow-x-auto max-h-48 overflow-y-auto">
+          <pre className="whitespace-pre-wrap">{generateCSS()}</pre>
+        </div>
+      </div>
+
+      {/* Accessibility Guidelines */}
+      <div className="p-3 bg-muted/30 rounded-lg">
+        <div className="text-xs text-muted-foreground mb-2">Readability Guidelines</div>
+        <div className="space-y-1 text-xs">
+          <div className={`flex justify-between ${currentStyle.fontSize >= 16 ? 'text-green-600' : 'text-amber-600'}`}>
+            <span>Body text size:</span>
+            <span>{currentStyle.fontSize >= 16 ? '✓ Good' : '⚠ Too small'}</span>
+          </div>
+          <div className={`flex justify-between ${currentStyle.lineHeight >= 1.4 ? 'text-green-600' : 'text-amber-600'}`}>
+            <span>Line height:</span>
+            <span>{currentStyle.lineHeight >= 1.4 ? '✓ Good' : '⚠ Too tight'}</span>
+          </div>
+          <div className={`flex justify-between ${Math.abs(currentStyle.letterSpacing) <= 2 ? 'text-green-600' : 'text-amber-600'}`}>
+            <span>Letter spacing:</span>
+            <span>{Math.abs(currentStyle.letterSpacing) <= 2 ? '✓ Good' : '⚠ Extreme'}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="space-y-6">
       {/* Modern Tool Header */}
       <CreativityToolHeader
         title="Advanced Typography Generator"
         subtitle="Professional Text Styling"
-        description="Create and customize typography styles with advanced controls and real-time preview for professional design projects."
+        description="Create and customize typography styles with advanced controls, presets, and real-time preview for professional design projects."
         icon={<Type className="w-6 h-6" />}
-        badges={['Live Preview', 'CSS Export', 'Web Fonts', 'Responsive']}
+        badges={['Live Preview', 'CSS Export', 'Typography Presets', 'Responsive']}
         toolType="generator"
         size="lg"
       />
 
-      {/* Main Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Left Panel - Controls */}
-        <div className="space-y-6">
-          {/* Sample Text Input */}
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Sample Text</h3>
-                <UnifiedExportButton
-                  onExport={exportStyle}
-                  filename="typography-style"
-                  data={currentStyle}
-                  size="sm"
-                />
-              </div>
-              <Textarea
-                value={sampleText}
-                onChange={(e) => setSampleText(e.target.value)}
-                placeholder="Enter your sample text here..."
-                className="min-h-[100px] resize-none"
-              />
-            </div>
-          </Card>
-
-          {/* Typography Controls */}
-          <Card className="p-6">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Typography Settings</h3>
-                <div className="flex gap-2">
-                  <Button
-                    onClick={generateRandomStyle}
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                  >
-                    <RefreshCw className="w-4 h-4" />
-                    Random
-                  </Button>
-                  <Button
-                    onClick={copyCSS}
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                  >
-                    <Copy className="w-4 h-4" />
-                    Copy CSS
-                  </Button>
-                </div>
-              </div>
-
-              {/* Font Properties */}
-              <div className="space-y-4">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Font Properties</h4>
-                
-                <SelectDropdown
-                  label="Font Family"
-                  value={currentStyle.fontFamily}
-                  onChange={(value) => updateStyle({ fontFamily: value })}
-                  options={fontFamilies}
-                />
-
-                <RangeSlider
-                  label="Font Size"
-                  value={currentStyle.fontSize}
-                  onChange={(value) => updateStyle({ fontSize: value })}
-                  min={8}
-                  max={72}
-                  step={1}
-                  unit="px"
-                />
-
-                <SelectDropdown
-                  label="Font Weight"
-                  value={currentStyle.fontWeight}
-                  onChange={(value) => updateStyle({ fontWeight: value })}
-                  options={fontWeights}
-                />
-              </div>
-
-              {/* Spacing Properties */}
-              <div className="space-y-4">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Spacing Properties</h4>
-                
-                <RangeSlider
-                  label="Line Height"
-                  value={currentStyle.lineHeight}
-                  onChange={(value) => updateStyle({ lineHeight: value })}
-                  min={0.8}
-                  max={3}
-                  step={0.1}
-                />
-
-                <RangeSlider
-                  label="Letter Spacing"
-                  value={currentStyle.letterSpacing}
-                  onChange={(value) => updateStyle({ letterSpacing: value })}
-                  min={-2}
-                  max={5}
-                  step={0.1}
-                  unit="px"
-                />
-
-                <RangeSlider
-                  label="Word Spacing"
-                  value={currentStyle.wordSpacing}
-                  onChange={(value) => updateStyle({ wordSpacing: value })}
-                  min={-5}
-                  max={20}
-                  step={0.5}
-                  unit="px"
-                />
-              </div>
-
-              {/* Appearance & Style */}
-              <div className="space-y-4">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Appearance & Style</h4>
-                
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Text Color</label>
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="color"
-                      value={currentStyle.color}
-                      onChange={(e) => updateStyle({ color: e.target.value })}
-                      className="w-12 h-10 rounded border border-border cursor-pointer"
-                    />
-                    <Input
-                      value={currentStyle.color}
-                      onChange={(e) => updateStyle({ color: e.target.value })}
-                      placeholder="#000000"
-                      className="flex-1"
-                    />
-                  </div>
-                </div>
-
-                {/* Text Alignment */}
-                <div>
-                  <span className="text-sm font-medium mb-3 block">Text Alignment</span>
-                  <div className="grid grid-cols-4 gap-2">
-                    {(['left', 'center', 'right', 'justify'] as const).map((align) => (
-                      <Button
-                        key={align}
-                        onClick={() => updateStyle({ textAlign: align })}
-                        variant={currentStyle.textAlign === align ? "default" : "outline"}
-                        size="sm"
-                        className="capitalize"
-                      >
-                        {align}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Text Transform */}
-                <div>
-                  <span className="text-sm font-medium mb-3 block">Text Transform</span>
-                  <div className="grid grid-cols-2 gap-2">
-                    {(['none', 'uppercase', 'lowercase', 'capitalize'] as const).map((transform) => (
-                      <Button
-                        key={transform}
-                        onClick={() => updateStyle({ textTransform: transform })}
-                        variant={currentStyle.textTransform === transform ? "default" : "outline"}
-                        size="sm"
-                        className="capitalize"
-                      >
-                        {transform === 'none' ? 'Normal' : transform}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Font Style */}
-                <div>
-                  <span className="text-sm font-medium mb-3 block">Font Style</span>
-                  <div className="grid grid-cols-3 gap-2">
-                    {(['normal', 'italic', 'oblique'] as const).map((style) => (
-                      <Button
-                        key={style}
-                        onClick={() => updateStyle({ fontStyle: style })}
-                        variant={currentStyle.fontStyle === style ? "default" : "outline"}
-                        size="sm"
-                        className="capitalize"
-                      >
-                        {style}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Text Decoration */}
-                <div>
-                  <span className="text-sm font-medium mb-3 block">Text Decoration</span>
-                  <div className="grid grid-cols-2 gap-2">
-                    {(['none', 'underline', 'line-through', 'overline'] as const).map((decoration) => (
-                      <Button
-                        key={decoration}
-                        onClick={() => updateStyle({ textDecoration: decoration })}
-                        variant={currentStyle.textDecoration === decoration ? "default" : "outline"}
-                        size="sm"
-                        className="capitalize text-xs"
-                      >
-                        {decoration === 'none' ? 'None' : decoration.replace('-', ' ')}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Opacity */}
-                <RangeSlider
-                  label="Opacity"
-                  value={currentStyle.opacity}
-                  onChange={(value) => updateStyle({ opacity: value })}
-                  min={0.1}
-                  max={1}
-                  step={0.1}
-                />
-
-                {/* Writing Mode */}
-                <div>
-                  <span className="text-sm font-medium mb-3 block">Writing Mode</span>
-                  <div className="grid grid-cols-1 gap-2">
-                    {(['horizontal-tb', 'vertical-rl', 'vertical-lr'] as const).map((mode) => (
-                      <Button
-                        key={mode}
-                        onClick={() => updateStyle({ writingMode: mode })}
-                        variant={currentStyle.writingMode === mode ? "default" : "outline"}
-                        size="sm"
-                        className="text-xs"
-                      >
-                        {mode === 'horizontal-tb' ? 'Horizontal' : mode === 'vertical-rl' ? 'Vertical Right-Left' : 'Vertical Left-Right'}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Advanced Effects */}
-              <div className="space-y-4">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Advanced Effects</h4>
-                
-                {/* Gradient Toggle */}
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Gradient Text</span>
-                  <Button
-                    onClick={() => updateStyle({ backgroundClip: !currentStyle.backgroundClip })}
-                    variant={currentStyle.backgroundClip ? "default" : "outline"}
-                    size="sm"
-                  >
-                    {currentStyle.backgroundClip ? 'On' : 'Off'}
-                  </Button>
-                </div>
-
-                {/* Gradient Selector */}
-                {currentStyle.backgroundClip && (
-                  <div>
-                    <span className="text-sm font-medium mb-3 block">Gradient Style</span>
-                    <div className="grid grid-cols-1 gap-2">
-                      {[
-                        { name: 'Blue Purple', value: 'linear-gradient(45deg, #667eea 0%, #764ba2 100%)' },
-                        { name: 'Pink Red', value: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
-                        { name: 'Blue Cyan', value: 'linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)' },
-                        { name: 'Green Cyan', value: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' },
-                        { name: 'Pink Yellow', value: 'linear-gradient(45deg, #fa709a 0%, #fee140 100%)' }
-                      ].map((gradient) => (
-                        <Button
-                          key={gradient.name}
-                          onClick={() => updateStyle({ gradient: gradient.value })}
-                          variant={currentStyle.gradient === gradient.value ? "default" : "outline"}
-                          size="sm"
-                          className="text-xs justify-start"
-                          style={{
-                            background: currentStyle.gradient === gradient.value ? gradient.value : undefined,
-                            color: currentStyle.gradient === gradient.value ? 'white' : undefined
-                          }}
-                        >
-                          {gradient.name}
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Text Stroke */}
-                 <div>
-                   <span className="text-sm font-medium mb-3 block">Text Stroke</span>
-                   <div className="space-y-2">
-                     <div className="grid grid-cols-4 gap-2">
-                       {['none', '1px #000', '2px #000', '1px #fff'].map((stroke) => (
-                         <Button
-                           key={stroke}
-                           onClick={() => updateStyle({ textStroke: stroke })}
-                           variant={currentStyle.textStroke === stroke ? "default" : "outline"}
-                           size="sm"
-                           className="text-xs"
-                         >
-                           {stroke === 'none' ? 'None' : stroke.split(' ')[0]}
-                         </Button>
-                       ))}
-                     </div>
-                   </div>
-                 </div>
-
-                 {/* Text Shadow Controls */}
-                 <div>
-                   <span className="text-sm font-medium mb-3 block">Text Shadow</span>
-                   <div className="space-y-2">
-                     <div className="grid grid-cols-2 gap-2">
-                       {[
-                         { name: 'None', value: 'none' },
-                         { name: 'Subtle', value: '1px 1px 2px rgba(0,0,0,0.3)' },
-                         { name: 'Strong', value: '2px 2px 4px rgba(0,0,0,0.5)' },
-                         { name: 'Glow', value: '0 0 10px rgba(255,255,255,0.8)' }
-                       ].map((shadow) => (
-                         <Button
-                           key={shadow.name}
-                           onClick={() => updateStyle({ textShadow: shadow.value })}
-                           variant={currentStyle.textShadow === shadow.value ? "default" : "outline"}
-                           size="sm"
-                           className="text-xs"
-                         >
-                           {shadow.name}
-                         </Button>
-                       ))}
-                     </div>
-                   </div>
-                 </div>
-              </div>
-
-              {/* Typography Presets */}
-              <div className="space-y-4">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Typography Presets</h4>
-                <div className="grid grid-cols-2 gap-2">
-                  {typographyPresets.map((preset, index) => (
-                    <Button
-                      key={index}
-                      onClick={() => applyPreset(preset)}
-                      variant="outline"
-                      size="sm"
-                      className="text-xs"
-                    >
-                      {preset.name}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Accessibility Panel */}
-              <div className="space-y-4">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Accessibility</h4>
-                
-                {/* Font Size Recommendations */}
-                <div className="p-3 bg-muted/30 rounded-lg">
-                  <div className="text-xs text-muted-foreground mb-2">Readability Guidelines</div>
-                  <div className="space-y-1 text-xs">
-                    <div className={`flex justify-between ${currentStyle.fontSize >= 16 ? 'text-green-600' : 'text-amber-600'}`}>
-                      <span>Body text size:</span>
-                      <span>{currentStyle.fontSize >= 16 ? '✓ Good' : '⚠ Too small'}</span>
-                    </div>
-                    <div className={`flex justify-between ${currentStyle.lineHeight >= 1.4 ? 'text-green-600' : 'text-amber-600'}`}>
-                      <span>Line height:</span>
-                      <span>{currentStyle.lineHeight >= 1.4 ? '✓ Good' : '⚠ Too tight'}</span>
-                    </div>
-                    <div className={`flex justify-between ${Math.abs(currentStyle.letterSpacing) <= 2 ? 'text-green-600' : 'text-amber-600'}`}>
-                      <span>Letter spacing:</span>
-                      <span>{Math.abs(currentStyle.letterSpacing) <= 2 ? '✓ Good' : '⚠ Extreme'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Quick Accessibility Fixes */}
-                <div className="space-y-2">
-                  <div className="text-xs font-medium mb-2">Quick Fixes</div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Button
-                      onClick={() => updateStyle({ fontSize: Math.max(16, currentStyle.fontSize), lineHeight: Math.max(1.4, currentStyle.lineHeight) })}
-                      variant="outline"
-                      size="sm"
-                      className="text-xs"
-                    >
-                      Readable Size
-                    </Button>
-                    <Button
-                      onClick={() => updateStyle({ color: '#000000', textShadow: 'none' })}
-                      variant="outline"
-                      size="sm"
-                      className="text-xs"
-                    >
-                      High Contrast
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Right Panel - Preview */}
-        <div className="space-y-6">
-          {/* Live Preview */}
-          <Card className="p-6">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Live Preview</h3>
-              <div 
-                className="min-h-[200px] p-6 border-2 border-dashed border-border rounded-lg bg-background/50"
-                style={{
-                  fontFamily: currentStyle.fontFamily,
-                  fontSize: `${currentStyle.fontSize}px`,
-                  fontWeight: currentStyle.fontWeight,
-                  fontStyle: currentStyle.fontStyle,
-                  lineHeight: currentStyle.lineHeight,
-                  letterSpacing: `${currentStyle.letterSpacing}px`,
-                  wordSpacing: `${currentStyle.wordSpacing}px`,
-                  textAlign: currentStyle.textAlign,
-                  textTransform: currentStyle.textTransform,
-                  textDecoration: currentStyle.textDecoration,
-                  textShadow: currentStyle.textShadow !== 'none' ? currentStyle.textShadow : undefined,
-                  opacity: currentStyle.opacity,
-                  writingMode: currentStyle.writingMode,
-                  WebkitTextStroke: currentStyle.textStroke !== 'none' ? currentStyle.textStroke : undefined,
-                  ...(currentStyle.backgroundClip && currentStyle.gradient ? {
-                    background: currentStyle.gradient,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  } : {
-                    color: currentStyle.color
-                  })
-                }}
-              >
-                {sampleText}
-              </div>
-            </div>
-          </Card>
-
-          {/* CSS Output */}
-          <Card className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Generated CSS</h3>
-                <Button
-                  onClick={copyCSS}
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2"
-                >
-                  <Copy className="w-4 h-4" />
-                  Copy
-                </Button>
-              </div>
-              <div className="bg-muted/50 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-                <pre className="whitespace-pre-wrap">{generateCSS()}</pre>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </div>
+      {/* Tabbed Interface */}
+      <TypographyTabs
+        style={currentStyle}
+        onStyleChange={updateStyle}
+        onApplyPreset={applyPreset}
+        onHierarchyChange={setHierarchyLevels}
+      >
+        {{
+          basicControls,
+          advancedControls,
+          effectsControls,
+          preview: previewSection
+        }}
+      </TypographyTabs>
     </div>
   );
 };

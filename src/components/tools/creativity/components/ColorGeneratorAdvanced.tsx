@@ -148,16 +148,16 @@ export const ColorGeneratorAdvanced: React.FC = () => {
               <div className="space-y-4">
                 {/* Large Color Preview */}
                 <div 
-                  className="w-full h-32 rounded-lg border-2 border-gray-200 dark:border-gray-600 shadow-inner transition-all duration-300 hover:shadow-lg"
+                  className="w-full h-32 rounded-lg border-2 border-border shadow-inner transition-all duration-300 hover:shadow-lg"
                   style={{ backgroundColor: currentColor }}
                 />
                 
                 {/* Color Formats Display */}
                 <div className="grid grid-cols-2 gap-3">
                   {colorFormatOptions.map(({ label, value, icon }) => (
-                    <div key={label} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <div key={label} className="flex items-center justify-between p-3 bg-muted rounded-lg border border-border">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono bg-gray-200 dark:bg-gray-700 dark:text-gray-200 px-2 py-1 rounded">{icon}</span>
+                        <span className="text-xs font-mono bg-muted-foreground/10 text-muted-foreground px-2 py-1 rounded border border-border">{icon}</span>
                         <span className="text-sm font-medium">{label}</span>
                       </div>
                       <div className="flex items-center gap-2">

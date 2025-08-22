@@ -247,7 +247,7 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
             </Badge>
           ))}
         </div>
-        <div className="text-xs text-gray-600 dark:text-gray-300">
+        <div className="text-xs text-muted-foreground">
           Température: {psychology.temperature === 'warm' ? 'Chaude' : psychology.temperature === 'cool' ? 'Froide' : 'Neutre'}
         </div>
       </div>
@@ -262,7 +262,7 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
           Analyse Psychologique
         </CardTitle>
         {showDetails && (
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Info className="w-4 h-4" />
             Impact émotionnel et associations culturelles
           </div>
@@ -272,7 +272,7 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
         {/* Emotions */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Heart className="w-4 h-4 text-red-500" />
+            <Heart className="w-4 h-4 text-primary" />
             <span className="font-medium">Émotions évoquées</span>
           </div>
           <div className="flex flex-wrap gap-1">
@@ -287,7 +287,7 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
         {/* Associations */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Palette className="w-4 h-4 text-blue-500" />
+            <Palette className="w-4 h-4 text-primary" />
             <span className="font-medium">Associations</span>
           </div>
           <div className="flex flex-wrap gap-1">
@@ -302,12 +302,12 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
         {/* Industries */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Zap className="w-4 h-4 text-yellow-500" />
+            <Zap className="w-4 h-4 text-primary" />
             <span className="font-medium">Industries recommandées</span>
           </div>
           <div className="flex flex-wrap gap-1">
             {psychology.industries.map((industry) => (
-              <Badge key={industry} variant="outline" className="bg-yellow-50">
+              <Badge key={industry} variant="secondary" className="rounded-full px-2 py-0.5">
                 {industry}
               </Badge>
             ))}
@@ -319,7 +319,7 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
           <div className="font-medium mb-2">Traits de personnalité</div>
           <div className="flex flex-wrap gap-1">
             {psychology.personality.map((trait) => (
-              <Badge key={trait} variant="outline" className="bg-purple-50">
+              <Badge key={trait} variant="secondary" className="rounded-full px-2 py-0.5">
                 {trait}
               </Badge>
             ))}
@@ -328,16 +328,16 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
 
         {/* Temperature and Energy */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">Température</div>
-            <div className="text-lg text-gray-800 dark:text-gray-200">
+          <div className="p-3 bg-muted rounded-lg border border-border">
+            <div className="text-sm font-medium text-foreground">Température</div>
+            <div className="text-lg text-foreground">
               {psychology.temperature === 'warm' ? '🔥 Chaude' : 
                psychology.temperature === 'cool' ? '❄️ Froide' : '⚖️ Neutre'}
             </div>
           </div>
-          <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">Énergie</div>
-            <div className="text-lg text-gray-800 dark:text-gray-200">
+          <div className="p-3 bg-muted rounded-lg border border-border">
+            <div className="text-sm font-medium text-foreground">Énergie</div>
+            <div className="text-lg text-foreground">
               {psychology.energy === 'high' ? '⚡ Élevée' : 
                psychology.energy === 'medium' ? '🔋 Moyenne' : '😌 Faible'}
             </div>
@@ -346,21 +346,21 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
 
         {/* Chakra */}
         {psychology.chakra && (
-          <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">
-            <div className="text-sm font-medium text-indigo-800 dark:text-indigo-200">Chakra associé</div>
-            <div className="text-indigo-700 dark:text-indigo-300">{psychology.chakra}</div>
+          <div className="p-3 bg-muted rounded-lg border border-border">
+            <div className="text-sm font-medium text-foreground">Chakra associé</div>
+            <div className="text-muted-foreground">{psychology.chakra}</div>
           </div>
         )}
 
         {/* Cultural meanings */}
         {showDetails && psychology.culturalMeanings.length > 0 && (
           <div>
-            <div className="font-medium mb-2 text-gray-900 dark:text-gray-100">Significations culturelles</div>
+            <div className="font-medium mb-2 text-foreground">Significations culturelles</div>
             <div className="space-y-2">
               {psychology.culturalMeanings.map((cultural, index) => (
-                <div key={index} className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                  <span className="font-medium text-sm text-gray-900 dark:text-gray-100">{cultural.culture}</span>
-                  <span className="text-sm text-gray-600 dark:text-gray-200">{cultural.meaning}</span>
+                <div key={index} className="flex justify-between items-center p-2 bg-muted rounded border border-border">
+                  <span className="font-medium text-sm text-foreground">{cultural.culture}</span>
+                  <span className="text-sm text-muted-foreground">{cultural.meaning}</span>
                 </div>
               ))}
             </div>
@@ -369,12 +369,12 @@ export const ColorPsychologyAnalyzer: React.FC<ColorPsychologyAnalyzerProps> = (
 
         {/* Recommendations */}
         {showDetails && (
-          <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
-            <div className="flex items-center gap-2 text-sm font-medium text-green-800 dark:text-green-200 mb-2">
+          <div className="mt-4 p-3 bg-muted rounded-lg border border-border">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground mb-2">
               <Info className="w-4 h-4" />
               Recommandations d'usage
             </div>
-            <ul className="text-xs text-green-700 dark:text-green-300 space-y-1">
+            <ul className="text-xs text-muted-foreground space-y-1">
               {psychology.recommendations.map((rec, index) => (
                 <li key={index}>• {rec}</li>
               ))}
