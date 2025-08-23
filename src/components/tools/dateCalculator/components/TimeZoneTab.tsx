@@ -290,7 +290,7 @@ export const TimeZoneTab = () => {
      const icalContent = [
        'BEGIN:VCALENDAR',
        'VERSION:2.0',
-       'PRODID:-//Handy Hub Toolkit//Timezone Tool//EN',
+       'PRODID:-//À votre service//Timezone Tool//EN',
        'CALSCALE:GREGORIAN',
        'METHOD:PUBLISH',
        'X-WR-CALNAME:Fuseaux Horaires Mondiaux',
@@ -306,7 +306,7 @@ export const TimeZoneTab = () => {
          
          icalContent.push(
            'BEGIN:VEVENT',
-           `UID:timezone-${index}-${Date.now()}@handyhub.com`,
+           `UID:timezone-${index}-${Date.now()}@avotre-service.com`,
            `DTSTART:${eventStart}`,
            `DTEND:${eventEnd}`,
            `SUMMARY:${tz.label} - ${getTimeInTimezone(tz.name)}`,

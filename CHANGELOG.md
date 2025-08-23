@@ -4,6 +4,12 @@
 ## [Unreleased]
 
 ### Fixed
+- **Sidebar Menu Button Interactions (Desktop Mode)**: Fixed non-clickable sidebar menu buttons by adding `pointer-events-none` to overlay elements that were blocking click and hover events
+- **Logo Animation Placement**: Moved animated logo from main header to sidebar header where it belongs in desktop mode, removing duplicate logo elements
+- **Sidebar Z-Index Conflicts**: Increased sidebar z-index from z-10 to z-20 to prevent header overlay issues
+- **Sidebar Menu Interactions**: Removed `pointer-events-none` class that was blocking click and hover events on sidebar menu items
+- **Menu Button Responsiveness**: Fixed non-clickable sidebar menu buttons by correcting CSS pointer events
+- **Sidebar Collapse Behavior**: Fixed sidebar toggle mechanism by changing from 'icon' mode to 'offcanvas' mode - the left sidebar now completely disappears when toggled instead of just shrinking to icon width
 - **HistoryEntry Export Error**: Fixed TypeScript export error in hooks/index.ts where HistoryEntry interface was not properly exported from useHistory.ts module
 - **Logo Creator Advanced TypeScript Errors**: Resolved all TypeScript compilation errors
   - **LayerPanel Props**: Removed invalid `onToggleVisibility` and `onToggleLock` properties that don't exist in LayerPanelProps interface
@@ -15,6 +21,10 @@
   - **DEFAULT_TEXT_LAYER Properties**: Added missing required properties (x, y, text, fontFamily, fontSize, fontWeight, fontStyle) to DEFAULT_TEXT_LAYER definition in logoTypes.ts
 
 ### Added
+- **Logo Animation**: Added bounce animation to the app logo (🛠️) in the header with interactive hover effects
+  - **Interactive Logo Effects**: Logo now spins and scales on hover with smooth CSS transitions
+  - **Enhanced Visual Feedback**: Improved user experience with animated logo interactions and tooltip
+  - **Accessibility**: Added tooltip attribute to logo for better user guidance
 - **Advanced Logo Creator Complete Rebuild**: Complete recreation of the Logo Creator tool from scratch with professional features
   - **New Type System (logoTypes.ts)**: Comprehensive type definitions for advanced logo creation
     - **LogoSettings Interface**: Extended settings with gradients, shadows, animations, and effects support
