@@ -14,6 +14,7 @@ import { ProductivitySuiteModular } from "@/components/tools/ProductivitySuiteMo
 import { PasswordGeneratorUnified } from "@/components/tools/PasswordGeneratorUnified";
 import { QRCodeGenerator } from "@/components/tools/QRCodeGenerator";
 import { HealthWellnessSuite } from "@/components/tools/HealthWellnessSuite";
+import { CareerProductivity } from "@/components/tools/CareerProductivity";
 import { About } from "@/components/About";
 import { UniversalDataManager } from "@/components/tools/common/UniversalDataManager";
 import { AppSettings } from "@/components/tools/common/AppSettings";
@@ -51,6 +52,7 @@ const Index = () => {
       case "unit-converter": return "Convertisseurs d'Unités";
       case "calculator": return "Calculatrices";
       case "date-calculator-advanced": return "Dates & Temps Avancés";
+      case "career-productivity": return "Carrière & Productivité Pro";
       case "productivity-suite": return "Suite Productivité";
       case "password-generator-advanced": return "Générateur de Mots de Passe";
       case "color-generator": return "Générateur de Couleurs";
@@ -77,6 +79,8 @@ const Index = () => {
         return <CalculatorImproved />;
       case "date-calculator-advanced":
         return <DateCalculatorAdvanced />;
+      case "career-productivity":
+        return <CareerProductivity />;
       case "productivity-suite":
         return <ProductivitySuiteModular />;
       case "password-generator-advanced":
@@ -170,12 +174,20 @@ const Index = () => {
                   />
                   
                   <ToolCard
+                    title="Carrière & Productivité Pro"
+                    description="Outils professionnels pour développer votre carrière"
+                    icon="💼"
+                    tools={["Coach Pro", "Orientation", "Entretiens", "Assistant Rédac", "CV Builder", "Networking"]}
+                    onClick={() => setActiveSection("career-productivity")}
+                    variant="highlighted"
+                  />
+                  
+                  <ToolCard
                     title="Suite Productivité Complète"
                     description="Tâches avancées, notes, Pomodoro et to-do list intégrés"
                     icon="🚀"
                     tools={["Tâches intelligentes", "To-do list améliorée", "Notes avec tags", "Pomodoro", "Statistiques", "Synchronisation"]}
                     onClick={() => setActiveSection("productivity-suite")}
-                    variant="highlighted"
                   />
                   
                   <ToolCard
