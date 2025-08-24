@@ -16,6 +16,7 @@ import { MarkdownEditor } from './textUtils/MarkdownEditor';
 import { DataImportExport } from './common/DataImportExport';
 import { useOfflineDataManager } from '@/hooks/useOfflineDataManager';
 import { FileText, BarChart3, Type, Shuffle, Copy, FileCode, Search, FileDown, Code, Smile, Edit } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section-header';
 
 export const TextUtilsAdvanced = () => {
   const {
@@ -128,27 +129,13 @@ export const TextUtilsAdvanced = () => {
 
   return (
     <div className="space-y-4 lg:space-y-6">
-      {/* Header */}
-      <Card className="border-2 border-blue-200 dark:border-blue-800">
-        <CardHeader className="pb-3">
-          <CardTitle className="flex items-center gap-2 text-lg lg:text-xl">
-            <FileText className="w-5 h-5 text-blue-600" />
-            Utilitaires Texte Avancés
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Suite complète d'outils pour l'analyse, la transformation et l'optimisation de texte.
-          </p>
-          <div className="flex flex-wrap gap-2 mt-3">
-            {categories.map(category => (
-              <span key={category} className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-1 rounded">
-                {category}
-              </span>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      <SectionHeader
+        title="Utilitaires Texte Avancés"
+        subtitle="Suite complète d'outils pour l'analyse, la transformation et l'optimisation de texte."
+        icon={<FileText />}
+        badges={categories}
+        variant="blue"
+      />
 
       {/* Main Content */}
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 lg:gap-6">

@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Copy } from "lucide-react";
+import { Copy, FileText, BarChart3 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { SectionHeader } from '@/components/ui/section-header';
 
 export const TextUtils = () => {
   const [text, setText] = useState("");
@@ -64,11 +65,16 @@ export const TextUtils = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+      <SectionHeader
+        title="Analyseur et Transformateur de Texte"
+        subtitle="Analysez, transformez et manipulez vos textes avec des outils avancés"
+        icon={<FileText className="w-6 h-6" />}
+        badges={[`${stats.characters} caractères`, `${stats.words} mots`, "Transformations"]}
+        variant="green"
+      />
+      
       <Card>
-        <CardHeader>
-          <CardTitle>Analyseur et Transformateur de Texte</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="p-6 space-y-4">
           <div>
             <Textarea
               placeholder="Tapez ou collez votre texte ici..."

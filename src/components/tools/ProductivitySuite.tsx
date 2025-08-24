@@ -25,6 +25,7 @@ import {
   TrendingUp,
   Calendar
 } from "lucide-react";
+import { SectionHeader } from '@/components/ui/section-header';
 
 interface Task {
   id: string;
@@ -261,20 +262,18 @@ export const ProductivitySuite = () => {
 
   return (
     <div className="space-y-6">
-      <div className="text-center space-y-4 p-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/50 dark:to-emerald-950/50 rounded-xl border-2 border-green-200 dark:border-green-800">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
-          Suite de Productivité Complète
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Gérez vos tâches, prenez des notes, utilisez la technique Pomodoro et suivez vos objectifs.
-        </p>
-        <div className="flex justify-center gap-2 flex-wrap">
-          <Badge variant="secondary">🎯 {stats.completedTasks}/{stats.totalTasks} tâches</Badge>
-          <Badge variant="secondary">🍅 {stats.todaysSessions} sessions</Badge>
-          <Badge variant="secondary">📝 {stats.totalNotes} notes</Badge>
-          <Badge variant="secondary">📊 {Math.round(stats.completionRate)}% terminé</Badge>
-        </div>
-      </div>
+      <SectionHeader
+        title="Suite de Productivité Complète"
+        subtitle="Gérez vos tâches, prenez des notes, utilisez la technique Pomodoro et suivez vos objectifs."
+        icon={<Zap />}
+        badges={[
+          `${stats.completedTasks}/${stats.totalTasks} tâches`,
+          `${stats.todaysSessions} sessions`,
+          `${stats.totalNotes} notes`,
+          `${Math.round(stats.completionRate)}% terminé`
+        ]}
+        variant="green"
+      />
 
       <Tabs defaultValue="tasks" className="w-full">
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">

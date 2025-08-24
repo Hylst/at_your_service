@@ -8,6 +8,7 @@ import { ArrowRightLeft, Info, Clock, DollarSign, Ruler, Weight, Thermometer, Dr
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const UnitConverterImproved = () => {
   // États pour les longueurs
@@ -509,21 +510,17 @@ export const UnitConverterImproved = () => {
   return (
     <TooltipProvider>
       <div className="space-y-6">
-        <div className="text-center space-y-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 rounded-xl border-2 border-blue-200 dark:border-blue-800">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
-            Convertisseurs d'Unités Professionnels
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Convertissez facilement entre différentes unités de mesure avec une précision maximale. 
-            Tous les calculs sont basés sur les standards internationaux officiels.
-          </p>
-          <div className="flex justify-center gap-2 flex-wrap">
-            <Badge variant="secondary">10 types de conversions</Badge>
-            <Badge variant="secondary">80+ unités disponibles</Badge>
-            <Badge variant="secondary">Précision scientifique</Badge>
-            <Badge variant="secondary">Standards SI</Badge>
-          </div>
-        </div>
+        <SectionHeader
+          title="Convertisseurs d'Unités Professionnels"
+          subtitle="Convertissez facilement entre différentes unités de mesure avec une précision maximale. Tous les calculs sont basés sur les standards internationaux officiels."
+          icon={<ArrowRightLeft />}
+          badges={[
+            "10 types de conversions",
+            "80+ unités disponibles",
+            "Précision scientifique",
+            "Standards SI"
+          ]}
+        />
 
         <Tabs defaultValue="length" className="w-full">
           <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 text-xs bg-gray-100 dark:bg-gray-800">

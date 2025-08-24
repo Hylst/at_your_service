@@ -1,12 +1,13 @@
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, Plus, Filter } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Trash2, Plus, Filter, CheckSquare, ListTodo } from "lucide-react";
 
 interface Todo {
   id: number;
@@ -69,12 +70,24 @@ export const TodoList = () => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const completedCount = todos.filter(todo => todo.completed).length;
+  const totalCount = todos.length;
+
   return (
-    <Card className="max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle>Liste de Tâches</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <div className="max-w-2xl mx-auto space-y-6">
+      <SectionHeader
+        title="Liste de Tâches"
+        subtitle="Organisez vos tâches par catégories et suivez votre progression"
+        icon={<ListTodo />}
+        badges={[
+          `${totalCount} tâches`,
+          `${completedCount} terminées`,
+          ...(totalCount > 0 ? [`${Math.round((completedCount / totalCount) * 100)}% complété`] : [])
+        ]}
+      />
+      
+      <Card>
+        <CardContent className="pt-6">
         <div className="space-y-4">
           <div className="flex space-x-2">
             <Input
@@ -177,14 +190,9 @@ export const TodoList = () => {
             )}
           </div>
           
-          {todos.length > 0 && (
-            <div className="flex justify-between text-sm text-gray-600 pt-4 border-t">
-              <span>Total: {todos.length} tâches</span>
-              <span>Terminées: {todos.filter(t => t.completed).length}</span>
-            </div>
-          )}
         </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 };

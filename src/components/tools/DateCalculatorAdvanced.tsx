@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import { SectionHeader } from '@/components/ui/section-header';
 import { Calendar, Calculator, Clock, MapPin } from 'lucide-react';
 
 // Import components with named imports
@@ -15,17 +16,14 @@ import { CalculationHistoryTab } from './dateCalculator/components/CalculationHi
 const DateCalculatorAdvanced: React.FC = () => {
   return (
     <div className="w-full max-w-6xl mx-auto p-4 space-y-6">
+      <SectionHeader
+        title="Suite Avancée de Dates & Temps"
+        icon={<Calendar className="w-6 h-6" />}
+        badges={["Calculs de dates", "Fuseaux horaires", "Planning"]}
+        variant="blue"
+      />
       <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calendar className="w-6 h-6 text-blue-600" />
-            Suite Avancée de Dates & Temps
-          </CardTitle>
-          <p className="text-muted-foreground">
-            Calculateur de dates complet avec planning d'événements, fuseaux horaires, et historique.
-          </p>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="p-6">
           <Tabs defaultValue="calculations" className="w-full">
             <TabsList className="grid w-full grid-cols-6">
               <TabsTrigger value="calculations" className="flex items-center gap-2">

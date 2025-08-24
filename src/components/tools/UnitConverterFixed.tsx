@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Ruler, Weight, Thermometer, Droplets, Square, Zap, Wind, Gauge, Clock, DollarSign, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SectionHeader } from '@/components/ui/section-header';
 import { ConversionCard } from './components/ConversionCard';
 import { 
   lengthUnits, 
@@ -137,22 +138,19 @@ export const UnitConverterFixed = () => {
 
   return (
     <div className="space-y-6">
-      <div className="text-center space-y-4 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 rounded-xl border-2 border-blue-200 dark:border-blue-800">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
-          Convertisseur d'Unités Professionnel - Standards SI
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          12 catégories de conversion avec documentation technique précise selon les standards internationaux (SI), 
-          précisions spécifiques et conditions d'utilisation détaillées.
-        </p>
-        <div className="flex justify-center gap-2 flex-wrap">
-          <Badge variant="secondary">📐 Standards SI</Badge>
-          <Badge variant="secondary">⚠️ Précisions techniques</Badge>
-          <Badge variant="secondary">🔬 Définitions officielles</Badge>
-          <Badge variant="secondary">🌍 Références internationales</Badge>
-          <Badge variant="secondary">💡 Conseils pratiques</Badge>
-        </div>
-      </div>
+      <SectionHeader
+        title="Convertisseur d'Unités Professionnel"
+        subtitle="12 catégories de conversion avec documentation technique précise selon les standards internationaux (SI), précisions spécifiques et conditions d'utilisation détaillées."
+        icon={<Ruler />}
+        badges={[
+          "Standards SI",
+          "Précisions techniques",
+          "Définitions officielles",
+          "Références internationales",
+          "Conseils pratiques"
+        ]}
+        variant="blue"
+      />
 
       <Tabs defaultValue="length" className="w-full">
         <TabsList className="grid w-full grid-cols-6 lg:grid-cols-12">

@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Heart, Droplets, Moon, Dumbbell, Apple, Brain, Timer, Target, Activity, Scale } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section-header';
 import { BMICalculatorAdvanced } from './health/BMICalculatorAdvanced';
 import { WaterTracker } from './health/WaterTracker';
 import { SleepTracker } from './health/SleepTracker';
@@ -126,27 +127,13 @@ export const HealthWellnessSuite = () => {
 
   return (
     <div className="space-y-4 lg:space-y-6">
-      {/* Header */}
-      <Card className="border-2 border-green-200 dark:border-green-800">
-        <CardHeader className="pb-3">
-          <CardTitle className="flex items-center gap-2 text-lg lg:text-xl">
-            <Heart className="w-5 h-5 text-green-600" />
-            Suite Santé & Bien-être
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Suivez votre santé physique et mentale avec des outils complets de monitoring et d'analyse.
-          </p>
-          <div className="flex flex-wrap gap-2 mt-3">
-            {categories.map(category => (
-              <Badge key={category} variant="outline" className="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300">
-                {category}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      <SectionHeader
+        title="Suite Santé & Bien-être"
+        subtitle="Suivez votre santé physique et mentale avec des outils complets de monitoring et d'analyse."
+        icon={<Heart />}
+        badges={categories}
+        variant="green"
+      />
 
       {/* Main Content */}
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 lg:gap-6">

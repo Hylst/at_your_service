@@ -14,18 +14,20 @@ interface HeaderProps {
 export const Header = ({ onMenuClick, activeSection, setActiveSection }: HeaderProps) => {
   const { user } = useAuth();
   
-  const getSectionTitle = () => {
+  const getSectionInfo = () => {
     switch (activeSection) {
-      case "unit-converter": return "Convertisseurs d'Unités";
-      case "calculator": return "Calculatrices";
-      case "date-calculator": return "Calculateurs de Dates";
-      case "todo": return "Productivité";
-      case "password-generator": return "Générateur de Mots de Passe";
-      case "qr-code": return "Générateur QR Code";
-      case "color-generator": return "Générateur de Couleurs";
-      case "bmi-calculator": return "Calculateur IMC";
-      case "text-utils": return "Utilitaires Texte";
-      default: return "À votre service";
+      case "unit-converter": return { title: "Convertisseurs d'Unités", subtitle: "12 types d'unités disponibles" };
+      case "calculator": return { title: "Calculatrices", subtitle: "Calculatrice avancée et scientifique" };
+      case "date-calculator": return { title: "Calculateurs de Dates", subtitle: "Calculs et conversions de dates" };
+      case "todo": return { title: "Productivité", subtitle: "Gestion de tâches et organisation" };
+      case "password-generator": return { title: "Générateur de Mots de Passe", subtitle: "Sécurité et personnalisation" };
+      case "qr-code": return { title: "Générateur QR Code", subtitle: "Création et personnalisation" };
+      case "color-generator": return { title: "Générateur de Couleurs", subtitle: "Palettes et outils créatifs" };
+      case "bmi-calculator": return { title: "Calculateur IMC", subtitle: "Santé et bien-être" };
+      case "text-utils": return { title: "Utilitaires Texte", subtitle: "Manipulation et formatage" };
+      case "settings": return { title: "Paramètres", subtitle: "Configuration de l'application" };
+      case "about": return { title: "À propos", subtitle: "Informations sur l'application" };
+      default: return { title: "À votre service", subtitle: "Votre boîte à outils numérique" };
     }
   };
 
@@ -54,9 +56,16 @@ export const Header = ({ onMenuClick, activeSection, setActiveSection }: HeaderP
                 Accueil
               </Button>
             )}
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100">
-              {getSectionTitle()}
-            </h1>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+              <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100">
+                {getSectionInfo().title}
+              </h1>
+              {getSectionInfo().subtitle && (
+                <span className="text-sm text-gray-500 dark:text-gray-400 hidden sm:block">
+                  {getSectionInfo().subtitle}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         

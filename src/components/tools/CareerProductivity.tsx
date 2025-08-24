@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Briefcase, Users, FileText, Target, Star, TrendingUp, MessageSquare, BookOpen } from 'lucide-react';
+import { SectionHeader } from '@/components/ui/section-header';
 
 /**
  * CareerProductivity Component
@@ -110,20 +111,17 @@ ${cvData.skills}
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
-      {/* Header */}
-      <div className="text-center space-y-4">
-        <div className="flex justify-center">
-          <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
-            <Briefcase className="w-8 h-8 text-white" />
-          </div>
-        </div>
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Carrière & Productivité Pro
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Suite complète d'outils professionnels pour développer votre carrière et optimiser votre productivité
-        </p>
-      </div>
+      <SectionHeader
+        title="Carrière & Productivité Pro"
+        subtitle="Suite complète d'outils professionnels pour développer votre carrière et optimiser votre productivité"
+        icon={<Briefcase />}
+        badges={[
+          "Coach IA",
+          "Entretiens",
+          "CV Builder"
+        ]}
+        variant="purple"
+      />
 
       {/* Main Tools */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

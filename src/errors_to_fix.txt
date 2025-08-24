@@ -1,189 +1,898 @@
 [{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
-"owner": "typescript",
-"code": "2353",
-"severity": 8,
-"message": "Object literal may only specify known properties, and 'sidebarCollapsed' does not exist in type 'Partial<LogoSettings>'.",
-"source": "ts",
-"startLineNumber": 359,
-"startColumn": 51,
-"endLineNumber": 359,
-"endColumn": 67,
-"extensionID": "vscode.typescript-language-features"
-},{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
-"owner": "typescript",
-"code": "2304",
-"severity": 8,
-"message": "Cannot find name 'Compress'.",
-"source": "ts",
-"startLineNumber": 404,
-"startColumn": 20,
-"endLineNumber": 404,
-"endColumn": 28,
-"extensionID": "vscode.typescript-language-features"
-},{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
-"owner": "typescript",
-"code": "2352",
-"severity": 8,
-"message": "Conversion of type 'Layer' to type 'TextLayer' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Layer' is missing the following properties from type 'TextLayer': font, textAlign, verticalAlign, autoResize, and 7 more.",
-"source": "ts",
-"startLineNumber": 464,
-"startColumn": 32,
-"endLineNumber": 464,
-"endColumn": 58,
-"extensionID": "vscode.typescript-language-features"
-},{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/CareerProductivity.tsx",
 "owner": "typescript",
 "code": "2322",
 "severity": 8,
-"message": "Type '{ layer: TextLayer; onChange: (updates: any) => void; }' is not assignable to type 'IntrinsicAttributes & TextControlsProps'.\n  Property 'onChange' does not exist on type 'IntrinsicAttributes & TextControlsProps'.",
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
 "source": "ts",
-"startLineNumber": 465,
-"startColumn": 25,
-"endLineNumber": 465,
-"endColumn": 33,
-"extensionID": "vscode.typescript-language-features"
-},{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
-"owner": "typescript",
-"code": "2739",
-"severity": 8,
-"message": "Type 'Layer' is missing the following properties from type 'Layer': name, blendMode, transform, effects, animation",
-"source": "ts",
-"startLineNumber": 480,
-"startColumn": 25,
-"endLineNumber": 480,
-"endColumn": 38,
+"startLineNumber": 117,
+"startColumn": 14,
+"endLineNumber": 117,
+"endColumn": 25,
 "relatedInformation": [
 {
-"startLineNumber": 13,
-"startColumn": 3,
-"endLineNumber": 13,
-"endColumn": 16,
-"message": "The expected type comes from property 'selectedLayer' which is declared here on type 'IntrinsicAttributes & ColorControlsProps'",
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/ColorControls.tsx"
+"startLineNumber": 117,
+"startColumn": 14,
+"endLineNumber": 117,
+"endColumn": 25,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/CareerProductivity.tsx"
 }
 ],
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/CareerProductivity.tsx",
 "owner": "typescript",
-"code": "2739",
+"code": "2322",
 "severity": 8,
-"message": "Type 'Layer' is missing the following properties from type 'Layer': name, blendMode, transform, effects, animation",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 496,
-"startColumn": 25,
-"endLineNumber": 496,
-"endColumn": 38,
+"startLineNumber": 120,
+"startColumn": 11,
+"endLineNumber": 120,
+"endColumn": 48,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/CareerProductivity.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 121,
+"startColumn": 11,
+"endLineNumber": 121,
+"endColumn": 52,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/CareerProductivity.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 122,
+"startColumn": 11,
+"endLineNumber": 122,
+"endColumn": 51,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/CareerProductivity.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '\"blue-purple\"' is not assignable to type '\"blue\" | \"green\" | \"indigo\" | \"orange\" | \"pink\" | \"purple\" | \"red\" | \"teal\"'.",
+"source": "ts",
+"startLineNumber": 124,
+"startColumn": 9,
+"endLineNumber": 124,
+"endColumn": 16,
 "relatedInformation": [
 {
-"startLineNumber": 15,
+"startLineNumber": 11,
 "startColumn": 3,
-"endLineNumber": 15,
-"endColumn": 16,
-"message": "The expected type comes from property 'selectedLayer' which is declared here on type 'IntrinsicAttributes & EffectsControlsProps'",
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/EffectsControls.tsx"
+"endLineNumber": 11,
+"endColumn": 10,
+"message": "The expected type comes from property 'variant' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 22,
+"startColumn": 14,
+"endLineNumber": 22,
+"endColumn": 24,
+"relatedInformation": [
+{
+"startLineNumber": 22,
+"startColumn": 14,
+"endLineNumber": 22,
+"endColumn": 24,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx"
 }
 ],
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
 "owner": "typescript",
-"code": "2353",
+"code": "2322",
 "severity": 8,
-"message": "Object literal may only specify known properties, and 'showGrid' does not exist in type 'Partial<LogoSettings>'.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 540,
-"startColumn": 80,
-"endLineNumber": 540,
-"endColumn": 88,
+"startLineNumber": 25,
+"startColumn": 11,
+"endLineNumber": 25,
+"endColumn": 59,
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
 "owner": "typescript",
-"code": "2339",
+"code": "2322",
 "severity": 8,
-"message": "Property 'id' does not exist on type 'HistoryEntry'.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 656,
-"startColumn": 44,
-"endLineNumber": 656,
-"endColumn": 46,
+"startLineNumber": 26,
+"startColumn": 11,
+"endLineNumber": 26,
+"endColumn": 62,
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
 "owner": "typescript",
-"code": "2339",
+"code": "2322",
 "severity": 8,
-"message": "Property 'description' does not exist on type 'HistoryEntry'.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 666,
-"startColumn": 69,
-"endLineNumber": 666,
-"endColumn": 80,
-"extensionID": "vscode.typescript-language-features"
-},{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
-"owner": "typescript",
-"code": "2352",
-"severity": 8,
-"message": "Conversion of type 'Layer' to type 'TextLayer' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Layer' is missing the following properties from type 'TextLayer': font, textAlign, verticalAlign, autoResize, and 7 more.",
-"source": "ts",
-"startLineNumber": 770,
-"startColumn": 43,
-"endLineNumber": 770,
+"startLineNumber": 27,
+"startColumn": 11,
+"endLineNumber": 27,
 "endColumn": 61,
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
 "owner": "typescript",
-"code": "2352",
+"code": "2322",
 "severity": 8,
-"message": "Conversion of type 'Layer' to type 'TextLayer' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Layer' is missing the following properties from type 'TextLayer': font, textAlign, verticalAlign, autoResize, and 7 more.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 771,
-"startColumn": 42,
-"endLineNumber": 771,
+"startLineNumber": 28,
+"startColumn": 11,
+"endLineNumber": 28,
+"endColumn": 53,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 29,
+"startColumn": 11,
+"endLineNumber": 29,
+"endColumn": 53,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 30,
+"startColumn": 11,
+"endLineNumber": 30,
+"endColumn": 59,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 31,
+"startColumn": 11,
+"endLineNumber": 31,
+"endColumn": 57,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/CreativitySuiteAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '\"purple-pink\"' is not assignable to type '\"blue\" | \"green\" | \"indigo\" | \"orange\" | \"pink\" | \"purple\" | \"red\" | \"teal\"'.",
+"source": "ts",
+"startLineNumber": 33,
+"startColumn": 9,
+"endLineNumber": 33,
+"endColumn": 16,
+"relatedInformation": [
+{
+"startLineNumber": 11,
+"startColumn": 3,
+"endLineNumber": 11,
+"endColumn": 10,
+"message": "The expected type comes from property 'variant' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/HealthWellnessSuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 133,
+"startColumn": 14,
+"endLineNumber": 133,
+"endColumn": 21,
+"relatedInformation": [
+{
+"startLineNumber": 133,
+"startColumn": 14,
+"endLineNumber": 133,
+"endColumn": 21,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/HealthWellnessSuite.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/HealthWellnessSuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }[]' is not assignable to type 'string[]'.\n  Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 135,
+"startColumn": 9,
+"endLineNumber": 135,
+"endColumn": 15,
+"relatedInformation": [
+{
+"startLineNumber": 10,
+"startColumn": 3,
+"endLineNumber": 10,
+"endColumn": 9,
+"message": "The expected type comes from property 'badges' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/HealthWellnessSuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '\"green-emerald\"' is not assignable to type '\"blue\" | \"green\" | \"indigo\" | \"orange\" | \"pink\" | \"purple\" | \"red\" | \"teal\"'.",
+"source": "ts",
+"startLineNumber": 136,
+"startColumn": 9,
+"endLineNumber": 136,
+"endColumn": 16,
+"relatedInformation": [
+{
+"startLineNumber": 11,
+"startColumn": 3,
+"endLineNumber": 11,
+"endColumn": 10,
+"message": "The expected type comes from property 'variant' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/PasswordGeneratorAdvancedEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 82,
+"startColumn": 14,
+"endLineNumber": 82,
+"endColumn": 24,
+"relatedInformation": [
+{
+"startLineNumber": 82,
+"startColumn": 14,
+"endLineNumber": 82,
+"endColumn": 24,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/PasswordGeneratorAdvancedEnhanced.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/PasswordGeneratorAdvancedEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 85,
+"startColumn": 11,
+"endLineNumber": 85,
+"endColumn": 71,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/PasswordGeneratorAdvancedEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 86,
+"startColumn": 11,
+"endLineNumber": 86,
+"endColumn": 71,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/PasswordGeneratorAdvancedEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 87,
+"startColumn": 11,
+"endLineNumber": 87,
+"endColumn": 57,
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 268,
+"startColumn": 14,
+"endLineNumber": 268,
+"endColumn": 19,
+"relatedInformation": [
+{
+"startLineNumber": 268,
+"startColumn": 14,
+"endLineNumber": 268,
+"endColumn": 19,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 271,
+"startColumn": 11,
+"endLineNumber": 271,
+"endColumn": 91,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 272,
+"startColumn": 11,
+"endLineNumber": 272,
+"endColumn": 74,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 273,
+"startColumn": 11,
+"endLineNumber": 273,
+"endColumn": 65,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 274,
+"startColumn": 11,
+"endLineNumber": 274,
+"endColumn": 86,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuite.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '\"green-emerald\"' is not assignable to type '\"blue\" | \"green\" | \"indigo\" | \"orange\" | \"pink\" | \"purple\" | \"red\" | \"teal\"'.",
+"source": "ts",
+"startLineNumber": 276,
+"startColumn": 9,
+"endLineNumber": 276,
+"endColumn": 16,
+"relatedInformation": [
+{
+"startLineNumber": 11,
+"startColumn": 3,
+"endLineNumber": 11,
+"endColumn": 10,
+"message": "The expected type comes from property 'variant' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuiteModular.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 19,
+"startColumn": 14,
+"endLineNumber": 19,
+"endColumn": 21,
+"relatedInformation": [
+{
+"startLineNumber": 19,
+"startColumn": 14,
+"endLineNumber": 19,
+"endColumn": 21,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuiteModular.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuiteModular.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 22,
+"startColumn": 12,
+"endLineNumber": 22,
 "endColumn": 60,
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuiteModular.tsx",
 "owner": "typescript",
-"code": "2352",
+"code": "2322",
 "severity": 8,
-"message": "Conversion of type 'Layer' to type 'TextLayer' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Layer' is missing the following properties from type 'TextLayer': font, textAlign, verticalAlign, autoResize, and 7 more.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 772,
-"startColumn": 42,
-"endLineNumber": 772,
-"endColumn": 60,
+"startLineNumber": 23,
+"startColumn": 12,
+"endLineNumber": 23,
+"endColumn": 57,
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/ProductivitySuiteModular.tsx",
 "owner": "typescript",
-"code": "2352",
+"code": "2322",
 "severity": 8,
-"message": "Conversion of type 'Layer' to type 'ShapeLayer' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\n  Type 'Layer' is missing the following properties from type 'ShapeLayer': shapeType, fill, name, blendMode, and 3 more.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 784,
-"startColumn": 44,
-"endLineNumber": 784,
+"startLineNumber": 24,
+"startColumn": 12,
+"endLineNumber": 24,
+"endColumn": 59,
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/QRCodeGenerator.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 196,
+"startColumn": 14,
+"endLineNumber": 196,
+"endColumn": 26,
+"relatedInformation": [
+{
+"startLineNumber": 196,
+"startColumn": 14,
+"endLineNumber": 196,
+"endColumn": 26,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/QRCodeGenerator.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/QRCodeGenerator.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 199,
+"startColumn": 11,
+"endLineNumber": 199,
+"endColumn": 53,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/QRCodeGenerator.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 200,
+"startColumn": 11,
+"endLineNumber": 200,
+"endColumn": 58,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/QRCodeGenerator.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 201,
+"startColumn": 11,
+"endLineNumber": 201,
+"endColumn": 50,
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TextUtilsAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 135,
+"startColumn": 14,
+"endLineNumber": 135,
+"endColumn": 24,
+"relatedInformation": [
+{
+"startLineNumber": 135,
+"startColumn": 14,
+"endLineNumber": 135,
+"endColumn": 24,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TextUtilsAdvanced.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TextUtilsAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }[]' is not assignable to type 'string[]'.\n  Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 137,
+"startColumn": 9,
+"endLineNumber": 137,
+"endColumn": 15,
+"relatedInformation": [
+{
+"startLineNumber": 10,
+"startColumn": 3,
+"endLineNumber": 10,
+"endColumn": 9,
+"message": "The expected type comes from property 'badges' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TextUtilsAdvanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '\"blue-cyan\"' is not assignable to type '\"blue\" | \"green\" | \"indigo\" | \"orange\" | \"pink\" | \"purple\" | \"red\" | \"teal\"'.",
+"source": "ts",
+"startLineNumber": 138,
+"startColumn": 9,
+"endLineNumber": 138,
+"endColumn": 16,
+"relatedInformation": [
+{
+"startLineNumber": 11,
+"startColumn": 3,
+"endLineNumber": 11,
+"endColumn": 10,
+"message": "The expected type comes from property 'variant' which is declared here on type 'IntrinsicAttributes & SectionHeaderProps'",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/ui/section-header.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoList.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 81,
+"startColumn": 14,
+"endLineNumber": 81,
+"endColumn": 24,
+"relatedInformation": [
+{
+"startLineNumber": 81,
+"startColumn": 14,
+"endLineNumber": 81,
+"endColumn": 24,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoList.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoList.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 83,
+"startColumn": 11,
+"endLineNumber": 83,
+"endColumn": 65,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoList.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 84,
+"startColumn": 11,
+"endLineNumber": 84,
+"endColumn": 70,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoList.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 85,
+"startColumn": 11,
+"endLineNumber": 85,
+"endColumn": 132,
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoListEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 210,
+"startColumn": 14,
+"endLineNumber": 210,
+"endColumn": 28,
+"relatedInformation": [
+{
+"startLineNumber": 210,
+"startColumn": 14,
+"endLineNumber": 210,
+"endColumn": 28,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoListEnhanced.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoListEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; icon: React.ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & React.RefAttributes<SVGSVGElement>>; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 212,
+"startColumn": 11,
+"endLineNumber": 212,
+"endColumn": 79,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoListEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 213,
+"startColumn": 11,
+"endLineNumber": 213,
+"endColumn": 75,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoListEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 214,
+"startColumn": 11,
+"endLineNumber": 214,
+"endColumn": 70,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/TodoListEnhanced.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: \"destructive\"; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 215,
+"startColumn": 11,
+"endLineNumber": 215,
+"endColumn": 117,
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 144,
+"startColumn": 14,
+"endLineNumber": 144,
+"endColumn": 21,
+"relatedInformation": [
+{
+"startLineNumber": 144,
+"startColumn": 14,
+"endLineNumber": 144,
+"endColumn": 21,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 147,
+"startColumn": 11,
+"endLineNumber": 147,
+"endColumn": 52,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 148,
+"startColumn": 11,
+"endLineNumber": 148,
 "endColumn": 63,
 "extensionID": "vscode.typescript-language-features"
 },{
-"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/creativity/LogoCreatorAdvanced.tsx",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx",
 "owner": "typescript",
-"code": "2367",
+"code": "2322",
 "severity": 8,
-"message": "This comparison appears to be unintentional because the types '\"text\" | \"shape\" | \"image\"' and '\"icon\"' have no overlap.",
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
 "source": "ts",
-"startLineNumber": 789,
-"startColumn": 24,
-"endLineNumber": 789,
-"endColumn": 45,
+"startLineNumber": 149,
+"startColumn": 11,
+"endLineNumber": 149,
+"endColumn": 65,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 150,
+"startColumn": 11,
+"endLineNumber": 150,
+"endColumn": 66,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterFixed.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 151,
+"startColumn": 11,
+"endLineNumber": 151,
+"endColumn": 58,
+"extensionID": "vscode.typescript-language-features"
+}]
+[{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterImproved.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type 'ForwardRefExoticComponent<Omit<LucideProps, \"ref\"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ReactNode'.",
+"source": "ts",
+"startLineNumber": 516,
+"startColumn": 16,
+"endLineNumber": 516,
+"endColumn": 32,
+"relatedInformation": [
+{
+"startLineNumber": 516,
+"startColumn": 16,
+"endLineNumber": 516,
+"endColumn": 32,
+"message": "Did you mean to call this expression?",
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterImproved.tsx"
+}
+],
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterImproved.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 518,
+"startColumn": 13,
+"endLineNumber": 518,
+"endColumn": 70,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterImproved.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 519,
+"startColumn": 13,
+"endLineNumber": 519,
+"endColumn": 69,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterImproved.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 520,
+"startColumn": 13,
+"endLineNumber": 520,
+"endColumn": 69,
+"extensionID": "vscode.typescript-language-features"
+},{
+"resource": "/d:/0CODE/lovable/At-your-service/handy-hub-toolkit-main/src/components/tools/UnitConverterImproved.tsx",
+"owner": "typescript",
+"code": "2322",
+"severity": 8,
+"message": "Type '{ text: string; variant: string; }' is not assignable to type 'string'.",
+"source": "ts",
+"startLineNumber": 521,
+"startColumn": 13,
+"endLineNumber": 521,
+"endColumn": 59,
 "extensionID": "vscode.typescript-language-features"
 }]

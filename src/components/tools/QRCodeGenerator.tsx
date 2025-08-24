@@ -12,6 +12,7 @@ import QRCode from "qrcode";
 import { Download, Share2, Copy, Smartphone, Wifi, Mail, Phone, MessageSquare, Globe, User, Palette } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
+import { SectionHeader } from '@/components/ui/section-header';
 
 type QRErrorCorrectionLevel = "L" | "M" | "Q" | "H";
 
@@ -189,14 +190,17 @@ export const QRCodeGenerator = () => {
 
   return (
     <div className="space-y-6">
-      <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
-          Générateur QR Code Avancé
-        </h2>
-        <p className="text-gray-600 dark:text-gray-300">
-          Créez des QR codes personnalisés pour tous vos besoins
-        </p>
-      </div>
+      <SectionHeader
+        title="Générateur QR Code Avancé"
+        subtitle="Créez des QR codes personnalisés pour tous vos besoins - texte, URL, email, téléphone, SMS, WiFi et contacts avec options de personnalisation avancées."
+        icon={<Smartphone />}
+        badges={[
+          "7 types de QR",
+          "Personnalisation",
+          "Export HD"
+        ]}
+        variant="blue"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Configuration */}
