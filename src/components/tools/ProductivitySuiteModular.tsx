@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { CheckSquare, Timer, BookOpen, Target, TrendingUp, Zap, Brain, CheckSquare2 } from "lucide-react";
-import { SectionHeader } from '@/components/ui/section-header';
 import { TaskManagerEnhanced } from "./productivity/components/TaskManagerEnhanced";
 import { PomodoroTimer } from "./productivity/components/PomodoroTimer";
 import { NoteManager } from "./productivity/components/NoteManager";
@@ -13,18 +12,6 @@ import { TodoListEnhanced } from "./TodoListEnhanced";
 export const ProductivitySuiteModular = () => {
   return (
     <div className="space-y-4 lg:space-y-6">
-      <SectionHeader
-        title="Suite Productivité Complète"
-        subtitle="Gérez vos tâches intelligemment avec la to-do list améliorée, prenez des notes organisées, définissez des objectifs SMART et boostez votre concentration avec la technique Pomodoro. Toutes vos données sont synchronisées et sauvegardées localement."
-        icon={<Brain />}
-        badges={[
-           "To-do list avancée",
-           "Gestion complète",
-           "Technique Pomodoro"
-         ]}
-         variant="green"
-       />
-
       {/* Navigation par onglets responsive */}
       <Tabs defaultValue="todo" className="w-full">
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-4 lg:mb-8 h-auto">

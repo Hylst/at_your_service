@@ -12,7 +12,7 @@ import { Trash2, Plus, Edit, Save, X, Calendar, Clock, Star, Filter, CheckSquare
 import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
-import { SectionHeader } from "@/components/ui/section-header";
+
 
 interface Todo {
   id: number;
@@ -204,18 +204,6 @@ export const TodoListEnhanced = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
-      <SectionHeader
-        title="Gestionnaire de Tâches Avancé"
-        subtitle="Organisez efficacement vos tâches avec priorités et catégories"
-        icon={<CheckSquare2 />}
-        badges={[
-          `${stats.total} total`,
-          `✅ ${stats.completed} terminées`,
-          `⏳ ${stats.active} actives`,
-          ...(stats.overdue > 0 ? [`⚠️ ${stats.overdue} en retard`] : [])
-        ]}
-      />
-
       <Tabs defaultValue="list" className="space-y-4">
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3">
           <TabsTrigger value="list" className="flex items-center gap-2">

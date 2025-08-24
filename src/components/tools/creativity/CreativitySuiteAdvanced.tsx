@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Palette, Image, Type, Zap, Sparkles, Paintbrush, Camera, Layers } from "lucide-react";
-import { SectionHeader } from '@/components/ui/section-header';
+
 import { ColorGeneratorAdvanced } from "./components/ColorGeneratorAdvanced";
 import { PaletteGenerator } from "./components/PaletteGenerator";
 import { GradientGenerator } from "./components/GradientGenerator";
@@ -16,22 +16,6 @@ import { IconGenerator } from "./components/IconGenerator";
 export const CreativitySuiteAdvanced = () => {
   return (
     <div className="space-y-4 lg:space-y-6">
-      <SectionHeader
-        title="Suite Créativité Complète"
-        subtitle="Créez des couleurs harmonieuses, générez des palettes tendance, créez des dégradés magnifiques, explorez la typographie, appliquez des filtres à vos images et bien plus encore. Une suite complète pour libérer votre créativité !"
-        icon={<Sparkles />}
-        badges={[
-          "Couleurs avancées",
-          "Palettes intelligentes",
-          "Dégradés dynamiques",
-          "Typographie",
-          "Filtres image",
-          "Motifs & textures",
-          "Export optimisé"
-        ]}
-        variant="purple"
-      />
-
       {/* Navigation par onglets responsive */}
       <Tabs defaultValue="colors" className="w-full">
         <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 mb-4 lg:mb-8 h-auto">

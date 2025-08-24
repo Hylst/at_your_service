@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Ruler, Weight, Thermometer, Droplets, Square, Zap, Wind, Gauge, Clock, DollarSign, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { SectionHeader } from '@/components/ui/section-header';
+
 import { ConversionCard } from './components/ConversionCard';
 import { 
   lengthUnits, 
@@ -138,20 +138,6 @@ export const UnitConverterFixed = () => {
 
   return (
     <div className="space-y-6">
-      <SectionHeader
-        title="Convertisseur d'Unités Professionnel"
-        subtitle="12 catégories de conversion avec documentation technique précise selon les standards internationaux (SI), précisions spécifiques et conditions d'utilisation détaillées."
-        icon={<Ruler />}
-        badges={[
-          "Standards SI",
-          "Précisions techniques",
-          "Définitions officielles",
-          "Références internationales",
-          "Conseils pratiques"
-        ]}
-        variant="blue"
-      />
-
       <Tabs defaultValue="length" className="w-full">
         <TabsList className="grid w-full grid-cols-6 lg:grid-cols-12">
           <TabsTrigger value="length">

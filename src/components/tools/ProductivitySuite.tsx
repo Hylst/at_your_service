@@ -25,7 +25,6 @@ import {
   TrendingUp,
   Calendar
 } from "lucide-react";
-import { SectionHeader } from '@/components/ui/section-header';
 
 interface Task {
   id: string;
@@ -262,19 +261,6 @@ export const ProductivitySuite = () => {
 
   return (
     <div className="space-y-6">
-      <SectionHeader
-        title="Suite de Productivité Complète"
-        subtitle="Gérez vos tâches, prenez des notes, utilisez la technique Pomodoro et suivez vos objectifs."
-        icon={<Zap />}
-        badges={[
-          `${stats.completedTasks}/${stats.totalTasks} tâches`,
-          `${stats.todaysSessions} sessions`,
-          `${stats.totalNotes} notes`,
-          `${Math.round(stats.completionRate)}% terminé`
-        ]}
-        variant="green"
-      />
-
       <Tabs defaultValue="tasks" className="w-full">
         <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
           <TabsTrigger value="tasks">

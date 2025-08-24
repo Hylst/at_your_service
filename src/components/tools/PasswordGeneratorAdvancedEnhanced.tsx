@@ -3,10 +3,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { toast } from "sonner";
 import { Copy, Download, Settings, BarChart, Heart, Sparkles } from "lucide-react";
-import { SectionHeader } from '@/components/ui/section-header';
 
 // Import enhanced components
 import { PasswordAnalyzerEnhanced } from "./passwordGenerator/PasswordAnalyzerEnhanced";
@@ -41,6 +40,17 @@ export const PasswordGeneratorAdvancedEnhanced = () => {
   } = usePasswordGeneratorEnhanced();
 
   const [activeTab, setActiveTab] = useState("generator");
+  const passwordDisplayRef = useRef<HTMLDivElement>(null);
+
+  // Fonction pour faire défiler vers le bloc de mot de passe généré
+  const scrollToPasswordDisplay = useCallback(() => {
+    if (passwordDisplayRef.current) {
+      passwordDisplayRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }, []);
 
   const handleCopyPassword = async (password: string, entryId?: string) => {
     try {
@@ -58,7 +68,21 @@ export const PasswordGeneratorAdvancedEnhanced = () => {
     const password = await generatePassword();
     if (password) {
       handleCopyPassword(password);
+      // Faire défiler vers le bloc de mot de passe généré
+      setTimeout(() => scrollToPasswordDisplay(), 100);
     }
+  };
+
+  const handleGenerate = () => {
+    generatePassword();
+    // Faire défiler vers le bloc de mot de passe généré
+    setTimeout(() => scrollToPasswordDisplay(), 100);
+  };
+
+  const handleApplyTemplate = (templateId: string) => {
+    applyTemplate(templateId);
+    // Faire défiler vers le bloc de mot de passe généré
+    setTimeout(() => scrollToPasswordDisplay(), 100);
   };
 
   if (isGenerating) {
@@ -76,50 +100,9 @@ export const PasswordGeneratorAdvancedEnhanced = () => {
 
   return (
     <div className="space-y-6">
-      <SectionHeader
-        title="Générateur de Mots de Passe Avancé"
-        subtitle="Créez des mots de passe sécurisés avec analyse avancée, templates personnalisés et historique complet."
-        icon={<Sparkles />}
-        badges={[
-          `${stats.totalGenerated} générés`,
-          `${stats.strongPasswords} forts`,
-          "Analyse avancée"
-        ]}
-        variant="blue"
-      />
-      
-      <Card>
-        <CardContent>
-          <PasswordDisplayAdvanced
-            password={currentPassword}
-            strength={currentStrength || { 
-              score: 0, level: '', color: '', feedback: [], entropy: 0
-            }}
-            onCopy={handleCopyPassword}
-            stats={stats}
-          />
-          <div className="flex gap-2 mt-4">
-            <Button 
-              onClick={() => generatePassword()}
-              disabled={isGenerating}
-              className="flex-1"
-            >
-              {isGenerating ? 'Génération...' : 'Générer'}
-            </Button>
-            <Button 
-              onClick={handleGenerateAndCopy}
-              disabled={isGenerating}
-              variant="outline"
-            >
-              <Copy className="w-4 h-4 mr-2" />
-              Générer & Copier
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Interface à onglets */}
+      {/* Structure unifiée avec menu à onglets, bloc mot de passe, puis contenu */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
+        {/* Menu à onglets tout en haut de page */}
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="generator">
             <Settings className="w-4 h-4 mr-2" />
@@ -143,12 +126,46 @@ export const PasswordGeneratorAdvancedEnhanced = () => {
           </TabsTrigger>
         </TabsList>
 
+        {/* Bloc mot de passe généré - Toujours visible après le menu à onglets */}
+        <Card>
+          <CardContent>
+            <div ref={passwordDisplayRef}>
+              <PasswordDisplayAdvanced
+                password={currentPassword}
+                strength={currentStrength || { 
+                  score: 0, level: '', color: '', feedback: [], entropy: 0
+                }}
+                onCopy={handleCopyPassword}
+                stats={stats}
+              />
+            </div>
+            <div className="flex gap-2 mt-4">
+              <Button 
+                onClick={handleGenerate}
+                disabled={isGenerating}
+                className="flex-1"
+              >
+                {isGenerating ? 'Génération...' : 'Générer'}
+              </Button>
+              <Button 
+                onClick={handleGenerateAndCopy}
+                disabled={isGenerating}
+                variant="outline"
+              >
+                <Copy className="w-4 h-4 mr-2" />
+                Générer & Copier
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Contenu des onglets - Affiché après le bloc mot de passe */}
         <TabsContent value="generator" className="space-y-4">
           <PasswordSettingsAdvanced
             settings={settings}
             onSettingsChange={updateSettings}
             templates={templates}
-            onApplyTemplate={applyTemplate}
+            onApplyTemplate={handleApplyTemplate}
           />
         </TabsContent>
 
@@ -162,7 +179,7 @@ export const PasswordGeneratorAdvancedEnhanced = () => {
         <TabsContent value="templates" className="space-y-4">
           <PasswordTemplatesEnhanced
             templates={templates}
-            onApplyTemplate={applyTemplate}
+            onApplyTemplate={handleApplyTemplate}
             onToggleFavorite={toggleTemplateFavorite}
             favorites={templateFavorites}
           />

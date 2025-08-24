@@ -16,7 +16,6 @@ import { MarkdownEditor } from './textUtils/MarkdownEditor';
 import { DataImportExport } from './common/DataImportExport';
 import { useOfflineDataManager } from '@/hooks/useOfflineDataManager';
 import { FileText, BarChart3, Type, Shuffle, Copy, FileCode, Search, FileDown, Code, Smile, Edit } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/section-header';
 
 export const TextUtilsAdvanced = () => {
   const {
@@ -129,18 +128,10 @@ export const TextUtilsAdvanced = () => {
 
   return (
     <div className="space-y-4 lg:space-y-6">
-      <SectionHeader
-        title="Utilitaires Texte Avancés"
-        subtitle="Suite complète d'outils pour l'analyse, la transformation et l'optimisation de texte."
-        icon={<FileText />}
-        badges={categories}
-        variant="blue"
-      />
-
       {/* Main Content */}
-      <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 lg:gap-6">
+      <div className="space-y-4 lg:space-y-6">
         {/* Tools Panel */}
-        <div className="xl:col-span-3">
+        <div>
           <Card>
             <CardContent className="p-0">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -176,7 +167,7 @@ export const TextUtilsAdvanced = () => {
           </Card>
         </div>
 
-        {/* Side Panel */}
+        {/* Side Panel - moved below main content */}
         <div className="space-y-4">
           {/* Import/Export */}
           <DataImportExport

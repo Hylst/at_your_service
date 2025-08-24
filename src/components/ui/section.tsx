@@ -17,10 +17,10 @@ export const Section: React.FC<SectionProps> = ({
   ...props
 }) => {
   const spacingClasses = {
-    sm: 'py-8',
-    md: 'py-12',
-    lg: 'py-16',
-    xl: 'py-24',
+    sm: 'py-0.5',
+    md: 'py-1',
+    lg: 'py-2',
+    xl: 'py-4',
   };
 
   const backgroundClasses = {

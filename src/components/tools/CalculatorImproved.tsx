@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Calculator, Zap, History, Code, TrendingUp } from "lucide-react";
-import { SectionHeader } from "@/components/ui/section-header";
 import { ToolContainer } from "@/components/ui/tool-container";
 import { ToolTabSystem } from "@/components/ui/tool-tab-system";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -65,13 +64,6 @@ export const CalculatorImproved = () => {
     <TooltipProvider>
       <ToolContainer variant="wide" spacing="lg">
         <div className="space-y-6">
-          <SectionHeader
-            title="Calculatrices Professionnelles"
-            icon={<Calculator className="w-6 h-6" />}
-            badges={["Saisie clavier", "50+ fonctions", "Binaire & Hex"]}
-            variant="blue"
-          />
-
           <ToolTabSystem
             tabs={calculatorTabs}
             defaultTab="basic"

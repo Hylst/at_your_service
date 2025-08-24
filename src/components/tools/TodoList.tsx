@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { SectionHeader } from "@/components/ui/section-header";
+
 import { Trash2, Plus, Filter, CheckSquare, ListTodo } from "lucide-react";
 
 interface Todo {
@@ -75,17 +75,6 @@ export const TodoList = () => {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      <SectionHeader
-        title="Liste de Tâches"
-        subtitle="Organisez vos tâches par catégories et suivez votre progression"
-        icon={<ListTodo />}
-        badges={[
-          `${totalCount} tâches`,
-          `${completedCount} terminées`,
-          ...(totalCount > 0 ? [`${Math.round((completedCount / totalCount) * 100)}% complété`] : [])
-        ]}
-      />
-      
       <Card>
         <CardContent className="pt-6">
         <div className="space-y-4">

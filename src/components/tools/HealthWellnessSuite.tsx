@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Heart, Droplets, Moon, Dumbbell, Apple, Brain, Timer, Target, Activity, Scale } from 'lucide-react';
-import { SectionHeader } from '@/components/ui/section-header';
 import { BMICalculatorAdvanced } from './health/BMICalculatorAdvanced';
 import { WaterTracker } from './health/WaterTracker';
 import { SleepTracker } from './health/SleepTracker';
@@ -127,18 +126,10 @@ export const HealthWellnessSuite = () => {
 
   return (
     <div className="space-y-4 lg:space-y-6">
-      <SectionHeader
-        title="Suite Santé & Bien-être"
-        subtitle="Suivez votre santé physique et mentale avec des outils complets de monitoring et d'analyse."
-        icon={<Heart />}
-        badges={categories}
-        variant="green"
-      />
-
       {/* Main Content */}
-      <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 lg:gap-6">
+      <div className="space-y-4 lg:space-y-6">
         {/* Tools Panel */}
-        <div className="xl:col-span-3">
+        <div>
           <Card>
             <CardContent className="p-0">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -174,7 +165,7 @@ export const HealthWellnessSuite = () => {
           </Card>
         </div>
 
-        {/* Side Panel */}
+        {/* Side Panel - moved below main content */}
         <div className="space-y-4">
           {/* Import/Export */}
           <DataImportExport

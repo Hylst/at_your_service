@@ -6,7 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Copy, Download, Settings, BarChart, Heart, Sparkles } from "lucide-react";
-import { SectionHeader } from '@/components/ui/section-header';
 
 // Import enhanced components
 import { PasswordAnalyzerEnhanced } from "./passwordGenerator/PasswordAnalyzerEnhanced";
@@ -76,14 +75,6 @@ export const PasswordGeneratorUnified = () => {
 
   return (
     <div className="space-y-6">
-      <SectionHeader
-        title="Générateur de Mots de Passe Avancé"
-        subtitle="Créez des mots de passe sécurisés avec analyse avancée, templates personnalisés et historique complet"
-        icon={<Sparkles className="w-6 h-6" />}
-        badges={[`${stats.totalGenerated} générés`, `${stats.strongPasswords} forts`, "Analyse avancée"]}
-        variant="purple"
-      />
-      
       <Card>
         <CardContent className="p-6">
           <PasswordDisplayAdvanced

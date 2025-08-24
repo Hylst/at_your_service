@@ -22,6 +22,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { UserMenu } from "@/components/UserMenu";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Header } from "@/components/Header";
 
 // New design system components
 import { Container } from "@/components/ui/container";
@@ -264,42 +265,15 @@ const Index = () => {
           
           <SidebarInset>
             {/* Header */}
-            <header className="group flex h-16 shrink-0 items-center gap-2 border-b bg-gradient-to-r from-white/90 via-white/95 to-white/90 dark:from-gray-900/90 dark:via-gray-900/95 dark:to-gray-900/90 backdrop-blur-md sticky top-0 z-10 shadow-sm hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000">
-              <div className="flex items-center gap-2 px-4">
-                <SidebarTrigger className="-ml-1 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all duration-300 hover:scale-110 rounded-lg" />
-                <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 group-hover:bg-indigo-300 dark:group-hover:bg-indigo-600 transition-colors duration-300" />
-
-                <Heading level={1} size="lg" className="truncate group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors duration-300">
-                  {getSectionTitle()}
-                </Heading>
-              </div>
-              
-              <div className="ml-auto flex items-center gap-2 px-4">
-                
-                <div className="hover:bg-indigo-100/50 dark:hover:bg-indigo-900/30 rounded-lg p-1 transition-all duration-300 hover:scale-105">
-                  <ThemeToggle />
-                </div>
-                
-                {user ? (
-                  <div className="hover:bg-indigo-100/50 dark:hover:bg-indigo-900/30 rounded-lg transition-all duration-300 hover:scale-105">
-                    <UserMenu onProfileClick={handleProfileClick} />
-                  </div>
-                ) : (
-                  <Button 
-                    variant="outline" 
-                    onClick={() => navigate('/auth')}
-                    className="hidden sm:flex hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 dark:hover:bg-indigo-950 dark:hover:border-indigo-700 dark:hover:text-indigo-300 transition-all duration-300 hover:scale-105 hover:shadow-md"
-                    size="sm"
-                  >
-                    Connexion
-                  </Button>
-                )}
-              </div>
-            </header>
+            <Header 
+              onMenuClick={() => {}} 
+              activeSection={activeSection} 
+              setActiveSection={setActiveSection} 
+            />
             
             {/* Main Content */}
             <main className="flex-1">
-              <Container className="py-6 lg:py-8">
+              <Container className="pt-0.5 pb-6 lg:pb-8">
                 {renderContent()}
               </Container>
             </main>

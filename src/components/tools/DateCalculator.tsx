@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { SectionHeader } from "@/components/ui/section-header";
+
 import { Calendar, Clock, Calculator } from "lucide-react";
 
 export const DateCalculator = () => {
@@ -54,14 +54,6 @@ export const DateCalculator = () => {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      <SectionHeader
-        title="Calculateur de Dates"
-        subtitle="Calculez votre âge et les différences entre dates avec précision"
-        icon={<Calendar className="w-6 h-6" />}
-        badges={["Âge précis", "Différence de dates", "Calculs avancés"]}
-        variant="blue"
-      />
-      
       <Tabs defaultValue="age" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="age">Calculateur d'Âge</TabsTrigger>

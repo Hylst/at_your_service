@@ -8,7 +8,7 @@ import { ArrowRightLeft, Info, Clock, DollarSign, Ruler, Weight, Thermometer, Dr
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { SectionHeader } from "@/components/ui/section-header";
+
 
 export const UnitConverterImproved = () => {
   // États pour les longueurs
@@ -510,18 +510,6 @@ export const UnitConverterImproved = () => {
   return (
     <TooltipProvider>
       <div className="space-y-6">
-        <SectionHeader
-          title="Convertisseurs d'Unités Professionnels"
-          subtitle="Convertissez facilement entre différentes unités de mesure avec une précision maximale. Tous les calculs sont basés sur les standards internationaux officiels."
-          icon={<ArrowRightLeft />}
-          badges={[
-            "10 types de conversions",
-            "80+ unités disponibles",
-            "Précision scientifique",
-            "Standards SI"
-          ]}
-        />
-
         <Tabs defaultValue="length" className="w-full">
           <TabsList className="grid w-full grid-cols-5 lg:grid-cols-10 text-xs bg-gray-100 dark:bg-gray-800">
             <TabsTrigger value="length" className="data-[state=active]:bg-blue-100 data-[state=active]:text-blue-700 dark:data-[state=active]:bg-blue-900 dark:data-[state=active]:text-blue-300">

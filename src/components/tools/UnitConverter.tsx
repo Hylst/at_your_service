@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Scale, Thermometer, DollarSign, Clock, Ruler, Weight, Zap, Fuel, Activity, Palette, Droplets, Volume } from "lucide-react";
-import { SectionHeader } from "@/components/ui/section-header";
 import { ToolContainer } from "@/components/ui/tool-container";
 import { ToolTabSystem } from "@/components/ui/tool-tab-system";
 import { ConversionTab } from "./components/ConversionTab";
@@ -231,13 +230,6 @@ const UnitConverter = () => {
   return (
     <ToolContainer variant="wide" spacing="lg">
       <div className="space-y-6">
-        <SectionHeader
-          title="Convertisseurs Universels"
-          icon={<Scale className="w-6 h-6" />}
-          badges={["12 Types d'unités", "Standards SI", "Temps réel"]}
-          variant="blue"
-        />
-
         <ToolTabSystem
           tabs={conversionTabs}
           defaultTab="length"
