@@ -17,13 +17,13 @@ const toolHeaderVariants = cva(
   {
     variants: {
       gradient: {
-        primary: 'bg-gradient-to-br from-blue-50 via-white to-blue-100 border-blue-200',
-        secondary: 'bg-gradient-to-br from-gray-50 via-white to-gray-100 border-gray-200',
-        success: 'bg-gradient-to-br from-green-50 via-white to-green-100 border-green-200',
-        warning: 'bg-gradient-to-br from-yellow-50 via-white to-yellow-100 border-yellow-200',
-        error: 'bg-gradient-to-br from-red-50 via-white to-red-100 border-red-200',
-        creative: 'bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 border-purple-200',
-        none: 'bg-white border-gray-200'
+        primary: 'bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-blue-950/50 dark:via-blue-950/30 dark:to-blue-900/50 border-blue-200 dark:border-blue-800',
+        secondary: 'bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950/50 dark:via-gray-950/30 dark:to-gray-900/50 border-gray-200 dark:border-gray-800',
+        success: 'bg-gradient-to-br from-green-50 via-white to-green-100 dark:from-green-950/50 dark:via-green-950/30 dark:to-green-900/50 border-green-200 dark:border-green-800',
+        warning: 'bg-gradient-to-br from-yellow-50 via-white to-yellow-100 dark:from-yellow-950/50 dark:via-yellow-950/30 dark:to-yellow-900/50 border-yellow-200 dark:border-yellow-800',
+        error: 'bg-gradient-to-br from-red-50 via-white to-red-100 dark:from-red-950/50 dark:via-red-950/30 dark:to-red-900/50 border-red-200 dark:border-red-800',
+        creative: 'bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-950/50 dark:via-pink-950/30 dark:to-blue-950/50 border-purple-200 dark:border-purple-800',
+        none: 'bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800'
       },
       size: {
         sm: 'p-4',
@@ -173,9 +173,9 @@ export const UnifiedToolHeader = React.forwardRef<HTMLDivElement, UnifiedToolHea
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent" />
-          <div className="absolute top-0 left-0 w-32 h-32 bg-white/20 rounded-full -translate-x-16 -translate-y-16" />
-          <div className="absolute bottom-0 right-0 w-24 h-24 bg-white/10 rounded-full translate-x-12 translate-y-12" />
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-foreground/10 to-transparent" />
+          <div className="absolute top-0 left-0 w-32 h-32 bg-foreground/20 rounded-full -translate-x-16 -translate-y-16" />
+          <div className="absolute bottom-0 right-0 w-24 h-24 bg-foreground/10 rounded-full translate-x-12 translate-y-12" />
         </div>
 
         {/* Content */}
@@ -236,7 +236,7 @@ export const UnifiedToolHeader = React.forwardRef<HTMLDivElement, UnifiedToolHea
 
           {/* Divider */}
           {showDivider && (badges.length > 0 || actions) && (
-            <div className="border-t border-gray-200/50 mb-4" />
+            <div className="border-t border-border/50 mb-4" />
           )}
 
           {/* Badges */}
@@ -257,7 +257,7 @@ export const UnifiedToolHeader = React.forwardRef<HTMLDivElement, UnifiedToolHea
 
         {/* Interactive Overlay */}
         {interactive && (
-          <div className="absolute inset-0 bg-white/0 hover:bg-white/5 transition-colors duration-200 rounded-xl" />
+          <div className="absolute inset-0 bg-transparent hover:bg-accent/5 transition-colors duration-200 rounded-xl" />
         )}
       </div>
     );

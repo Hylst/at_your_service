@@ -156,11 +156,11 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
   };
 
   return (
-    <Card>
+    <Card className="bg-card dark:bg-card/80 border-border dark:border-border/50">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <CardTitle className="flex items-center justify-between text-foreground dark:text-foreground">
           <span>Générateur d'Harmonies</span>
-          <Button onClick={generateHarmonies} size="sm" className="flex items-center gap-2">
+          <Button onClick={generateHarmonies} size="sm" className="flex items-center gap-2 bg-primary dark:bg-primary hover:bg-primary/90 dark:hover:bg-primary/80 text-primary-foreground dark:text-primary-foreground">
             <RefreshCw className="w-4 h-4" />
             Générer
           </Button>
@@ -169,7 +169,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
       <CardContent className="space-y-6">
         {/* Couleur de base */}
         <div>
-          <Label className="text-sm font-medium mb-2 block">Couleur de base</Label>
+          <Label className="text-sm font-medium mb-2 block text-foreground dark:text-foreground">Couleur de base</Label>
           <div className="flex gap-2">
             <input
               type="color"
@@ -178,7 +178,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
                 setBaseColor(e.target.value);
                 onColorChange?.(e.target.value);
               }}
-              className="w-16 h-10 rounded border cursor-pointer"
+              className="w-16 h-10 rounded border border-border dark:border-border/50 cursor-pointer bg-background dark:bg-background/50"
             />
             <input
               type="text"
@@ -187,7 +187,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
                 setBaseColor(e.target.value);
                 onColorChange?.(e.target.value);
               }}
-              className="flex-1 p-2 border rounded-md font-mono text-sm"
+              className="flex-1 p-2 border border-border dark:border-border/50 rounded-md font-mono text-sm bg-background dark:bg-background/50 text-foreground dark:text-foreground placeholder:text-muted-foreground dark:placeholder:text-muted-foreground/70"
               placeholder="#3B82F6"
             />
           </div>
@@ -196,19 +196,19 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
         {/* Harmonies générées */}
         {harmonies.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Harmonies de couleurs</h3>
+            <h3 className="text-sm font-medium text-foreground dark:text-foreground">Harmonies de couleurs</h3>
             {harmonies.map((harmony, index) => (
-              <div key={index} className="p-4 border rounded-lg space-y-3">
+              <div key={index} className="p-4 border border-border dark:border-border/50 rounded-lg space-y-3 bg-card dark:bg-card/80">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-medium">{harmony.name}</h4>
-                    <p className="text-xs text-muted-foreground">{harmony.description}</p>
+                    <h4 className="font-medium text-foreground dark:text-foreground">{harmony.name}</h4>
+                    <p className="text-xs text-muted-foreground dark:text-muted-foreground/80">{harmony.description}</p>
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => copyPalette(harmony.colors)}
-                    className="flex items-center gap-1"
+                    className="flex items-center gap-1 border-border dark:border-border/50 hover:bg-accent/50 dark:hover:bg-accent/30 text-foreground dark:text-foreground"
                   >
                     <Copy className="w-3 h-3" />
                     Copier
@@ -218,7 +218,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
                   {harmony.colors.map((color, colorIndex) => (
                     <div key={colorIndex} className="flex-1 space-y-1">
                       <div
-                        className="w-full h-12 rounded border-2 border-white shadow-sm cursor-pointer"
+                        className="w-full h-12 rounded border-2 border-white dark:border-border/50 shadow-sm dark:shadow-md cursor-pointer transition-transform hover:scale-105"
                         style={{ backgroundColor: color }}
                         onClick={() => {
                           navigator.clipboard.writeText(color);
@@ -229,7 +229,7 @@ export const ColorHarmonyGenerator = ({ baseColor: initialBaseColor, onColorChan
                         }}
                         title={color}
                       />
-                      <p className="text-xs font-mono text-center">{color}</p>
+                      <p className="text-xs font-mono text-center text-foreground dark:text-foreground bg-muted/50 dark:bg-muted/30 px-2 py-1 rounded">{color}</p>
                     </div>
                   ))}
                 </div>

@@ -138,10 +138,10 @@ export const ColorGeneratorAdvanced: React.FC = () => {
         <TabsContent value="generator" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Color Display Card */}
-            <Card variant="default" className="p-6">
+            <Card variant="default" className="p-6 bg-card dark:bg-card/80 border-border dark:border-border/50">
               <div className="mb-4">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <Palette className="w-5 h-5" />
+                <h3 className="text-lg font-semibold flex items-center gap-2 text-foreground dark:text-foreground">
+                  <Palette className="w-5 h-5 text-primary dark:text-primary" />
                   Current Color
                 </h3>
               </div>
@@ -155,17 +155,18 @@ export const ColorGeneratorAdvanced: React.FC = () => {
                 {/* Color Formats Display */}
                 <div className="grid grid-cols-2 gap-3">
                   {colorFormatOptions.map(({ label, value, icon }) => (
-                    <div key={label} className="flex items-center justify-between p-3 bg-muted rounded-lg border border-border">
+                    <div key={label} className="flex items-center justify-between p-3 bg-card dark:bg-card/50 rounded-lg border border-border dark:border-border/50 hover:bg-accent/50 dark:hover:bg-accent/30 transition-colors">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono bg-muted-foreground/10 text-muted-foreground px-2 py-1 rounded border border-border">{icon}</span>
-                        <span className="text-sm font-medium">{label}</span>
+                        <span className="text-xs font-mono bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-foreground px-2 py-1 rounded border border-primary/20 dark:border-primary/30">{icon}</span>
+                        <span className="text-sm font-medium text-foreground dark:text-foreground">{label}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <code className="text-sm font-mono">{value}</code>
+                        <code className="text-sm font-mono text-foreground dark:text-foreground bg-muted/50 dark:bg-muted/30 px-2 py-1 rounded">{value}</code>
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={() => copyToClipboard(value, `${label} format`)}
+                          className="hover:bg-accent/50 dark:hover:bg-accent/30"
                         >
                           <Copy className="w-3 h-3" />
                         </Button>
@@ -177,27 +178,28 @@ export const ColorGeneratorAdvanced: React.FC = () => {
             </Card>
 
             {/* Controls Card */}
-            <Card variant="default" className="p-6">
+            <Card variant="default" className="p-6 bg-card dark:bg-card/80 border-border dark:border-border/50">
               <div className="mb-4">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <Settings className="w-5 h-5" />
+                <h3 className="text-lg font-semibold flex items-center gap-2 text-foreground dark:text-foreground">
+                  <Settings className="w-5 h-5 text-primary dark:text-primary" />
                   Color Controls
                 </h3>
               </div>
               <div className="space-y-4">
                 {/* Color Input */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Color Input</label>
+                  <label className="text-sm font-medium text-foreground dark:text-foreground">Color Input</label>
                   <div className="flex gap-2">
                     <Input
                       value={inputColor}
                       onChange={(e) => setInputColor(e.target.value)}
                       placeholder="#3B82F6 or rgb(59, 130, 246)"
-                      className="flex-1"
+                      className="flex-1 bg-background dark:bg-background/50 border-border dark:border-border/50 text-foreground dark:text-foreground placeholder:text-muted-foreground dark:placeholder:text-muted-foreground/70"
                     />
                     <Button
                       onClick={handleColorInput}
                       variant="outline"
+                      className="border-border dark:border-border/50 hover:bg-accent/50 dark:hover:bg-accent/30"
                     >
                       Apply
                     </Button>
@@ -209,7 +211,7 @@ export const ColorGeneratorAdvanced: React.FC = () => {
                   <Button
                     onClick={handleRandomGeneration}
                     disabled={isGenerating}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 bg-primary dark:bg-primary hover:bg-primary/90 dark:hover:bg-primary/80 text-primary-foreground dark:text-primary-foreground"
                     variant="primary"
                   >
                     <RefreshCw className={`w-4 h-4 ${isGenerating ? 'animate-spin' : ''}`} />
@@ -219,7 +221,7 @@ export const ColorGeneratorAdvanced: React.FC = () => {
                   <Button
                     onClick={() => toggleFavorite(currentColorInfo)}
                     variant={favorites.some(fav => fav.hex === currentColor) ? 'primary' : 'outline'}
-                    className="flex items-center gap-2"
+                    className={`flex items-center gap-2 ${favorites.some(fav => fav.hex === currentColor) ? 'text-yellow-500 dark:text-yellow-400 border-yellow-500 dark:border-yellow-400 bg-yellow-50 dark:bg-yellow-500/10' : 'border-border dark:border-border/50 hover:bg-accent/50 dark:hover:bg-accent/30 text-foreground dark:text-foreground'}`}
                   >
                     <Heart className={`w-4 h-4 ${favorites.some(fav => fav.hex === currentColor) ? 'fill-current' : ''}`} />
                     Favorite
@@ -227,12 +229,15 @@ export const ColorGeneratorAdvanced: React.FC = () => {
                 </div>
 
                 {/* Export Options */}
-                <UnifiedExportButton
-                  formats={['css', 'json']}
-                  onExport={() => exportColors()}
-                  layout="dropdown"
-                  className="w-full"
-                />
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-foreground dark:text-foreground">Export</label>
+                  <UnifiedExportButton
+                    formats={['css', 'json']}
+                    onExport={() => exportColors()}
+                    layout="dropdown"
+                    className="w-full border-border dark:border-border/50 hover:bg-accent/50 dark:hover:bg-accent/30 text-foreground dark:text-foreground"
+                  />
+                </div>
               </div>
             </Card>
           </div>
@@ -252,17 +257,17 @@ export const ColorGeneratorAdvanced: React.FC = () => {
         </TabsContent>
 
         <TabsContent value="history">
-          <Card variant="default" className="p-6">
+          <Card variant="default" className="p-6 bg-card dark:bg-card/80 border-border dark:border-border/50">
             <div className="flex flex-row items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold flex items-center gap-2">
-                <History className="w-5 h-5" />
+              <h3 className="text-lg font-semibold flex items-center gap-2 text-foreground dark:text-foreground">
+                <History className="w-5 h-5 text-primary dark:text-primary" />
                 Color History
               </h3>
-              <Button onClick={clearHistory} variant="outline" size="sm">
+              <Button onClick={clearHistory} variant="outline" size="sm" className="border-border dark:border-border/50 hover:bg-accent/50 dark:hover:bg-accent/30 text-foreground dark:text-foreground">
                 Clear History
               </Button>
             </div>
-            <div>
+            <div className="bg-background/50 dark:bg-background/30 rounded-lg p-4 border border-border/50 dark:border-border/30">
               <ColorGrid 
                 colors={colorHistory.map(color => ({
                   color: color.hex,

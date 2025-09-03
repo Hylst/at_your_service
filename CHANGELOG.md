@@ -48,6 +48,15 @@
   - **Accessibility**: Proper semantic structure and ARIA attributes for screen readers
 
 ### Fixed
+- **Dark Mode Contrast Issues - Creativity Section**: Comprehensive fix for dark mode contrast and readability issues in creativity tools to meet WCAG 2.1 AA standards
+  - **ColorGeneratorAdvanced.tsx**: Enhanced contrast for 'Current Color' and 'Color Controls' card backgrounds and text in dark mode
+  - **ColorHarmonyGenerator.tsx**: Improved color code display fields and harmony blocks contrast with proper dark mode variants
+  - **History Tab**: Fixed main block background and text contrast for better visibility in dark mode
+  - **UnifiedToolHeader Component**: Replaced hard-coded light backgrounds with semantic design tokens
+    - Added dark mode variants for all gradient backgrounds (primary, secondary, success, warning, error, creative)
+    - Updated background patterns to use foreground-based colors instead of white
+    - Fixed divider and interactive overlay colors with semantic tokens
+  - **WCAG 2.1 AA Compliance**: Ensured minimum 4.5:1 contrast ratio for all text and interactive elements
 - **IndexedDB Version Conflict Resolution**: Fixed database version conflict by updating the version from 12 to 151 to resolve errors where the requested version was lower than the existing version (150)
 - **Date & Time Section Layout**: Removed unnecessary outer Card wrapper in DateCalculatorAdvanced component to eliminate redundant visual frame and improve layout cleanliness
 - **Sidebar Menu Button Interactions (Desktop Mode)**: Fixed non-clickable sidebar menu buttons by adding `pointer-events-none` to overlay elements that were blocking click and hover events
