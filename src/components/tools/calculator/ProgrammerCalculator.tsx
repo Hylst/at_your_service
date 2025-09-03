@@ -427,28 +427,28 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
             <Button
               variant="default"
               onClick={() => performArithmeticOperation('ADD')}
-              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+              className="h-12 text-sm bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground border-border"
             >
               <Plus className="w-4 h-4" />
             </Button>
             <Button
               variant="default"
               onClick={() => performArithmeticOperation('SUB')}
-              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+              className="h-12 text-sm bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground border-border"
             >
               <Minus className="w-4 h-4" />
             </Button>
             <Button
               variant="default"
               onClick={() => performArithmeticOperation('MUL')}
-              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+              className="h-12 text-sm bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground border-border"
             >
               <X className="w-4 h-4" />
             </Button>
             <Button
               variant="default"
               onClick={() => performArithmeticOperation('DIV')}
-              className="h-12 text-sm bg-emerald-600 hover:bg-emerald-700"
+              className="h-12 text-sm bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground border-border"
             >
               <Divide className="w-4 h-4" />
             </Button>
@@ -528,15 +528,15 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
           {inputBase === 'hex' && (
             <div className="grid grid-cols-3 gap-2">
               {['A', 'B', 'C', 'D', 'E', 'F'].map(digit => (
-                <Button
-                  key={digit}
-                  variant="outline"
-                  onClick={() => handleNumberInput(digit)}
-                  className="h-12 text-lg bg-yellow-50 hover:bg-yellow-100 dark:bg-yellow-900/30 dark:hover:bg-yellow-800/50"
-                >
-                  {digit}
-                </Button>
-              ))}
+             <Button
+                 key={digit}
+                 variant="outline"
+                 onClick={() => handleNumberInput(digit)}
+                 className="h-12 text-lg bg-warning/10 hover:bg-warning/20 dark:bg-warning/20 dark:hover:bg-warning/30 text-warning border-border"
+               >
+                 {digit}
+               </Button>
+          ))}
             </div>
           )}
 
@@ -547,7 +547,7 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
                 key={digit}
                 variant="outline"
                 onClick={() => handleNumberInput(digit)}
-                className="h-12 text-lg"
+                className="h-12 text-lg bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground border-border"
                 disabled={
                   (inputBase === 'oct' && parseInt(digit) >= 8) ||
                   (inputBase === 'bin' && parseInt(digit) >= 2)
@@ -569,7 +569,7 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
                 key={digit}
                 variant="outline"
                 onClick={() => handleNumberInput(digit)}
-                className="h-12 text-lg"
+                className="h-12 text-lg bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground border-border"
                 disabled={inputBase === 'bin' && parseInt(digit) >= 2}
               >
                 {digit}
@@ -588,7 +588,7 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
                 key={digit}
                 variant="outline"
                 onClick={() => handleNumberInput(digit)}
-                className="h-12 text-lg"
+                className="h-12 text-lg bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground border-border"
                 disabled={inputBase === 'bin' && parseInt(digit) >= 2}
               >
                 {digit}
@@ -597,7 +597,7 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
             <Button
               variant="default"
               onClick={executeOperation}
-              className="h-12 bg-yellow-600 hover:bg-yellow-700"
+              className="h-12 bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 text-primary-foreground border-border"
             >
               =
             </Button>
@@ -605,7 +605,7 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
             <Button
               variant="outline"
               onClick={() => handleNumberInput('0')}
-              className="col-span-3 h-12 text-lg"
+              className="col-span-3 h-12 text-lg bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground border-border"
             >
               0
             </Button>
@@ -631,8 +631,8 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
         </CardHeader>
         <CardContent className="p-6 space-y-4">
           <div className="space-y-3">
-            <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-              <span className="font-medium text-blue-700 dark:text-blue-300">Décimal (DEC):</span>
+            <div className="flex justify-between items-center p-3 bg-secondary/10 dark:bg-secondary/20 rounded-lg border border-border">
+              <span className="font-medium text-secondary-foreground">Décimal (DEC):</span>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-lg">{convertToBase(currentNumber, 'dec')}</span>
                 <Button 
@@ -645,8 +645,8 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
               </div>
             </div>
             
-            <div className="flex justify-between items-center p-3 bg-orange-50 dark:bg-orange-950/20 rounded-lg">
-              <span className="font-medium text-orange-700 dark:text-orange-300">Hexadécimal (HEX):</span>
+            <div className="flex justify-between items-center p-3 bg-accent/10 dark:bg-accent/20 rounded-lg border border-border">
+              <span className="font-medium text-accent-foreground">Hexadécimal (HEX):</span>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-lg">0x{convertToBase(currentNumber, 'hex')}</span>
                 <Button 
@@ -659,8 +659,8 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
               </div>
             </div>
             
-            <div className="flex justify-between items-center p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
-              <span className="font-medium text-purple-700 dark:text-purple-300">Octal (OCT):</span>
+            <div className="flex justify-between items-center p-3 bg-muted/50 dark:bg-muted/70 rounded-lg border border-border">
+              <span className="font-medium text-foreground">Octal (OCT):</span>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-lg">0{convertToBase(currentNumber, 'oct')}</span>
                 <Button 
@@ -673,8 +673,8 @@ export const ProgrammerCalculator: React.FC<ProgrammerCalculatorProps> = ({
               </div>
             </div>
             
-            <div className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
-              <span className="font-medium text-green-700 dark:text-green-300">Binaire (BIN):</span>
+            <div className="flex justify-between items-center p-3 bg-primary/10 dark:bg-primary/20 rounded-lg border border-border">
+              <span className="font-medium text-primary">Binaire (BIN):</span>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-lg break-all">0b{convertToBase(currentNumber, 'bin')}</span>
                 <Button 

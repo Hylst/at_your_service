@@ -49,6 +49,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Semantic colors for results and calculations */
+    --result-light: 210 40% 95%;
+    --result-dark: 210 40% 15%;
+    --calc-number: 210 100% 95%;
+    --calc-operator: 25 95% 90%;
+    --calc-function: 142 76% 90%;
   }
 
   .dark {
@@ -87,6 +94,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Semantic colors for results and calculations - Dark mode */
+    --result-light: 210 40% 15%;
+    --result-dark: 210 40% 8%;
+    --calc-number: 210 100% 15%;
+    --calc-operator: 25 95% 15%;
+    --calc-function: 142 76% 15%;
   }
 }
 

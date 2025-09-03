@@ -90,7 +90,7 @@ export const BasicCalculator = ({
             <Button 
               variant="outline" 
               onClick={memoryClear}
-              className="h-8 sm:h-10 text-xs sm:text-sm bg-red-50 hover:bg-red-100 dark:bg-red-900/30 dark:hover:bg-red-800/50 text-red-700 dark:text-red-300 border-red-300 dark:border-red-700"
+              className="h-8 sm:h-10 text-xs sm:text-sm bg-destructive/10 hover:bg-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 text-destructive border-border"
             >
               MC
             </Button>
@@ -105,7 +105,7 @@ export const BasicCalculator = ({
             <Button 
               variant="outline" 
               onClick={memoryRecall}
-              className="h-8 sm:h-10 text-xs sm:text-sm bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-700"
+              className="h-8 sm:h-10 text-xs sm:text-sm bg-primary/10 hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30 text-primary border-border"
             >
               MR
             </Button>
@@ -120,7 +120,7 @@ export const BasicCalculator = ({
             <Button 
               variant="outline" 
               onClick={memoryStore}
-              className="h-8 sm:h-10 text-xs sm:text-sm bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 border-blue-300 dark:border-blue-700"
+              className="h-8 sm:h-10 text-xs sm:text-sm bg-primary/10 hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30 text-primary border-border"
             >
               MS
             </Button>
@@ -135,7 +135,7 @@ export const BasicCalculator = ({
             <Button 
               variant="outline" 
               onClick={memoryAdd}
-              className="h-8 sm:h-10 text-xs sm:text-sm bg-green-50 hover:bg-green-100 dark:bg-green-900/30 dark:hover:bg-green-800/50 text-green-700 dark:text-green-300 border-green-300 dark:border-green-700"
+              className="h-8 sm:h-10 text-xs sm:text-sm bg-success/10 hover:bg-success/20 dark:bg-success/20 dark:hover:bg-success/30 text-success border-border"
             >
               M+
             </Button>
@@ -150,7 +150,7 @@ export const BasicCalculator = ({
             <Button 
               variant="outline" 
               onClick={memorySubtract}
-              className="h-8 sm:h-10 text-xs sm:text-sm bg-yellow-50 hover:bg-yellow-100 dark:bg-yellow-900/30 dark:hover:bg-yellow-800/50 text-yellow-700 dark:text-yellow-300 border-yellow-300 dark:border-yellow-700"
+              className="h-8 sm:h-10 text-xs sm:text-sm bg-warning/10 hover:bg-warning/20 dark:bg-warning/20 dark:hover:bg-warning/30 text-warning border-border"
             >
               M-
             </Button>
@@ -182,7 +182,7 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={backspace}
-          className="h-10 sm:h-12 text-sm sm:text-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="h-10 sm:h-12 text-sm sm:text-lg bg-muted hover:bg-muted/80 dark:bg-muted dark:hover:bg-muted/80"
         >
           ⌫
         </Button>
@@ -190,7 +190,7 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={() => inputOperation("/")} 
-          className="h-10 sm:h-12 text-lg sm:text-xl bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300"
+          className="h-10 sm:h-12 text-lg sm:text-xl bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground"
         >
           ÷
         </Button>
@@ -201,7 +201,7 @@ export const BasicCalculator = ({
             key={num}
             variant="outline" 
             onClick={() => inputNumber(num.toString())} 
-            className="h-10 sm:h-12 text-lg sm:text-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200"
+            className="h-10 sm:h-12 text-lg sm:text-xl bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground"
           >
             {num}
           </Button>
@@ -209,7 +209,7 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={() => inputOperation("*")} 
-          className="h-10 sm:h-12 text-lg sm:text-xl bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300"
+          className="h-10 sm:h-12 text-lg sm:text-xl bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground"
         >
           ×
         </Button>
@@ -219,7 +219,7 @@ export const BasicCalculator = ({
             key={num}
             variant="outline" 
             onClick={() => inputNumber(num.toString())} 
-            className="h-10 sm:h-12 text-lg sm:text-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200"
+            className="h-10 sm:h-12 text-lg sm:text-xl bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground"
           >
             {num}
           </Button>
@@ -227,7 +227,7 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={() => inputOperation("-")} 
-          className="h-10 sm:h-12 text-lg sm:text-xl bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300"
+          className="h-10 sm:h-12 text-lg sm:text-xl bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground"
         >
           -
         </Button>
@@ -237,7 +237,7 @@ export const BasicCalculator = ({
             key={num}
             variant="outline" 
             onClick={() => inputNumber(num.toString())} 
-            className="h-10 sm:h-12 text-lg sm:text-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200"
+            className="h-10 sm:h-12 text-lg sm:text-xl bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground"
           >
             {num}
           </Button>
@@ -245,7 +245,7 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={() => inputOperation("+")} 
-          className="h-10 sm:h-12 text-lg sm:text-xl row-span-2 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300"
+          className="h-10 sm:h-12 text-lg sm:text-xl row-span-2 bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground"
         >
           +
         </Button>
@@ -253,20 +253,21 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={() => inputNumber("0")} 
-          className="col-span-2 h-10 sm:h-12 text-lg sm:text-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200"
+          className="col-span-2 h-10 sm:h-12 text-lg sm:text-xl bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground"
         >
           0
         </Button>
         <Button 
           variant="outline" 
           onClick={inputDecimal} 
-          className="h-10 sm:h-12 text-lg sm:text-xl bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="h-10 sm:h-12 text-lg sm:text-xl bg-muted hover:bg-muted/80 dark:bg-muted dark:hover:bg-muted/80"
         >
           .
         </Button>
         <Button 
+          variant="outline" 
           onClick={performCalculation}
-          className="h-10 sm:h-12 text-lg sm:text-xl bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold"
+          className="h-10 sm:h-12 text-lg sm:text-xl bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 text-primary-foreground"
         >
           =
         </Button>
@@ -277,28 +278,28 @@ export const BasicCalculator = ({
         <Button 
           variant="outline" 
           onClick={() => inputOperation("^")}
-          className="h-8 sm:h-10 text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 dark:bg-purple-900/30 dark:hover:bg-purple-800/50 text-purple-700 dark:text-purple-300"
+          className="h-8 sm:h-10 text-xs sm:text-sm bg-secondary hover:bg-secondary/80 dark:bg-secondary dark:hover:bg-secondary/80 text-secondary-foreground"
         >
           x^y
         </Button>
         <Button 
           variant="outline" 
           onClick={() => scientificFunction("sqrt")}
-          className="h-8 sm:h-10 text-xs sm:text-sm bg-purple-50 hover:bg-purple-100 dark:bg-purple-900/30 dark:hover:bg-purple-800/50 text-purple-700 dark:text-purple-300"
+          className="h-8 sm:h-10 text-xs sm:text-sm bg-secondary hover:bg-secondary/80 dark:bg-secondary dark:hover:bg-secondary/80 text-secondary-foreground"
         >
           √x
         </Button>
         <Button 
           variant="outline" 
           onClick={() => scientificFunction("percent")}
-          className="h-8 sm:h-10 text-xs sm:text-sm bg-yellow-50 hover:bg-yellow-100 dark:bg-yellow-900/30 dark:hover:bg-yellow-800/50 text-yellow-700 dark:text-yellow-300"
+          className="h-8 sm:h-10 text-xs sm:text-sm bg-warning/10 hover:bg-warning/20 dark:bg-warning/20 dark:hover:bg-warning/30 text-warning"
         >
           %
         </Button>
         <Button 
           variant="outline" 
           onClick={() => scientificFunction("negate")}
-          className="h-8 sm:h-10 text-xs sm:text-sm bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="h-8 sm:h-10 text-xs sm:text-sm bg-muted hover:bg-muted/80 dark:bg-muted dark:hover:bg-muted/80"
         >
           ±
         </Button>

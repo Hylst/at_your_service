@@ -132,25 +132,25 @@ export const About = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
+            <div className="p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
               <h4 className="font-semibold text-green-600 group-hover/item:text-green-700 dark:group-hover/item:text-green-400 transition-colors duration-300">✓ Architecture Modulaire Avancée</h4>
               <p className="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-gray-700 dark:group-hover/item:text-gray-200 transition-colors duration-300">
                 Composants réutilisables avec hooks personnalisés et gestion d'état optimisée
               </p>
             </div>
-            <div className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
+            <div className="p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
               <h4 className="font-semibold text-green-600 group-hover/item:text-green-700 dark:group-hover/item:text-green-400 transition-colors duration-300">✓ Stockage Multi-Couches</h4>
               <p className="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-gray-700 dark:group-hover/item:text-gray-200 transition-colors duration-300">
                 IndexedDB + Supabase + localStorage pour une persistance robuste
               </p>
             </div>
-            <div className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
+            <div className="p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
               <h4 className="font-semibold text-green-600 group-hover/item:text-green-700 dark:group-hover/item:text-green-400 transition-colors duration-300">✓ Intelligence Artificielle Intégrée</h4>
               <p className="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-gray-700 dark:group-hover/item:text-gray-200 transition-colors duration-300">
                 Décomposition de tâches, suggestions intelligentes et analyse automatique
               </p>
             </div>
-            <div className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
+            <div className="p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 hover:shadow-md hover:scale-[1.02] group/item">
               <h4 className="font-semibold text-green-600 group-hover/item:text-green-700 dark:group-hover/item:text-green-400 transition-colors duration-300">✓ Export/Import Universel</h4>
               <p className="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-gray-700 dark:group-hover/item:text-gray-200 transition-colors duration-300">
                 Formats multiples (JSON, CSV, SVG, PNG, PDF) avec compression automatique
@@ -183,7 +183,7 @@ export const About = () => {
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Calculatrices */}
-            <div className="space-y-2 p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
+            <div className="space-y-2 p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
               <h4 className="font-semibold text-blue-600 group-hover/category:text-blue-700 dark:group-hover/category:text-blue-300 transition-colors duration-300">🧮 Suite Calculatrices</h4>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 group-hover/category:text-gray-700 dark:group-hover/category:text-gray-200 transition-colors duration-300">
                 <li>• Calculatrice Scientifique</li>
@@ -194,7 +194,7 @@ export const About = () => {
             </div>
             
             {/* Créativité */}
-            <div className="space-y-2 p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
+            <div className="space-y-2 p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
               <h4 className="font-semibold text-purple-600 group-hover/category:text-purple-700 dark:group-hover/category:text-purple-300 transition-colors duration-300">🎨 Suite Créativité</h4>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 group-hover/category:text-gray-700 dark:group-hover/category:text-gray-200 transition-colors duration-300">
                 <li>• Générateur de Couleurs</li>
@@ -209,7 +209,7 @@ export const About = () => {
             </div>
             
             {/* Productivité */}
-            <div className="space-y-2 p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
+            <div className="space-y-2 p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
               <h4 className="font-semibold text-green-600 group-hover/category:text-green-700 dark:group-hover/category:text-green-300 transition-colors duration-300">⚡ Suite Productivité</h4>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 group-hover/category:text-gray-700 dark:group-hover/category:text-gray-200 transition-colors duration-300">
                 <li>• Gestionnaire de Tâches IA</li>
@@ -221,7 +221,7 @@ export const About = () => {
             </div>
             
             {/* Santé */}
-            <div className="space-y-2 p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
+            <div className="space-y-2 p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
               <h4 className="font-semibold text-red-600 group-hover/category:text-red-700 dark:group-hover/category:text-red-300 transition-colors duration-300">❤️ Santé & Bien-être</h4>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 group-hover/category:text-gray-700 dark:group-hover/category:text-gray-200 transition-colors duration-300">
                 <li>• Calculateur IMC</li>
@@ -235,7 +235,7 @@ export const About = () => {
             </div>
             
             {/* Utilitaires */}
-            <div className="space-y-2 p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
+            <div className="space-y-2 p-4 bg-result-light dark:bg-result-dark rounded-xl hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30 transition-all duration-300 hover:shadow-md group/category">
               <h4 className="font-semibold text-orange-600 group-hover/category:text-orange-700 dark:group-hover/category:text-orange-300 transition-colors duration-300">🔧 Utilitaires</h4>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1 group-hover/category:text-gray-700 dark:group-hover/category:text-gray-200 transition-colors duration-300">
                 <li>• Convertisseurs d'Unités</li>

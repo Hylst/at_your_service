@@ -32,9 +32,9 @@ export const ConversionCard: React.FC<ConversionCardProps> = ({
 
   return (
     <Card className="shadow-lg border-2 hover:shadow-xl transition-shadow">
-      <CardHeader className={`bg-gradient-to-r from-${color}-50 to-${color}-100 dark:from-${color}-950/50 dark:to-${color}-900/50`}>
+      <CardHeader className="bg-result-light dark:bg-result-dark">
         <CardTitle className="flex items-center gap-3">
-          <div className={`p-2 bg-${color}-100 dark:bg-${color}-800 rounded-full`}>
+          <div className="p-2 bg-primary/10 dark:bg-primary/20 rounded-full">
             {icon}
           </div>
           {title}
@@ -110,10 +110,10 @@ export const ConversionCard: React.FC<ConversionCardProps> = ({
           </Select>
         </div>
         
-        <div className={`p-6 bg-gradient-to-r from-${color}-50 to-${color}-100 dark:from-${color}-900/20 dark:to-${color}-800/20 rounded-xl border-2 border-${color}-200 dark:border-${color}-700/50`}>
+        <div className="p-6 bg-result-light dark:bg-result-dark rounded-xl border-2 border-border">
           <div className="flex items-center gap-2 mb-3">
-            <div className={`p-1 bg-${color}-200 dark:bg-${color}-700/50 rounded-full`}>
-              <Info className={`w-4 h-4 text-${color}-600 dark:text-${color}-400`} />
+            <div className="p-1 bg-primary/20 dark:bg-primary/30 rounded-full">
+              <Info className="w-4 h-4 text-primary" />
             </div>
             <p className="text-sm font-semibold text-gray-700 dark:text-gray-100">
               Résultat de la conversion

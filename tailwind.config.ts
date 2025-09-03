@@ -61,6 +61,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Semantic colors for results and calculations
+				result: {
+					light: 'hsl(var(--result-light))',
+					dark: 'hsl(var(--result-dark))'
+				},
+				calc: {
+					number: 'hsl(var(--calc-number))',
+					operator: 'hsl(var(--calc-operator))',
+					function: 'hsl(var(--calc-function))'
 				}
 			},
 			borderRadius: {

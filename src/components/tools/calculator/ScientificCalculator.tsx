@@ -41,6 +41,19 @@ export const ScientificCalculator = ({
   copyToClipboard,
   formatNumber
 }: ScientificCalculatorProps) => {
+  const getButtonStyle = (type: 'trig' | 'hyperbolic' | 'power' | 'constant' | 'advanced' | 'number' | 'operation' | 'equals') => {
+    const styles = {
+      trig: 'h-8 sm:h-10 text-xs sm:text-sm bg-secondary hover:bg-secondary/80 dark:bg-secondary dark:hover:bg-secondary/80 text-secondary-foreground border-border',
+      hyperbolic: 'h-8 sm:h-10 text-xs sm:text-sm bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground border-border',
+      power: 'h-8 sm:h-10 text-xs sm:text-sm bg-muted hover:bg-muted/80 dark:bg-muted dark:hover:bg-muted/80 text-foreground border-border',
+      constant: 'h-8 sm:h-10 text-xs sm:text-sm bg-warning/10 hover:bg-warning/20 dark:bg-warning/20 dark:hover:bg-warning/30 text-warning border-border',
+      advanced: 'h-8 sm:h-10 text-xs sm:text-sm bg-destructive/10 hover:bg-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 text-destructive border-border',
+      number: 'h-10 sm:h-12 text-lg sm:text-xl bg-calculator-number hover:bg-calculator-number/80 dark:bg-calculator-number-dark dark:hover:bg-calculator-number-dark/80 text-foreground border-border',
+      operation: 'h-10 sm:h-12 text-lg sm:text-xl bg-accent hover:bg-accent/80 dark:bg-accent dark:hover:bg-accent/80 text-accent-foreground border-border',
+      equals: 'h-10 sm:h-12 text-lg sm:text-xl bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 text-primary-foreground border-border'
+    };
+    return styles[type];
+  };
   return (
     <div className="space-y-4">
       {/* Écran amélioré */}
@@ -79,19 +92,19 @@ export const ScientificCalculator = ({
       {/* Fonctions trigonométriques */}
       <div className="grid grid-cols-4 sm:grid-cols-6 gap-1 sm:gap-2 text-xs sm:text-sm">
         {[
-          { func: "sin", label: "sin", color: "red", tooltip: `Sinus (${isRadians ? "radians" : "degrés"})` },
-          { func: "cos", label: "cos", color: "red", tooltip: "Cosinus" },
-          { func: "tan", label: "tan", color: "red", tooltip: "Tangente" },
-          { func: "asin", label: "sin⁻¹", color: "red", tooltip: "Arc sinus" },
-          { func: "acos", label: "cos⁻¹", color: "red", tooltip: "Arc cosinus" },
-          { func: "atan", label: "tan⁻¹", color: "red", tooltip: "Arc tangente" }
-        ].map(({ func, label, color, tooltip }) => (
+          { func: "sin", label: "sin", tooltip: `Sinus (${isRadians ? "radians" : "degrés"})` },
+          { func: "cos", label: "cos", tooltip: "Cosinus" },
+          { func: "tan", label: "tan", tooltip: "Tangente" },
+          { func: "asin", label: "sin⁻¹", tooltip: "Arc sinus" },
+          { func: "acos", label: "cos⁻¹", tooltip: "Arc cosinus" },
+          { func: "atan", label: "tan⁻¹", tooltip: "Arc tangente" }
+        ].map(({ func, label, tooltip }) => (
           <Tooltip key={func}>
             <TooltipTrigger asChild>
               <Button 
                 variant="outline" 
                 onClick={() => scientificFunction(func)} 
-                className={`h-8 sm:h-10 bg-${color}-50 hover:bg-${color}-100 dark:bg-${color}-900/30 dark:hover:bg-${color}-800/50 text-${color}-700 dark:text-${color}-300 border-${color}-200 dark:border-${color}-700`}
+                className={getButtonStyle('trig')}
                 size="sm"
               >
                 {label}
@@ -107,19 +120,19 @@ export const ScientificCalculator = ({
       {/* Fonctions hyperboliques */}
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-1 sm:gap-2 text-xs sm:text-sm">
         {[
-          { func: "sinh", label: "sinh", color: "orange", tooltip: "Sinus hyperbolique" },
-          { func: "cosh", label: "cosh", color: "orange", tooltip: "Cosinus hyperbolique" },
-          { func: "tanh", label: "tanh", color: "orange", tooltip: "Tangente hyperbolique" },
-          { func: "exp", label: "exp", color: "purple", tooltip: "Exponentielle (e^x)" },
-          { func: "ln", label: "ln", color: "green", tooltip: "Logarithme naturel (base e)" },
-          { func: "log", label: "log", color: "green", tooltip: "Logarithme décimal (base 10)" }
-        ].map(({ func, label, color, tooltip }) => (
+          { func: "sinh", label: "sinh", tooltip: "Sinus hyperbolique" },
+          { func: "cosh", label: "cosh", tooltip: "Cosinus hyperbolique" },
+          { func: "tanh", label: "tanh", tooltip: "Tangente hyperbolique" },
+          { func: "exp", label: "exp", tooltip: "Exponentielle (e^x)" },
+          { func: "ln", label: "ln", tooltip: "Logarithme naturel (base e)" },
+          { func: "log", label: "log", tooltip: "Logarithme décimal (base 10)" }
+        ].map(({ func, label, tooltip }) => (
           <Tooltip key={func}>
             <TooltipTrigger asChild>
               <Button 
                 variant="outline" 
                 onClick={() => scientificFunction(func)} 
-                className={`h-8 sm:h-10 bg-${color}-50 hover:bg-${color}-100 dark:bg-${color}-900/30 dark:hover:bg-${color}-800/50 text-${color}-700 dark:text-${color}-300 border-${color}-200 dark:border-${color}-700`}
+                className={getButtonStyle('hyperbolic')}
                 size="sm"
               >
                 {label}
@@ -135,19 +148,19 @@ export const ScientificCalculator = ({
       {/* Puissances et racines */}
       <div className="grid grid-cols-4 sm:grid-cols-6 gap-1 sm:gap-2 text-xs sm:text-sm">
         {[
-          { func: "square", label: "x²", color: "blue", tooltip: "Carré du nombre" },
-          { func: "cube", label: "x³", color: "blue", tooltip: "Cube du nombre" },
-          { func: "sqrt", label: "√x", color: "blue", tooltip: "Racine carrée" },
-          { func: "cbrt", label: "∛x", color: "blue", tooltip: "Racine cubique" },
-          { func: "1/x", label: "1/x", color: "indigo", tooltip: "Inverse (1/x)" },
-          { func: "abs", label: "|x|", color: "gray", tooltip: "Valeur absolue" }
-        ].map(({ func, label, color, tooltip }) => (
+          { func: "square", label: "x²", tooltip: "Carré du nombre" },
+          { func: "cube", label: "x³", tooltip: "Cube du nombre" },
+          { func: "sqrt", label: "√x", tooltip: "Racine carrée" },
+          { func: "cbrt", label: "∛x", tooltip: "Racine cubique" },
+          { func: "1/x", label: "1/x", tooltip: "Inverse (1/x)" },
+          { func: "abs", label: "|x|", tooltip: "Valeur absolue" }
+        ].map(({ func, label, tooltip }) => (
           <Tooltip key={func}>
             <TooltipTrigger asChild>
               <Button 
                 variant="outline" 
                 onClick={() => scientificFunction(func)} 
-                className={`h-8 sm:h-10 bg-${color}-50 hover:bg-${color}-100 dark:bg-${color}-900/30 dark:hover:bg-${color}-800/50 text-${color}-700 dark:text-${color}-300 border-${color}-200 dark:border-${color}-700`}
+                className={getButtonStyle('power')}
                 size="sm"
               >
                 {label}
@@ -163,19 +176,19 @@ export const ScientificCalculator = ({
       {/* Constantes et autres fonctions */}
       <div className="grid grid-cols-4 sm:grid-cols-6 gap-1 sm:gap-2 text-xs sm:text-sm">
         {[
-          { func: "pi", label: "π", color: "purple", tooltip: "Pi (3.14159...)" },
-          { func: "e", label: "e", color: "purple", tooltip: "Nombre d'Euler (2.718...)" },
-          { func: "factorial", label: "n!", color: "indigo", tooltip: "Factorielle" },
-          { func: "random", label: "Rand", color: "yellow", tooltip: "Nombre aléatoire (0-1)" },
-          { func: "negate", label: "±", color: "gray", tooltip: "Changer de signe" },
-          { func: "percent", label: "%", color: "gray", tooltip: "Pourcentage" }
-        ].map(({ func, label, color, tooltip }) => (
+          { func: "pi", label: "π", tooltip: "Pi (3.14159...)" },
+          { func: "e", label: "e", tooltip: "Nombre d'Euler (2.718...)" },
+          { func: "factorial", label: "n!", tooltip: "Factorielle" },
+          { func: "random", label: "Rand", tooltip: "Nombre aléatoire (0-1)" },
+          { func: "negate", label: "±", tooltip: "Changer de signe" },
+          { func: "percent", label: "%", tooltip: "Pourcentage" }
+        ].map(({ func, label, tooltip }) => (
           <Tooltip key={func}>
             <TooltipTrigger asChild>
               <Button 
                 variant="outline" 
                 onClick={() => scientificFunction(func)} 
-                className={`h-8 sm:h-10 bg-${color}-50 hover:bg-${color}-100 dark:bg-${color}-900/30 dark:hover:bg-${color}-800/50 text-${color}-700 dark:text-${color}-300 border-${color}-200 dark:border-${color}-700`}
+                className={getButtonStyle('constant')}
                 size="sm"
               >
                 {label}
@@ -239,39 +252,79 @@ export const ScientificCalculator = ({
         </Tooltip>
       </div>
 
+      {/* Fonctions mathématiques avancées */}
+      <div className="grid grid-cols-4 sm:grid-cols-6 gap-1 sm:gap-2 text-xs sm:text-sm">
+        {[
+          { func: "mod", label: "mod", tooltip: "Modulo (reste de la division)" },
+          { func: "gcd", label: "GCD", tooltip: "Plus grand commun diviseur" },
+          { func: "lcm", label: "LCM", tooltip: "Plus petit commun multiple" },
+          { func: "floor", label: "⌊x⌋", tooltip: "Partie entière inférieure" },
+          { func: "ceil", label: "⌈x⌉", tooltip: "Partie entière supérieure" },
+          { func: "round", label: "Round", tooltip: "Arrondir au plus proche" }
+        ].map(({ func, label, tooltip }) => (
+          <Tooltip key={func}>
+            <TooltipTrigger asChild>
+              <Button 
+                variant="outline" 
+                onClick={() => scientificFunction(func)} 
+                className={getButtonStyle('advanced')}
+                size="sm"
+              >
+                {label}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{tooltip}</p>
+            </TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+
       {/* Clavier numérique compact */}
-      <div className="grid grid-cols-4 gap-1 sm:gap-2">
-        <Button variant="destructive" onClick={clearAll} className="h-8 sm:h-10 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm">AC</Button>
-        <Button variant="outline" onClick={backspace} className="h-8 sm:h-10 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs sm:text-sm">⌫</Button>
+      <div className="grid grid-cols-4 gap-2">
+        {/* Clear and Backspace */}
         <Button 
-          variant={isRadians ? "default" : "outline"} 
-          onClick={() => setIsRadians(!isRadians)} 
-          className="h-8 sm:h-10 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm"
+          variant="outline" 
+          onClick={clearAll} 
+          className="col-span-2 h-10 sm:h-12 text-lg sm:text-xl bg-destructive/10 hover:bg-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 text-destructive border-border"
         >
-          {isRadians ? "RAD" : "DEG"}
+          C
         </Button>
-        <Button variant="outline" onClick={() => inputOperation("/")} className="h-8 sm:h-10 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300 text-xs sm:text-sm">÷</Button>
+        <Button 
+          variant="outline" 
+          onClick={backspace} 
+          className="h-10 sm:h-12 text-lg sm:text-xl bg-muted hover:bg-muted/80 dark:bg-muted dark:hover:bg-muted/80 border-border"
+        >
+          ⌫
+        </Button>
+        <Button 
+          variant="outline" 
+          onClick={() => inputOperation("/")} 
+          className={getButtonStyle('operation')}
+        >
+          ÷
+        </Button>
 
         {[7, 8, 9].map(num => (
-          <Button key={num} variant="outline" onClick={() => inputNumber(num.toString())} className="h-8 sm:h-10 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm">{num}</Button>
+          <Button key={num} variant="outline" onClick={() => inputNumber(num.toString())} className={getButtonStyle('number')}>{num}</Button>
         ))}
-        <Button variant="outline" onClick={() => inputOperation("*")} className="h-8 sm:h-10 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300 text-xs sm:text-sm">×</Button>
+        <Button variant="outline" onClick={() => inputOperation("*")} className={getButtonStyle('operation')}>×</Button>
 
         {[4, 5, 6].map(num => (
-          <Button key={num} variant="outline" onClick={() => inputNumber(num.toString())} className="h-8 sm:h-10 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm">{num}</Button>
+          <Button key={num} variant="outline" onClick={() => inputNumber(num.toString())} className={getButtonStyle('number')}>{num}</Button>
         ))}
-        <Button variant="outline" onClick={() => inputOperation("-")} className="h-8 sm:h-10 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300 text-xs sm:text-sm">-</Button>
+        <Button variant="outline" onClick={() => inputOperation("-")} className={getButtonStyle('operation')}>-</Button>
 
         {[1, 2, 3].map(num => (
-          <Button key={num} variant="outline" onClick={() => inputNumber(num.toString())} className="h-8 sm:h-10 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm">{num}</Button>
+          <Button key={num} variant="outline" onClick={() => inputNumber(num.toString())} className={getButtonStyle('number')}>{num}</Button>
         ))}
-        <Button variant="outline" onClick={() => inputOperation("+")} className="h-8 sm:h-10 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/50 dark:hover:bg-orange-800/70 text-orange-700 dark:text-orange-300 text-xs sm:text-sm">+</Button>
+        <Button variant="outline" onClick={() => inputOperation("+")} className={getButtonStyle('operation')}>+</Button>
 
-        <Button variant="outline" onClick={() => inputNumber("0")} className="col-span-2 h-8 sm:h-10 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-800/50 text-blue-800 dark:text-blue-200 text-xs sm:text-sm">0</Button>
-        <Button variant="outline" onClick={inputDecimal} className="h-8 sm:h-10 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs sm:text-sm">.</Button>
+        <Button variant="outline" onClick={() => inputNumber("0")} className={`col-span-2 ${getButtonStyle('number')}`}>0</Button>
+        <Button variant="outline" onClick={inputDecimal} className={getButtonStyle('number')}>.</Button>
         <Button 
           onClick={performCalculation}
-          className="h-8 sm:h-10 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold text-xs sm:text-sm"
+          className={getButtonStyle('equals')}
         >
           =
         </Button>
