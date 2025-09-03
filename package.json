@@ -1,6 +1,7 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "a-votre-service",
   "private": true,
+  "description": "À Votre Service - Écosystème numérique professionnel",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

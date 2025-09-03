@@ -4,6 +4,34 @@
 ## [Unreleased]
 
 ### Added
+- **Icon Consistency Fix**: Corrected all application icons to use the butler image consistently
+  - **Sidebar Logo**: Replaced emoji 🛠️ in sidebar header with butler image for professional appearance
+  - **Favicon Configuration**: Added explicit favicon link in index.html to ensure proper browser tab icon display
+  - **Open Graph Images**: Updated social media preview images to use PNG format instead of SVG
+  - **Browser Cache Solution**: Created favicon-butler.ico with unique filename to bypass aggressive browser favicon caching
+  - **Visual Uniformity**: All application icons now consistently use the same butler illustration
+
+- **Butler Image Update**: Replaced homepage illustration with new butler image
+  - **Homepage Hero Section**: Updated majordome-hero image from SVG to PNG format using provided butler illustration
+  - **Favicon Update**: Replaced favicon.ico with new butler image for consistent branding
+  - **PWA Icons Update**: Updated PWA icons (icon-192.png and icon-512.png) with new butler image
+  - **Manifest Configuration**: Updated manifest.json to reference new PNG image format in screenshots section
+  - **Visual Consistency**: Ensured all application icons and images use the same butler illustration for unified branding
+
+### Added
+- **Application Rebranding to "À Votre Service"**: Complete transformation from "Handy Hub Toolkit" to "À Votre Service" - professional digital butler ecosystem
+  - **Package Configuration**: Updated package.json with new app name 'a-votre-service' and French description "À Votre Service - Écosystème numérique professionnel"
+  - **Homepage Hero Section**: Added butler/majordome image with responsive layout (image left, text right on desktop; stacked on mobile)
+  - **Main Title Update**: Changed application title from 'Boîte à Outils Pratiques' to 'À Votre Service' throughout the interface
+  - **Butler Image Integration**: Created majordome-hero.svg in public/images/ directory with professional butler illustration
+  - **PWA Configuration**: Complete Progressive Web App setup with manifest.json and proper meta tags
+    - **PWA Manifest**: Created manifest.json with French localization, butler theme, and proper icon configuration
+    - **Meta Tags Update**: Updated index.html with PWA configuration, theme colors, and Apple touch icons
+    - **Icon Structure**: Set up public/icons/ directory with placeholder files for 192x192 and 512x512 PWA icons
+    - **Social Media Integration**: Updated Open Graph and Twitter meta tags to use butler image
+  - **Professional Branding**: Consistent "À Votre Service" branding across all application touchpoints
+
+### Added
 - **Phase 2 UI Improvements**: Enhanced visual design and user experience across the application
   - **Reduced Section Margins**: Significantly reduced spacing between header and content from 32px+ to 2px for more compact layout
   - **Optimized Card Padding**: Reduced default card padding from 24px to 8px for better space utilization

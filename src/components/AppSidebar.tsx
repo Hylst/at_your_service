@@ -65,7 +65,12 @@ export const AppSidebar = ({ activeSection, setActiveSection }: AppSidebarProps)
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2 hover:bg-gradient-to-r hover:from-indigo-50/50 hover:to-blue-50/50 dark:hover:from-indigo-950/20 dark:hover:to-blue-950/20 transition-all duration-300 rounded-lg mx-1 group/header">
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-teal-600 text-white group-hover/header:from-indigo-600 group-hover/header:to-purple-600 transition-all duration-300 group-hover/header:scale-110 group-hover/header:rotate-3 shadow-md group-hover/header:shadow-lg">
-            <span className="animate-bounce hover:animate-spin transition-all duration-300 transform hover:scale-125" title="Logo animé">🛠️</span>
+            <img 
+              src="/images/majordome-hero.png" 
+              alt="À votre service logo" 
+              className="w-6 h-6 object-contain animate-bounce hover:animate-spin transition-all duration-300 transform hover:scale-125" 
+              title="Logo animé"
+            />
           </div>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold group-hover/header:text-indigo-700 dark:group-hover/header:text-indigo-300 transition-colors duration-300">À votre service</span>

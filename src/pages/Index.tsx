@@ -64,7 +64,7 @@ const Index = () => {
       case "settings": return "Paramètres";
       case "profile": return "Mon Profil";
       case "about": return "À propos";
-      default: return "Boîte à Outils Pratiques";
+      default: return "À Votre Service";
     }
   };
 
@@ -110,35 +110,49 @@ const Index = () => {
         return (
           <div className="space-y-0">
             {/* Hero Section */}
-            <Section spacing="xl" className="text-center">
-              <Container variant="narrow">
-                <Heading level={1} gradient className="mb-6">
-                  Boîte à Outils Pratiques
-                </Heading>
-                <Text size="xl" color="muted" className="mb-8 max-w-2xl mx-auto">
-                  Une collection d'outils utiles pour votre quotidien. Convertisseurs, calculatrices, 
-                  outils de productivité et bien plus encore !
-                </Text>
-                
-                {!loading && !user && (
-                  <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <Button 
-                      onClick={() => navigate('/auth')}
-                      className="bg-gradient-to-r from-blue-600 to-teal-600 w-full sm:w-auto"
-                      size="lg"
-                    >
-                      Se connecter
-                    </Button>
-                    <Button 
-                      variant="outline"
-                      onClick={() => navigate('/auth')}
-                      className="w-full sm:w-auto"
-                      size="lg"
-                    >
-                      Créer un compte
-                    </Button>
+            <Section spacing="xl">
+              <Container>
+                <div className="flex flex-col lg:flex-row items-center gap-8 mb-8">
+                  {/* Butler Image */}
+                  <div className="lg:w-1/2 flex justify-center">
+                    <img 
+                      src="/images/majordome-hero.png" 
+                      alt="Majordome À Votre Service"
+                      className="w-full max-w-md mx-auto lg:max-w-lg"
+                    />
                   </div>
-                )}
+                  
+                  {/* Text Content */}
+                  <div className="lg:w-1/2 text-center lg:text-left">
+                    <Heading level={1} gradient className="mb-6">
+                      À Votre Service
+                    </Heading>
+                    <Text size="xl" color="muted" className="mb-8">
+                      Votre majordome numérique personnel. Une collection d'outils 
+                      professionnels pour optimiser votre quotidien.
+                    </Text>
+                    
+                    {!loading && !user && (
+                      <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <Button 
+                          onClick={() => navigate('/auth')}
+                          className="bg-gradient-to-r from-blue-600 to-teal-600 w-full sm:w-auto"
+                          size="lg"
+                        >
+                          Se connecter
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => navigate('/auth')}
+                          className="w-full sm:w-auto"
+                          size="lg"
+                        >
+                          Créer un compte
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </Container>
             </Section>
             
