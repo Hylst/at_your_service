@@ -24,7 +24,7 @@
       "purpose": "maskable any"
     },
     {
-      "src": "/favicon.ico",
+      "src": "/favicon-butler.ico",
       "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
     }

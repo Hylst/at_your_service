@@ -4,6 +4,13 @@
 ## [Unreleased]
 
 ### Added
+- **PWA Installation Fix**: Resolved Progressive Web App installation issues in Chrome
+  - **Service Worker Implementation**: Added comprehensive service worker (sw.js) with caching strategies for offline functionality
+  - **Service Worker Registration**: Integrated service worker registration in main.tsx with update detection
+  - **Manifest Icons Correction**: Fixed PWA icons in manifest.json to reference correct favicon-butler.ico
+  - **Cache Strategies**: Implemented Cache First for static resources and Network First for dynamic content
+  - **Installation Support**: PWA now meets all Chrome installation requirements (HTTPS, service worker, valid manifest)
+
 - **Icon Consistency Fix**: Corrected all application icons to use the butler image consistently
   - **Sidebar Logo**: Replaced emoji 🛠️ in sidebar header with butler image for professional appearance
   - **Favicon Configuration**: Added explicit favicon link in index.html to ensure proper browser tab icon display
